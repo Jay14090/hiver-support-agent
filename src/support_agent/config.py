@@ -67,14 +67,23 @@ MAX_TOKENS_DEFAULT = 400
 EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 # --------------------------------------------------------------------------- taxonomy
-# P2 induces these from clustering; the list is edited by hand afterwards and is the
-# single source of truth for the codebook, the classifier prompt and the golden schema.
+# P2 induces these from clustering; the list is then edited BY HAND, because the
+# clustering was weak (silhouette ~0.04 at every k, HDBSCAN found 0 clusters / 100%
+# noise) and k=8 merged intents that route differently. What the clusters DID establish,
+# and what changed my starting list:
+#   - content-missing is the single dominant topic (3 of 8 clusters, 52% of the sample):
+#     "why isn't <artist> on Spotify", missing albums, metadata gaps. Kept as one intent.
+#   - feature requests are the second mass (playlist tooling + "where's the Apple Watch
+#     app"), so device-specific app requests fold into feature_request, not device_integration.
+#   - a whole cluster was "I paid but Premium isn't active" / student verification /
+#     upgrade problems. That is NOT a charge dispute and NOT a cancellation, so
+#     `plan_management_family_duo` was widened to `plan_or_premium_management`.
 INTENTS = [
     "playback_streaming_issue",
     "account_access_login",
     "billing_charge_dispute",
     "subscription_cancel_refund",
-    "plan_management_family_duo",
+    "plan_or_premium_management",
     "content_missing_or_metadata",
     "device_integration_issue",
     "app_bug_or_crash",

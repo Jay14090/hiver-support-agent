@@ -16,3 +16,21 @@ The brief grades what I chose *not* to build. This is that list, kept honest as 
 ## Deliberately deferred (would be next, ranked in REPORT.md §7)
 
 *(populated as the build proceeds — see `reports/REPORT.md` "What I'd do with one more week")*
+
+## Intents I deliberately collapsed (Phase 2)
+
+Clustering proposed finer distinctions than a support router can use. Collapsed because
+**a support agent would route them identically** — the test I applied to every merge:
+
+| Induced clusters | Collapsed into | Why |
+|---|---|---|
+| `content_availability_issue` + `album_availability_request` + `music_feature_requests` (1,127 msgs, ~50% of the sample) | `content_missing_or_metadata` | "why isn't X on Spotify", "where's the new album", "so many songs aren't on here" get the same answer. Keeping three labels would have inflated macro-F1 by adding easy, near-duplicate classes. |
+| `service_availability_request` ("launch in India") + `app_update_request` ("make an Apple Watch app") + `playlist_management_requests` | `feature_request_or_complaint` | All are "something that does not exist yet". Splitting geography from software from playlist tooling adds label noise with no routing consequence. |
+| `service_access_issue` (556 msgs) | `other` | Genuinely incoherent — "you ok spotify?", "I have an issue I can't find an answer to". Forcing it into a topic would have manufactured a class the classifier could not learn and the labels could not defend. |
+
+I also **did not split** any cluster, because none of the nine mixed routing outcomes in
+a way that survived reading the members.
+
+**Not adding a `service_outage` intent**, despite outage chatter being visibly present:
+it is time-correlated rather than customer-specific, and a router should handle it with
+an incident banner, not a per-message intent.

@@ -81,7 +81,57 @@ def fig_data_funnel() -> None:
     print(f"[figures] wrote {out}")
 
 
-REGISTRY = {"data_funnel": fig_data_funnel}
+def fig_taxonomy() -> None:
+    """Induced clusters -> hand-edited intents, plus the intents clustering never found.
+
+    The point of this figure is honesty about provenance: it shows at a glance which
+    intents have cluster support and which rest on manual evidence.
+    """
+    from src.support_agent.taxonomy import CLUSTER_TO_INTENT, NOT_ISOLATED_BY_CLUSTERING
+
+    names = json.loads((config.DATA_INTERIM / "cluster_names.json").read_text(encoding="utf-8"))
+    clusters = names["clusters"]
+    rows = []
+    for cid, c in clusters.items():
+        rows.append((c["name"], c["size"], CLUSTER_TO_INTENT.get(c["name"], "other")))
+    rows.sort(key=lambda r: (r[2], -r[1]))
+
+    intents = sorted({r[2] for r in rows}) + NOT_ISOLATED_BY_CLUSTERING
+    y_intent = {name: i for i, name in enumerate(intents)}
+
+    fig, ax = plt.subplots(figsize=(10.5, 5.4))
+    palette = ["#1DB954", "#4c9be8", "#f2b134", "#d1495b", "#8e7cc3", "#5bc0be"]
+    for i, (cname, size, intent) in enumerate(rows):
+        y0, y1 = i, y_intent[intent]
+        col = palette[y_intent[intent] % len(palette)]
+        ax.plot([0, 1], [y0, y1], "-", color=col, lw=1 + size / 130, alpha=0.55, solid_capstyle="round")
+        ax.text(-0.02, y0, f"{cname}  ({size})", ha="right", va="center", fontsize=8.5, color=INK)
+    for name, y in y_intent.items():
+        never = name in NOT_ISOLATED_BY_CLUSTERING
+        ax.text(1.02, y, name + ("   (no cluster support)" if never else ""),
+                ha="left", va="center", fontsize=8.5,
+                color=WARN if never else INK, style="italic" if never else "normal")
+
+    ax.set_xlim(-0.55, 1.75)
+    ax.set_ylim(-1, max(len(rows), len(intents)) + 0.5)
+    ax.invert_yaxis()
+    ax.axis("off")
+    ax.set_title(
+        f"Induced clusters ({names['method']}) -> hand-edited intents\n"
+        f"HDBSCAN found 0 clusters (100% noise); KMeans silhouette ~0.04 at every k",
+        loc="left", fontsize=11, color=INK, pad=14,
+    )
+    fig.text(0.01, 0.015,
+             "red = intent confirmed by keyword probe + manual reading, NOT by cluster structure "
+             "(scripts/intent_evidence.py)", fontsize=8, color=MUTED)
+    fig.tight_layout()
+    out = config.FIGURES / "taxonomy.png"
+    fig.savefig(out, dpi=170, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print(f"[figures] wrote {out}")
+
+
+REGISTRY = {"data_funnel": fig_data_funnel, "taxonomy": fig_taxonomy}
 
 
 def main() -> int:

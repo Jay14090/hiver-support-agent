@@ -39,6 +39,33 @@ NON_LATIN_RE = re.compile(
 )
 LATIN_LETTER_RE = re.compile(r"[A-Za-z]")
 
+# The script check above is necessary but NOT sufficient, and I only found that out by
+# reading the induced clusters: one entire cluster (176/3000 messages) was romanised
+# Indonesian -- "min sy mau beli spotify premium, bisa pake kartu debit gak??" -- which
+# is pure Latin script and sailed through. Function words are the cheap, transparent
+# discriminator: genuine English support tweets almost always contain at least one, and
+# other Latin-script languages contain none of these. Preferred over adding langdetect
+# as a dependency for a filter this coarse, and unlike langdetect it stays explainable.
+ENGLISH_FUNCTION_WORDS = {
+    "the", "is", "it", "my", "me", "i", "you", "your", "and", "but", "not", "no",
+    "to", "of", "in", "on", "for", "with", "this", "that", "have", "has", "had",
+    "do", "does", "did", "can", "cant", "cannot", "wont", "will", "would", "should",
+    "why", "how", "what", "when", "where", "im", "ive", "its", "dont", "doesnt",
+    "isnt", "are", "was", "were", "be", "been", "get", "got", "there", "just",
+    "still", "any", "all", "please", "help", "thanks", "thank", "keep", "keeps",
+    "work", "works", "working", "an", "a", "at", "if", "or", "so", "up", "out",
+    # Added after measuring: the first list dropped "Y'all being DDoS'd? Having trouble
+    # connecting", "we need full catalogue" and "where's Taylor Swifts new album" --
+    # all unambiguously English. Checked that none of these collide with the Indonesian
+    # / French / Polish vocabulary that the filter is meant to catch.
+    "we", "us", "our", "they", "them", "their", "he", "she", "his", "her", "him",
+    "being", "having", "doing", "getting", "need", "needs", "want", "wants",
+    "new", "other", "some", "than", "then", "about", "from", "by", "as", "am",
+    "every", "each", "much", "many", "more", "most", "very", "too", "now", "back",
+    "again", "since", "after", "before", "yall", "trouble", "issue", "problem",
+}
+MIN_ENGLISH_FUNCTION_WORDS = 1
+
 MIN_CUSTOMER_TOKENS = 4
 
 
@@ -92,11 +119,23 @@ def clean_brand(text: str, brand: str) -> tuple[str, str]:
 
 # --------------------------------------------------------------------------- filters
 def is_probably_english(text: str) -> bool:
+    """Two gates: script, then English function words.
+
+    Cost of the second gate: a very short but genuinely English message with no function
+    word ("premium broken again") is dropped. Measured on the corpus before shipping --
+    see ASSUMPTIONS.md [A-10] for the drop rate and the false-positive spot check.
+    """
     letters = LATIN_LETTER_RE.findall(text)
     non_latin = NON_LATIN_RE.findall(text)
     if len(non_latin) >= 3 and len(non_latin) > len(letters) * 0.2:
         return False
-    return len(letters) >= 8
+    if len(letters) < 8:
+        return False
+    raw_words = {w.replace("'", "") for w in re.findall(r"[a-z']+", text.lower())}
+    # Also test the de-suffixed form so possessives and contractions match:
+    # "where's" -> "wheres" -> "where". Cheap stemming, one rule, no library.
+    words = raw_words | {w[:-1] for w in raw_words if w.endswith("s") and len(w) > 2}
+    return len(words & ENGLISH_FUNCTION_WORDS) >= MIN_ENGLISH_FUNCTION_WORDS
 
 
 def token_count(text: str) -> int:

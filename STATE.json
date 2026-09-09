@@ -2,7 +2,7 @@
   "project": "hiver-support-agent",
   "brand": "SpotifyCares",
   "budget_usd_cap": 25.0,
-  "current_phase": 1,
+  "current_phase": 2,
   "tasks": [
     {
       "id": "P0.1",
@@ -152,7 +152,7 @@
       "id": "P2.1",
       "phase": 2,
       "title": "Embed 3000 sampled corpus customer messages (MiniLM)",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f data/interim/taxonomy_emb.npy",
       "artifacts": []
@@ -161,7 +161,7 @@
       "id": "P2.2",
       "phase": 2,
       "title": "Cluster (HDBSCAN else KMeans sweep k=6..20 by silhouette) + save sweep plot",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f reports/figures/cluster_sweep.png",
       "artifacts": []
@@ -170,7 +170,7 @@
       "id": "P2.3",
       "phase": 2,
       "title": "LLM-name each cluster from 20 centroid-near + 10 random members",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f data/interim/cluster_names.json",
       "artifacts": []
@@ -179,7 +179,7 @@
       "id": "P2.4",
       "phase": 2,
       "title": "Hand-edit names; merge/split by routing outcome; land 8-12 intents + other",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python scripts/check_intents.py",
       "artifacts": []
@@ -188,7 +188,7 @@
       "id": "P2.5",
       "phase": 2,
       "title": "Write golden/CODEBOOK.md: def + 3 pos + 2 near-miss + tie-break per intent",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python scripts/check_codebook.py",
       "artifacts": []
@@ -197,7 +197,7 @@
       "id": "P2.6",
       "phase": 2,
       "title": "taxonomy.png cluster->intent map; record collapsed intents in NOT_BUILDING.md",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f reports/figures/taxonomy.png",
       "artifacts": []
