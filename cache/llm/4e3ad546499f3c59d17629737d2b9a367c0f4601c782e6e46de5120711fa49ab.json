@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "Classify a customer message sent to Spotify's public support account\ninto exactly one intent. Return JSON only:\n{\"intent\": \"<intent>\", \"confidence\": <0.0-1.0>}\n\nINTENTS:\n- playback_streaming_issue\n- account_access_login\n- billing_charge_dispute\n- subscription_cancel_refund\n- plan_or_premium_management\n- content_missing_or_metadata\n- device_integration_issue\n- app_bug_or_crash\n- feature_request_or_complaint\n- praise_or_chitchat\n- other",
+ "prompt": "MESSAGE:\n\"I just subscribed to family premium but the codes will not be redeemed. Says it isn’t valid. Help.\"",
+ "temperature": 0.0,
+ "max_tokens": 60,
+ "text": "{\"intent\": \"plan_or_premium_management\", \"confidence\": 0.9}",
+ "prompt_tokens": 145,
+ "completion_tokens": 18,
+ "usd": 3.3e-05,
+ "tag": "prelabel_stratify"
+}

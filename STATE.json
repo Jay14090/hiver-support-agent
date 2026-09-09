@@ -2,7 +2,7 @@
   "project": "hiver-support-agent",
   "brand": "SpotifyCares",
   "budget_usd_cap": 25.0,
-  "current_phase": 2,
+  "current_phase": 3,
   "tasks": [
     {
       "id": "P0.1",
@@ -206,7 +206,7 @@
       "id": "P3.1",
       "phase": 3,
       "title": "Stratified sample 220 from TEST split w/ floors + 15% hard-case quota; fixed seed",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f golden/sample_220.jsonl",
       "artifacts": []
@@ -215,7 +215,7 @@
       "id": "P3.2",
       "phase": 3,
       "title": "Write golden/SAMPLING_NOTE.md (method + honesty statement)",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f golden/SAMPLING_NOTE.md",
       "artifacts": []
@@ -224,7 +224,7 @@
       "id": "P3.3",
       "phase": 3,
       "title": "Pass A prelabels (codebook in context)",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f golden/prelabel_A.jsonl",
       "artifacts": []
@@ -233,7 +233,7 @@
       "id": "P3.4",
       "phase": 3,
       "title": "Pass B prelabels (different model + framing, shuffled, blind to A)",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f golden/prelabel_B.jsonl",
       "artifacts": []
@@ -242,7 +242,7 @@
       "id": "P3.5",
       "phase": 3,
       "title": "Cohen's kappa A-vs-B on intent and on escalate; write to SAMPLING_NOTE.md",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python scripts/ab_agreement.py",
       "artifacts": []
@@ -251,7 +251,7 @@
       "id": "P3.6",
       "phase": 3,
       "title": "Build golden/v1.jsonl (adjudicated where A==B, flagged where not) + JSON schema validation",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python scripts/validate_golden.py",
       "artifacts": []
@@ -260,7 +260,7 @@
       "id": "P3.7",
       "phase": 3,
       "title": "Build golden/label_cli.py: resumable, saves per item, shows both labels + retrieved",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python golden/label_cli.py --selftest",
       "artifacts": []
@@ -269,7 +269,7 @@
       "id": "P3.8",
       "phase": 3,
       "title": "Build human review queue (all disagreements + random 20% of agreements)",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f golden/review_queue.jsonl",
       "artifacts": []

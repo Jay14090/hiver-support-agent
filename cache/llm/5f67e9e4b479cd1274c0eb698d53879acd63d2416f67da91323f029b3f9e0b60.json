@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "Classify a customer message sent to Spotify's public support account\ninto exactly one intent. Return JSON only:\n{\"intent\": \"<intent>\", \"confidence\": <0.0-1.0>}\n\nINTENTS:\n- playback_streaming_issue\n- account_access_login\n- billing_charge_dispute\n- subscription_cancel_refund\n- plan_or_premium_management\n- content_missing_or_metadata\n- device_integration_issue\n- app_bug_or_crash\n- feature_request_or_complaint\n- praise_or_chitchat\n- other",
+ "prompt": "MESSAGE:\n\"I know I can't be the only person in the world who is sick of all the remastered albums on <USER> . At the very least, offer both versions. Don't just remove the original in favor of the remaster. My favorite punk albums have lost their grit and emotion and I'm pissed. 😡\"",
+ "temperature": 0.0,
+ "max_tokens": 60,
+ "text": "{\"intent\": \"feature_request_or_complaint\", \"confidence\": 0.9}",
+ "prompt_tokens": 186,
+ "completion_tokens": 19,
+ "usd": 3.9e-05,
+ "tag": "prelabel_stratify"
+}

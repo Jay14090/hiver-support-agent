@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "Classify a customer message sent to Spotify's public support account\ninto exactly one intent. Return JSON only:\n{\"intent\": \"<intent>\", \"confidence\": <0.0-1.0>}\n\nINTENTS:\n- playback_streaming_issue\n- account_access_login\n- billing_charge_dispute\n- subscription_cancel_refund\n- plan_or_premium_management\n- content_missing_or_metadata\n- device_integration_issue\n- app_bug_or_crash\n- feature_request_or_complaint\n- praise_or_chitchat\n- other",
+ "prompt": "MESSAGE:\n\"Hi, I'm having an issue with local files. I imported several mp3 files to a playlist on the Spotify library on my MacBook, and they showed up fine on my phone so I was happy. Then I signed into my OTHER computer and they weren't there. How do I fix this?\"",
+ "temperature": 0.0,
+ "max_tokens": 60,
+ "text": "{\"intent\": \"device_integration_issue\", \"confidence\": 0.9}",
+ "prompt_tokens": 183,
+ "completion_tokens": 17,
+ "usd": 3.8e-05,
+ "tag": "prelabel_stratify"
+}

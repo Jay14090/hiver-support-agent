@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "Classify a customer message sent to Spotify's public support account\ninto exactly one intent. Return JSON only:\n{\"intent\": \"<intent>\", \"confidence\": <0.0-1.0>}\n\nINTENTS:\n- playback_streaming_issue\n- account_access_login\n- billing_charge_dispute\n- subscription_cancel_refund\n- plan_or_premium_management\n- content_missing_or_metadata\n- device_integration_issue\n- app_bug_or_crash\n- feature_request_or_complaint\n- praise_or_chitchat\n- other",
+ "prompt": "MESSAGE:\n\"Is there a way to download or access my own user/listening data? Would love to do my own exploratory analysis on this data, and be able to archive it.\"",
+ "temperature": 0.0,
+ "max_tokens": 60,
+ "text": "{\"intent\": \"feature_request_or_complaint\", \"confidence\": 0.9}",
+ "prompt_tokens": 158,
+ "completion_tokens": 19,
+ "usd": 3.5e-05,
+ "tag": "prelabel_stratify"
+}

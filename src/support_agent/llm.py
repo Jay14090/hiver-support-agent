@@ -13,6 +13,7 @@ Deliberately NOT a framework. One function, `complete()`. I can explain all of i
 """
 from __future__ import annotations
 
+import atexit
 import hashlib
 import json
 import os
@@ -130,7 +131,7 @@ def price(model: str, prompt_tokens: int, completion_tokens: int) -> float:
 
 
 def spend_so_far() -> float:
-    return Meter.load().total_usd
+    return _METER.total_usd if _METER is not None else Meter.load().total_usd
 
 
 def budget_model(preferred: str) -> str:
@@ -142,13 +143,22 @@ def budget_model(preferred: str) -> str:
     return preferred
 
 
+# The ledger is held in memory and flushed periodically. Loading + rewriting the whole
+# JSON file on every call made bulk labelling (thousands of calls) I/O-bound.
+_METER: Meter | None = None
+_since_flush = 0
+FLUSH_EVERY = 50
+
+
 def _record(model: str, pt: int, ct: int, usd: float, cache_hit: bool, tag: str) -> None:
+    global _METER, _since_flush
     with _ledger_lock:
-        m = Meter.load()
-        m.total_usd += usd
-        m.total_prompt_tokens += pt
-        m.total_completion_tokens += ct
-        m.calls.append(
+        if _METER is None:
+            _METER = Meter.load()
+        _METER.total_usd += usd
+        _METER.total_prompt_tokens += pt
+        _METER.total_completion_tokens += ct
+        _METER.calls.append(
             {
                 "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
                 "model": model,
@@ -159,7 +169,21 @@ def _record(model: str, pt: int, ct: int, usd: float, cache_hit: bool, tag: str)
                 "cache_hit": cache_hit,
             }
         )
-        m.save()
+        _since_flush += 1
+        if _since_flush >= FLUSH_EVERY:
+            _METER.save()
+            _since_flush = 0
+
+
+def flush_ledger() -> None:
+    global _since_flush
+    with _ledger_lock:
+        if _METER is not None and _since_flush:
+            _METER.save()
+            _since_flush = 0
+
+
+atexit.register(flush_ledger)
 
 
 # --------------------------------------------------------------------------- client

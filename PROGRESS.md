@@ -24,3 +24,11 @@ Append-only. One line per completed task.
 - [2026-09-09 16:08] P2.4 DONE - phase2
 - [2026-09-09 16:08] P2.5 DONE - phase2
 - [2026-09-09 16:08] P2.6 DONE - phase2
+- [2026-09-09 16:24] P3.1 DONE - phase3
+- [2026-09-09 16:24] P3.2 DONE - phase3
+- [2026-09-09 16:24] P3.3 DONE - phase3
+- [2026-09-09 16:24] P3.4 DONE - phase3
+- [2026-09-09 16:24] P3.5 DONE - phase3
+- [2026-09-09 16:24] P3.6 DONE - phase3
+- [2026-09-09 16:24] P3.7 DONE - phase3
+- [2026-09-09 16:24] P3.8 DONE - phase3

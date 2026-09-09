@@ -1,0 +1,61 @@
+{
+  "n": 220,
+  "model_A": "machine_pass_A:gpt-4o-mini",
+  "model_B": "machine_pass_B:gpt-4.1-mini",
+  "intent": {
+    "raw_agreement": 0.6955,
+    "cohens_kappa": 0.6554
+  },
+  "escalate": {
+    "raw_agreement": 0.9091,
+    "cohens_kappa": 0.7028
+  },
+  "n_disagreements": 76,
+  "disagreement_rate": 0.3455,
+  "escalate_rate_A": 0.15,
+  "escalate_rate_B": 0.2227,
+  "parse_failures_A": 0,
+  "parse_failures_B": 0,
+  "top_intent_confusions": [
+    {
+      "A": "app_bug_or_crash",
+      "B": "playback_streaming_issue",
+      "n": 8
+    },
+    {
+      "A": "feature_request_or_complaint",
+      "B": "content_missing_or_metadata",
+      "n": 7
+    },
+    {
+      "A": "praise_or_chitchat",
+      "B": "other",
+      "n": 5
+    },
+    {
+      "A": "feature_request_or_complaint",
+      "B": "other",
+      "n": 5
+    },
+    {
+      "A": "subscription_cancel_refund",
+      "B": "plan_or_premium_management",
+      "n": 4
+    },
+    {
+      "A": "content_missing_or_metadata",
+      "B": "playback_streaming_issue",
+      "n": 4
+    },
+    {
+      "A": "billing_charge_dispute",
+      "B": "plan_or_premium_management",
+      "n": 3
+    },
+    {
+      "A": "device_integration_issue",
+      "B": "playback_streaming_issue",
+      "n": 3
+    }
+  ]
+}

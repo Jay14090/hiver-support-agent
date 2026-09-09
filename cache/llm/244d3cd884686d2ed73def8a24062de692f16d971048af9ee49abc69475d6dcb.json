@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "Classify a customer message sent to Spotify's public support account\ninto exactly one intent. Return JSON only:\n{\"intent\": \"<intent>\", \"confidence\": <0.0-1.0>}\n\nINTENTS:\n- playback_streaming_issue\n- account_access_login\n- billing_charge_dispute\n- subscription_cancel_refund\n- plan_or_premium_management\n- content_missing_or_metadata\n- device_integration_issue\n- app_bug_or_crash\n- feature_request_or_complaint\n- praise_or_chitchat\n- other",
+ "prompt": "EARLIER TURNS FROM THIS CUSTOMER:\n- All I'm saying is that I've been trying to login for two months now and all I get is \"We're encountering problems, try later.\" And YES I've been through each and every of your help and assistances, th\n- <USER> Le mec a en réalité recommencé à Twitter pour faire chier des CM.\n- <USER> Big Fernand c'est juste le royaume des fils de pute, à égalité avec La Star.\n\nMESSAGE:\n\"Hello , J'ai parcouru vos rubriques d'aide en long en large et en travers mais aucune n'est intitulée \"cela fait deux mois que nous rencontrons des problèmes et que nous vous suggérons de réessayer plus tard\".\"",
+ "temperature": 0.0,
+ "max_tokens": 60,
+ "text": "{\"intent\": \"account_access_login\", \"confidence\": 0.9}",
+ "prompt_tokens": 270,
+ "completion_tokens": 16,
+ "usd": 5e-05,
+ "tag": "prelabel_stratify"
+}

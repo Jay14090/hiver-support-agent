@@ -1,0 +1,44 @@
+{
+  "n": 220,
+  "target": 220,
+  "random_state": 20260909,
+  "source_split": "test (newest 15% by root tweet timestamp)",
+  "floor_per_intent": 12,
+  "allocation": {
+    "playback_streaming_issue": 17,
+    "account_access_login": 17,
+    "billing_charge_dispute": 12,
+    "subscription_cancel_refund": 13,
+    "plan_or_premium_management": 17,
+    "content_missing_or_metadata": 21,
+    "device_integration_issue": 14,
+    "app_bug_or_crash": 20,
+    "feature_request_or_complaint": 58,
+    "praise_or_chitchat": 16,
+    "other": 15
+  },
+  "pool_counts": {
+    "feature_request_or_complaint": 723,
+    "praise_or_chitchat": 65,
+    "content_missing_or_metadata": 142,
+    "device_integration_issue": 38,
+    "plan_or_premium_management": 88,
+    "other": 58,
+    "account_access_login": 80,
+    "subscription_cancel_refund": 22,
+    "playback_streaming_issue": 93,
+    "app_bug_or_crash": 128,
+    "billing_charge_dispute": 19
+  },
+  "shortfalls": {},
+  "hard_cases": 32,
+  "hard_case_rate": 0.145,
+  "hard_flag_counts": {
+    "has_context": 9,
+    "very_short": 16,
+    "negation": 42,
+    "escalation_trigger": 5,
+    "multi_intent": 7,
+    "sarcasm": 2
+  }
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "Classify a customer message sent to Spotify's public support account\ninto exactly one intent. Return JSON only:\n{\"intent\": \"<intent>\", \"confidence\": <0.0-1.0>}\n\nINTENTS:\n- playback_streaming_issue\n- account_access_login\n- billing_charge_dispute\n- subscription_cancel_refund\n- plan_or_premium_management\n- content_missing_or_metadata\n- device_integration_issue\n- app_bug_or_crash\n- feature_request_or_complaint\n- praise_or_chitchat\n- other",
+ "prompt": "EARLIER TURNS FROM THIS CUSTOMER:\n- <USER> None of those solutions help me in my situation, so I slide up in y'all's DMs explaining the sitch and someone hits me with the reset password nonsense. I tried that already homie, so I RE-EXPL\n\nMESSAGE:\n\"<USER> all I want for Christmas is for y'all's support team to actually read the messages customers send. Is that too much to ask? First in DM and now email, y'all just refuse to read and it's so frustrating. Can someone grant my Christmas wish and READ my email?\"",
+ "temperature": 0.0,
+ "max_tokens": 60,
+ "text": "{\"intent\": \"account_access_login\", \"confidence\": 0.9}",
+ "prompt_tokens": 243,
+ "completion_tokens": 16,
+ "usd": 4.6e-05,
+ "tag": "prelabel_stratify"
+}
