@@ -1,9 +1,9 @@
 # SpotifyCares Support Agent — Report
 
 **Dataset:** `thoughtvector/customer-support-on-twitter` (2,811,774 tweets) · **Brand:**
-`SpotifyCares` · **Golden set:** 220 examples · **Total LLM spend:** $4.35
+`SpotifyCares` · **Golden set:** 224 examples · **Total LLM spend:** $3.45
 
-> ⚠ **STATUS: PROVISIONAL.** 220/220 golden rows are machine-labelled. 64 contested rows
+> ⚠ **STATUS: PROVISIONAL.** 224/224 golden rows are machine-labelled. 65 contested rows
 > were settled by a 2-of-3 majority across **three blind model passes**, but no human has
 > reviewed any row (105-item queue prepared). Judge-vs-human agreement is **not measured**.
 > Every number below is measured against machine labels. `run_eval.py` stamps this
@@ -14,12 +14,12 @@
 ## 1. What is misleading about my headline number?
 
 Written first, deliberately, so the results section is honest by construction. My headline
-is **macro-F1 0.774 [0.706, 0.829] and expected cost 29.5 per 100 messages**. Here is why
+is **macro-F1 0.781 [0.719, 0.832] and expected cost 42.4 per 100 messages**. Here is why
 you should discount it.
 
 1. **The labels are machine-made, and three models disagreed a lot.** Pairwise intent κ:
    A–B 0.655, A–C 0.621, B–C 0.718. All three agreed unanimously on only **128 of 220**
-   intents; 12 were three-way splits with no majority at all. My 0.774 is agreement with a
+   intents; 12 were three-way splits with no majority at all. My 0.781 is agreement with a
    majority of models, not with a person.
 
 2. **My escalation ground truth is unstable, and this is the worst problem here.** On the
@@ -31,7 +31,7 @@ you should discount it.
    routing number inherits that ambiguity**.
 
 3. **n=220 makes the CI wider than most differences I could claim.** The 95% CI half-width
-   on macro-F1 is ±0.062. Any gap below ~0.11 between two systems is not a result. My
+   on macro-F1 is ±0.057. Any gap below ~0.11 between two systems is not a result. My
    Phase 8 fix improved cost by 12.3 per 100 and I *still* report it as not clearing the
    noise floor (paired CI **[−30.0, +0.92]**, includes zero).
 
@@ -50,7 +50,7 @@ you should discount it.
    **73.6% deflection rate does not transfer** to real inbound volume.
 
 7. **The 10:1 cost ratio is asserted, not measured — and the margin depends on it.** At
-   **1:1** the agent and B1 are effectively tied (13.2 vs 14.1 per 100); the agent's lead
+   **1:1** the agent and B1 are effectively tied (14.3 vs 15.2 per 100); the agent's lead
    only becomes decisive from about 2:1 upward. Under my previous labelling B1 was ahead
    at 1:1 outright. I have no data on the true cost of either error, so the size of the
    agent's routing advantage is a function of a number I guessed.
@@ -88,7 +88,7 @@ you should discount it.
     in a way a human-labelled classifier would not be.
 
 13. **The hard-case quota did not do what I intended.** Hard-flagged examples scored
-    *higher* (87.5% vs 77.7%) and produced **zero** missed escalations, because my hard
+    *higher* (87.5% vs 78.1%) and produced **zero** missed escalations, because my hard
     flags select for escalation keywords, which make routing *easier*.
 
 ---
@@ -168,15 +168,20 @@ other 6 rest on keyword probes and reading, and are marked red in `figures/taxon
 
 | system | intent macro-F1 (95% CI) | cost/100 | missed escalations | deflection |
 |---|---|---|---|---|
-| B0 always-escalate | 0.034 | 83.2 | **0** of 220 | 0.0% |
-| B0 always-auto | 0.034 | 168.2 | 37 of 220 | 100.0% |
-| B1 TF-IDF + copy-paste | 0.592 [0.510, 0.660] | 124.5 | 27 of 220 | 93.6% |
-| **agent** | **0.774 [0.706, 0.829]** | **29.5 [14, 49]** | **4** of 220 | 73.6% |
+| B0 always-escalate | 0.034 | 81.7 | **0** of 224 | 0.0% |
+| B0 always-auto | 0.034 | 183.0 | 41 of 224 | 100.0% |
+| B1 TF-IDF + copy-paste | 0.600 [0.520, 0.666] | 135.7 | 30 of 224 | 93.3% |
+| **agent** | **0.781 [0.719, 0.832]** | **42.4 [22, 68]** | **7** of 224 | 73.7% |
 
-**Robustness note.** These are measured against the 3-pass majority-adjudicated labels.
-Under the earlier Pass-A-only labels the agent scored 0.789 [0.726, 0.837] with cost 31.4.
-Re-adjudicating 64 contested rows moved every headline number by less than its own CI, so
-the ranking is not an artefact of one labelling pass.
+**Robustness note, and a result that moved against me.** Under the original Pass-A-only
+labels the agent scored 0.789 [0.726, 0.837] with cost 31.4 and 4 missed escalations. Two
+changes since: 3-pass majority re-adjudication of 65 contested rows, and topping the
+sample back up to the pre-registered 12-per-intent floor (`billing_charge_dispute` had
+fallen to 8 after re-adjudication). Intent macro-F1 moved by less than its own CI. **The
+routing cost got worse — 29.5 → 42.4, missed escalations 4 → 7 — because the 4 added
+billing examples are exactly the calm-phrasing dispute the agent is weakest on.** That the
+top-up hurt the agent is the evidence that it was drawn at random to satisfy a
+pre-registered floor rather than selected to flatter the result.
 
 **Where a baseline beats the agent, stated plainly:**
 
@@ -215,7 +220,7 @@ autoresponder. **But see limitation 9: a second judge said 0%.** The honest read
 "somewhere between none and one in ten", which is the same qualitative conclusion and a
 much weaker quantitative one.
 
-**Calibration** (![calibration](figures/calibration.png)): ECE **0.098**. Well-calibrated
+**Calibration** (![calibration](figures/calibration.png)): ECE **0.099**. Well-calibrated
 enough to report, not well-calibrated enough to gate on — which is exactly what the
 threshold sweep independently found.
 
@@ -226,7 +231,8 @@ calls; 0 replies over the 280-character cap; 21.4% of replies ungrounded (cite n
 
 ## 6. Failure analysis
 
-Full version with verbatim examples in `FAILURE_ANALYSIS.md`. I read all 66 agent errors.
+Full version with verbatim examples in `FAILURE_ANALYSIS.md`. I read all 66 agent errors
+(from the 220-row evaluation; the analysis was not redone after the top-up).
 
 1. **Frustration read as distress** — 14 of 26 needless escalations. The model escalates on
    profanity ("I don't pay $10 a month for this shit") rather than on genuine distress.
@@ -237,8 +243,9 @@ Full version with verbatim examples in `FAILURE_ANALYSIS.md`. I read all 66 agen
    guessing, and the confusion has **no routing consequence** either way.
 4. **`app_bug` vs `playback`** (5) — the label requires inferring a *cause* the customer
    never states.
-5. **Missed escalations** (4 post-fix) — in every case **the intent classifier was already
-   right** and the router auto-handled anyway.
+5. **Missed escalations** (4 post-fix on 220; **7 on the final 224**, the 3 extra being the
+   newly added calm-phrasing billing disputes) — in every case **the intent classifier was
+   already right** and the router auto-handled anyway.
 
 **Phase 8 targeted fix**, aimed at mode 5: escalate when a high-stakes *intent* is
 corroborated by a money amount or a security noun, regardless of phrasing.

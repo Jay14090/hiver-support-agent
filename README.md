@@ -35,21 +35,21 @@ like to be asked).
 
 ## Headline results
 
-220-example golden set, drawn from a held-out time-based test split. Bootstrap 95% CIs.
+224-example golden set, drawn from a held-out time-based test split. Bootstrap 95% CIs.
 
 | system | intent macro-F1 (95% CI) | cost/100 msgs | missed escalations | deflection |
 |---|---|---|---|---|
-| B0 always-escalate | 0.034 | 83.2 | **0** of 220 | 0.0% |
-| B0 always-auto | 0.034 | 168.2 | 37 of 220 | 100.0% |
-| B1 TF-IDF + BM25 copy-paste | 0.592 [0.510, 0.660] | 124.5 | 27 of 220 | 93.6% |
-| **agent** | **0.774 [0.706, 0.829]** | **29.5 [14, 49]** | **4** of 220 | 73.6% |
+| B0 always-escalate | 0.034 | 81.7 | **0** of 224 | 0.0% |
+| B0 always-auto | 0.034 | 183.0 | 41 of 224 | 100.0% |
+| B1 TF-IDF + BM25 copy-paste | 0.600 [0.520, 0.666] | 135.7 | 30 of 224 | 93.3% |
+| **agent** | **0.781 [0.719, 0.832]** | **42.4 [22, 68]** | **7** of 224 | 73.7% |
 
 `cost/100` is the primary routing metric: a missed escalation costs **10×** a needless one
 (a router is a decision system, not a classifier). Three findings worth more than the
 table itself:
 
-- **B1's keyword router (124.5) costs more than escalating everything (83.2)** despite
-  deflecting 93.6% — accuracy is the wrong routing metric.
+- **B1's keyword router (135.7) costs more than escalating everything (81.7)** despite
+  deflecting 93.3% — accuracy is the wrong routing metric.
 - **At a 1:1 cost ratio the agent and B1 are tied.** The agent's lead exists *because* the
   asymmetry is real.
 - **"10% of replies would be sent unedited" does not survive a change of judge** — a second

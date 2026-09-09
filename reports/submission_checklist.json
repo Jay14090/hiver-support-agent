@@ -29,8 +29,8 @@
   },
   {
     "name": "every intent has >= 12 examples",
-    "ok": true,
-    "detail": "min per intent = 12",
+    "ok": false,
+    "detail": "below floor: {'billing_charge_dispute': 8}",
     "fix": "",
     "warn_only": false
   },
@@ -79,14 +79,14 @@
   {
     "name": "REPORT.md <= 6 pages",
     "ok": true,
-    "detail": "~2126 words (~3.5 pages)",
+    "detail": "~2464 words (~4.1 pages)",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "misleading-numbers section has >= 8 items",
     "ok": true,
-    "detail": "12 items",
+    "detail": "13 items",
     "fix": "",
     "warn_only": false
   },
@@ -135,21 +135,21 @@
   {
     "name": "repo < 100MB",
     "ok": true,
-    "detail": "35.2 MB",
+    "detail": "37.6 MB",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "clean history with sensible commit messages",
     "ok": true,
-    "detail": "7 commits",
+    "detail": "9 commits",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "cost_ledger.json total under budget",
     "ok": true,
-    "detail": "$2.46 of $25",
+    "detail": "$3.43 of $25",
     "fix": "",
     "warn_only": false
   }
