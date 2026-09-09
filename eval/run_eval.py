@@ -94,13 +94,27 @@ def evaluate_system(system, golden: list, name: str, judge: bool = False,
     draft.reset_stats()
     route.reset_stats()
 
-    per_example = []
-    for g in golden:
+    # Parallel over examples: each handle() is 3 independent LLM calls and 220 of them
+    # sequentially is ~16 minutes. Order is restored afterwards so results stay
+    # deterministic regardless of completion order.
+    from concurrent.futures import ThreadPoolExecutor
+
+    def _run_one(g):
         out = system.handle(g["text"], g.get("thread_context"))
         if not isinstance(out, dict):          # the agent returns a Decision dataclass
             from dataclasses import asdict
 
             out = asdict(out)
+        return g, out
+
+    results_ordered = [None] * len(golden)
+    workers = 1 if getattr(system, "_no_parallel", False) else 8
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        for i, (g, out) in enumerate(ex.map(_run_one, golden)):
+            results_ordered[i] = (g, out)
+
+    per_example = []
+    for g, out in results_ordered:
         checks = check_must_include(out.get("draft_reply", ""),
                                     g.get("reply_must_include"), g.get("reply_must_not_include"))
         per_example.append({

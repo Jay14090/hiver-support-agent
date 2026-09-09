@@ -54,7 +54,9 @@ def encode(texts: list, cache_name: str | None = None, batch_size: int = 128) ->
         batch_size=batch_size,
         convert_to_numpy=True,
         normalize_embeddings=True,
-        show_progress_bar=True,
+        # Progress bar only for bulk encoding. Single-query retrieval calls this on every
+        # decision, and a progress bar per query makes the demo output unreadable.
+        show_progress_bar=len(texts) > 64,
     ).astype("float32")
     np.save(path, arr)
     return arr

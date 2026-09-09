@@ -131,7 +131,158 @@ def fig_taxonomy() -> None:
     print(f"[figures] wrote {out}")
 
 
-REGISTRY = {"data_funnel": fig_data_funnel, "taxonomy": fig_taxonomy}
+def _results() -> dict:
+    p = config.REPORTS / "results.json"
+    if not p.exists():
+        raise FileNotFoundError(p)
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def fig_confusion() -> None:
+    """Confusion matrix for the agent, row-normalised so rare classes stay readable."""
+    import numpy as np
+
+    d = _results()
+    r = d["systems"].get("agent") or list(d["systems"].values())[0]
+    labels = r["intent"]["labels"]
+    m = np.array(r["intent"]["confusion_matrix"], dtype=float)
+    present = [i for i, l in enumerate(labels) if m[i].sum() > 0]
+    m, labels = m[np.ix_(present, present)], [labels[i] for i in present]
+    norm = m / np.clip(m.sum(axis=1, keepdims=True), 1, None)
+
+    fig, ax = plt.subplots(figsize=(8.6, 7.2))
+    im = ax.imshow(norm, cmap="Greens", vmin=0, vmax=1)
+    ax.set_xticks(range(len(labels)), labels, rotation=45, ha="right", fontsize=8)
+    ax.set_yticks(range(len(labels)), labels, fontsize=8)
+    for i in range(len(labels)):
+        for j in range(len(labels)):
+            if m[i, j]:
+                ax.text(j, i, int(m[i, j]), ha="center", va="center", fontsize=7.5,
+                        color="white" if norm[i, j] > 0.55 else INK)
+    ax.set_xlabel("predicted")
+    ax.set_ylabel("gold (support in parentheses on the diagonal)")
+    ax.set_title(f"{r['system']}: intent confusion (counts, shaded by row share)",
+                 loc="left", fontsize=11, pad=10)
+    fig.colorbar(im, ax=ax, shrink=0.7, label="share of the gold row")
+    fig.tight_layout()
+    out = config.FIGURES / "confusion_matrix.png"
+    fig.savefig(out, dpi=170, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print(f"[figures] wrote {out}")
+
+
+def fig_calibration() -> None:
+    """Reliability diagram. The router consumes confidence, so its calibration is load-bearing."""
+    d = _results()
+    r = d["systems"].get("agent") or list(d["systems"].values())[0]
+    bins = [b for b in r["intent"]["reliability_bins"] if b["n"] > 0]
+    xs = [b["mean_confidence"] for b in bins]
+    ys = [b["accuracy"] for b in bins]
+    ns = [b["n"] for b in bins]
+
+    fig, ax = plt.subplots(figsize=(6.4, 5.4))
+    ax.plot([0, 1], [0, 1], "--", color=MUTED, lw=1, label="perfect calibration")
+    ax.scatter(xs, ys, s=[max(28, n * 7) for n in ns], color=ACCENT, alpha=0.85, zorder=3,
+               label="observed (area = n)")
+    ax.plot(xs, ys, "-", color=ACCENT, lw=1.2, alpha=0.6)
+    for x, y, n in zip(xs, ys, ns):
+        ax.annotate(f"n={n}", (x, y), textcoords="offset points", xytext=(7, -11),
+                    fontsize=7.5, color=MUTED)
+    ax.set_xlabel("mean predicted confidence")
+    ax.set_ylabel("observed accuracy")
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    ax.set_title(f"Intent calibration - ECE = {r['intent']['ece']:.3f}\n"
+                 f"points below the line = overconfident",
+                 loc="left", fontsize=11, pad=10)
+    ax.legend(fontsize=8, frameon=False, loc="upper left")
+    _style(ax)
+    fig.tight_layout()
+    out = config.FIGURES / "calibration.png"
+    fig.savefig(out, dpi=170, facecolor="white")
+    plt.close(fig)
+    print(f"[figures] wrote {out}")
+
+
+def fig_deflection() -> None:
+    """Deflection vs safety, the trade-off a support-tooling company actually buys."""
+    d = _results()
+    systems = d["systems"]
+    fig, ax = plt.subplots(figsize=(7.6, 5.4))
+    palette = {"agent": ACCENT, "b1_simple": "#4c9be8", "b0_always_escalate": WARN,
+               "b0_always_auto": "#f2b134"}
+    for name, r in systems.items():
+        c = r["routing"]
+        x = c["deflection_rate"] * 100
+        y = c["false_auto_count"]
+        col = palette.get(name, MUTED)
+        ax.scatter([x], [y], s=150, color=col, zorder=3, edgecolor="white", linewidth=1.5)
+        ax.annotate(f"{name}\ncost/100 = {c['expected_cost_per_100']:.0f}",
+                    (x, y), textcoords="offset points", xytext=(9, 6), fontsize=8, color=INK)
+    ax.set_xlabel("deflection rate (% handled with no human)  ->  cheaper")
+    ax.set_ylabel("missed escalations (raw count)  ->  more dangerous")
+    ax.set_title("The only trade-off that matters: deflection vs missed escalations\n"
+                 "bottom-right is better; always-escalate sits at (0, 0)",
+                 loc="left", fontsize=11, pad=10)
+    ax.set_xlim(-4, 104)
+    _style(ax)
+    fig.tight_layout()
+    out = config.FIGURES / "deflection_curve.png"
+    fig.savefig(out, dpi=170, facecolor="white")
+    plt.close(fig)
+    print(f"[figures] wrote {out}")
+
+
+def fig_baseline_table() -> None:
+    """The headline table as an image, so the report and the figure cannot disagree."""
+    d = _results()
+    systems = d["systems"]
+    cols = ["system", "macro-F1 (95% CI)", "cost/100", "missed esc.", "deflection", "grounded"]
+    rows = []
+    for name, r in systems.items():
+        f1 = r["intent"]["macro_f1"]
+        c = r["routing"]
+        rows.append([
+            name,
+            f"{f1['point']:.3f} [{f1['lo']:.3f}, {f1['hi']:.3f}]",
+            f"{c['expected_cost_per_100']:.1f}",
+            f"{c['false_auto_count']} of {c['false_auto_of']}",
+            f"{c['deflection_rate']:.1%}",
+            f"{r['reply_checks']['grounded_rate']:.0%}",
+        ])
+    fig, ax = plt.subplots(figsize=(11, 1.0 + 0.5 * len(rows)))
+    ax.axis("off")
+    t = ax.table(cellText=rows, colLabels=cols, loc="center", cellLoc="left")
+    t.auto_set_font_size(False)
+    t.set_fontsize(9)
+    t.scale(1, 1.55)
+    for j in range(len(cols)):
+        t[0, j].set_facecolor("#eef6ef")
+        t[0, j].set_text_props(weight="bold")
+    for i, row in enumerate(rows, start=1):
+        if row[0] == "agent":
+            for j in range(len(cols)):
+                t[i, j].set_facecolor("#f4fbf5")
+    banner = d["status"]["banner"]
+    ax.set_title(f"Headline results\n{DIM_NOTE if False else banner}", loc="left",
+                 fontsize=9.5, color=WARN if d["status"]["is_provisional"] else INK, pad=16)
+    fig.tight_layout()
+    out = config.FIGURES / "baseline_table.png"
+    fig.savefig(out, dpi=170, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+    print(f"[figures] wrote {out}")
+
+
+DIM_NOTE = ""
+
+REGISTRY = {
+    "data_funnel": fig_data_funnel,
+    "taxonomy": fig_taxonomy,
+    "confusion_matrix": fig_confusion,
+    "calibration": fig_calibration,
+    "deflection_curve": fig_deflection,
+    "baseline_table": fig_baseline_table,
+}
 
 
 def main() -> int:
