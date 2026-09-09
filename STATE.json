@@ -1,0 +1,584 @@
+{
+  "project": "hiver-support-agent",
+  "brand": "SpotifyCares",
+  "budget_usd_cap": 25.0,
+  "current_phase": 0,
+  "tasks": [
+    {
+      "id": "P0.1",
+      "phase": 0,
+      "title": "Create directory tree + .gitignore + requirements.txt + .env.example",
+      "status": "done",
+      "attempts": 0,
+      "gate": "test -d src/support_agent",
+      "artifacts": []
+    },
+    {
+      "id": "P0.2",
+      "phase": 0,
+      "title": "Write STATE.json / PROGRESS.md / ASSUMPTIONS.md / BLOCKERS.md / NOT_BUILDING.md",
+      "status": "done",
+      "attempts": 0,
+      "gate": "test -f STATE.json",
+      "artifacts": []
+    },
+    {
+      "id": "P0.3",
+      "phase": 0,
+      "title": "Write src/support_agent/config.py (all constants in one place)",
+      "status": "done",
+      "attempts": 0,
+      "gate": "python -c \"import src.support_agent.config\"",
+      "artifacts": []
+    },
+    {
+      "id": "P0.4",
+      "phase": 0,
+      "title": "Write src/support_agent/llm.py: cache + retry + cost meter + --offline",
+      "status": "done",
+      "attempts": 0,
+      "gate": "pytest tests/test_llm_cache.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P0.5",
+      "phase": 0,
+      "title": "Write Makefile with all targets",
+      "status": "done",
+      "attempts": 0,
+      "gate": "test -f Makefile",
+      "artifacts": []
+    },
+    {
+      "id": "P0.6",
+      "phase": 0,
+      "title": "Commit P0 scaffold",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "git log --oneline | grep -q P0",
+      "artifacts": []
+    },
+    {
+      "id": "P1.1",
+      "phase": 1,
+      "title": "scripts/get_data.sh: kaggle -> HF mirror -> local search -> synthetic",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f data/raw/twcs.csv",
+      "artifacts": []
+    },
+    {
+      "id": "P1.2",
+      "phase": 1,
+      "title": "ingest.py: load csv with forced str dtypes, verify schema + row count",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.ingest --verify-schema",
+      "artifacts": []
+    },
+    {
+      "id": "P1.3",
+      "phase": 1,
+      "title": "threads.py: parent->child graph, comma-list ids, cycle guard, depth cap, branch pick",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_threads.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P1.4",
+      "phase": 1,
+      "title": "Brand slice for SpotifyCares + D3 fallback check (>=2000 threads, >=15% resolution rate)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.ingest --brand-stats",
+      "artifacts": []
+    },
+    {
+      "id": "P1.5",
+      "phase": 1,
+      "title": "Resolution-bearing scorer (transparent heuristic, no LLM) + rate reported",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_resolution.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P1.6",
+      "phase": 1,
+      "title": "clean.py: mention/signature strip, PII scrub, emoji keep, punctuation normalise",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_clean.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P1.7",
+      "phase": 1,
+      "title": "Language filter, min-token filter, near-duplicate dedupe",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_clean.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P1.8",
+      "phase": 1,
+      "title": "Time-based 70/15/15 split on root created_at -> corpus/dev/test.jsonl",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -s data/processed/test.jsonl",
+      "artifacts": []
+    },
+    {
+      "id": "P1.9",
+      "phase": 1,
+      "title": "Commit processed subsample (<40MB) + data funnel figure",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/figures/data_funnel.png",
+      "artifacts": []
+    },
+    {
+      "id": "P1.10",
+      "phase": 1,
+      "title": "Gate: ingest --verify prints funnel; thread+clean tests pass",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.ingest --verify",
+      "artifacts": []
+    },
+    {
+      "id": "P2.1",
+      "phase": 2,
+      "title": "Embed 3000 sampled corpus customer messages (MiniLM)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f data/interim/taxonomy_emb.npy",
+      "artifacts": []
+    },
+    {
+      "id": "P2.2",
+      "phase": 2,
+      "title": "Cluster (HDBSCAN else KMeans sweep k=6..20 by silhouette) + save sweep plot",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/figures/cluster_sweep.png",
+      "artifacts": []
+    },
+    {
+      "id": "P2.3",
+      "phase": 2,
+      "title": "LLM-name each cluster from 20 centroid-near + 10 random members",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f data/interim/cluster_names.json",
+      "artifacts": []
+    },
+    {
+      "id": "P2.4",
+      "phase": 2,
+      "title": "Hand-edit names; merge/split by routing outcome; land 8-12 intents + other",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/check_intents.py",
+      "artifacts": []
+    },
+    {
+      "id": "P2.5",
+      "phase": 2,
+      "title": "Write golden/CODEBOOK.md: def + 3 pos + 2 near-miss + tie-break per intent",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/check_codebook.py",
+      "artifacts": []
+    },
+    {
+      "id": "P2.6",
+      "phase": 2,
+      "title": "taxonomy.png cluster->intent map; record collapsed intents in NOT_BUILDING.md",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/figures/taxonomy.png",
+      "artifacts": []
+    },
+    {
+      "id": "P3.1",
+      "phase": 3,
+      "title": "Stratified sample 220 from TEST split w/ floors + 15% hard-case quota; fixed seed",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f golden/sample_220.jsonl",
+      "artifacts": []
+    },
+    {
+      "id": "P3.2",
+      "phase": 3,
+      "title": "Write golden/SAMPLING_NOTE.md (method + honesty statement)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f golden/SAMPLING_NOTE.md",
+      "artifacts": []
+    },
+    {
+      "id": "P3.3",
+      "phase": 3,
+      "title": "Pass A prelabels (codebook in context)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f golden/prelabel_A.jsonl",
+      "artifacts": []
+    },
+    {
+      "id": "P3.4",
+      "phase": 3,
+      "title": "Pass B prelabels (different model + framing, shuffled, blind to A)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f golden/prelabel_B.jsonl",
+      "artifacts": []
+    },
+    {
+      "id": "P3.5",
+      "phase": 3,
+      "title": "Cohen's kappa A-vs-B on intent and on escalate; write to SAMPLING_NOTE.md",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/ab_agreement.py",
+      "artifacts": []
+    },
+    {
+      "id": "P3.6",
+      "phase": 3,
+      "title": "Build golden/v1.jsonl (adjudicated where A==B, flagged where not) + JSON schema validation",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/validate_golden.py",
+      "artifacts": []
+    },
+    {
+      "id": "P3.7",
+      "phase": 3,
+      "title": "Build golden/label_cli.py: resumable, saves per item, shows both labels + retrieved",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python golden/label_cli.py --selftest",
+      "artifacts": []
+    },
+    {
+      "id": "P3.8",
+      "phase": 3,
+      "title": "Build human review queue (all disagreements + random 20% of agreements)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f golden/review_queue.jsonl",
+      "artifacts": []
+    },
+    {
+      "id": "P4.1",
+      "phase": 4,
+      "title": "baselines/b0_trivial.py: majority intent, canned reply, always-auto AND always-escalate",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m baselines.b0_trivial --eval",
+      "artifacts": []
+    },
+    {
+      "id": "P4.2",
+      "phase": 4,
+      "title": "baselines/b1_simple.py: TFIDF+LogReg / BM25 top-1 reply copy / keyword router",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m baselines.b1_simple --eval",
+      "artifacts": []
+    },
+    {
+      "id": "P4.3",
+      "phase": 4,
+      "title": "baseline_table.png + markdown table",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/figures/baseline_table.png",
+      "artifacts": []
+    },
+    {
+      "id": "P5.1",
+      "phase": 5,
+      "title": "retrieval.py: BM25 + dense, RRF fuse, top-8 -> heuristic rerank top-3, corpus-only assertion",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_retrieval.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P5.2",
+      "phase": 5,
+      "title": "classify.py: codebook prompt + dynamic few-shot, strict JSON, parse-failure counter",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.classify --smoke",
+      "artifacts": []
+    },
+    {
+      "id": "P5.3",
+      "phase": 5,
+      "title": "draft.py: grounded reply, hard constraints, 280 char cap, grounding citations",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.draft --smoke",
+      "artifacts": []
+    },
+    {
+      "id": "P5.4",
+      "phase": 5,
+      "title": "route.py: deterministic rules -> LLM judgement -> confidence gates (tau, sigma)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.route --smoke",
+      "artifacts": []
+    },
+    {
+      "id": "P5.5",
+      "phase": 5,
+      "title": "Tune tau/sigma on DEV only; save threshold sweep figure",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/figures/threshold_sweep.png",
+      "artifacts": []
+    },
+    {
+      "id": "P5.6",
+      "phase": 5,
+      "title": "agent.py orchestrator: handle(message, context) -> Decision",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m src.support_agent.agent --demo",
+      "artifacts": []
+    },
+    {
+      "id": "P6.1",
+      "phase": 6,
+      "title": "eval/metrics.py: macro-F1, per-class PRF, confusion, ECE, bootstrap CI, cost metric",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_metrics.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P6.2",
+      "phase": 6,
+      "title": "Routing metrics: P/R/F1, expected cost per 100 @10:1, deflection curve, auto-but-should-escalate raw count",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_metrics.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P6.3",
+      "phase": 6,
+      "title": "eval/judge.py: 4 axes scored in separate calls + binary send-unedited + must_include checks",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m eval.judge --smoke",
+      "artifacts": []
+    },
+    {
+      "id": "P6.4",
+      "phase": 6,
+      "title": "Human judge scoring CLI for 60-80 replies",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f eval/human_judge_cli.py",
+      "artifacts": []
+    },
+    {
+      "id": "P6.5",
+      "phase": 6,
+      "title": "judge_validation.py: Spearman, Krippendorff alpha, exact + within-1 rates",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m eval.judge_validation --report",
+      "artifacts": []
+    },
+    {
+      "id": "P6.6",
+      "phase": 6,
+      "title": "Bias probes: position (40 swapped pairs), length (rho), self-preference (delta)",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m eval.judge_validation --probes",
+      "artifacts": []
+    },
+    {
+      "id": "P6.7",
+      "phase": 6,
+      "title": "Calibration: reliability diagram + ECE figure",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/figures/calibration.png",
+      "artifacts": []
+    },
+    {
+      "id": "P6.8",
+      "phase": 6,
+      "title": "eval/run_eval.py: one command, all 3 systems, writes reports/results.json",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m eval.run_eval --system agent --split golden",
+      "artifacts": []
+    },
+    {
+      "id": "P6.9",
+      "phase": 6,
+      "title": "Determinism test: same command twice -> identical numbers",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "pytest tests/test_determinism.py -q",
+      "artifacts": []
+    },
+    {
+      "id": "P6.10",
+      "phase": 6,
+      "title": "eval/figures.py: all report figures regenerated from results.json",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python -m eval.figures",
+      "artifacts": []
+    },
+    {
+      "id": "P7.1",
+      "phase": 7,
+      "title": "Dump all errors to reports/errors.jsonl and cluster them",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/errors.jsonl",
+      "artifacts": []
+    },
+    {
+      "id": "P7.2",
+      "phase": 7,
+      "title": "Read >=40 errors manually; name top 5 failure modes",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/FAILURE_ANALYSIS.md",
+      "artifacts": []
+    },
+    {
+      "id": "P7.3",
+      "phase": 7,
+      "title": "Per mode: count, 2 verbatim PII-scrubbed examples, mechanism hypothesis, cheap confirming test",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/check_failure_analysis.py",
+      "artifacts": []
+    },
+    {
+      "id": "P8.1",
+      "phase": 8,
+      "title": "Pick top 1-2 modes; implement targeted fix only",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "git log --oneline | grep -q P8",
+      "artifacts": []
+    },
+    {
+      "id": "P8.2",
+      "phase": 8,
+      "title": "Re-run full eval; before/after table with CIs",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/iteration_delta.md",
+      "artifacts": []
+    },
+    {
+      "id": "P8.3",
+      "phase": 8,
+      "title": "State plainly whether delta clears the noise floor",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "grep -qiE 'noise floor|statistically' reports/iteration_delta.md",
+      "artifacts": []
+    },
+    {
+      "id": "P9.1",
+      "phase": 9,
+      "title": "REPORT.md section 1: What is misleading about my headline number (>=8 items) FIRST",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/check_report.py --misleading",
+      "artifacts": []
+    },
+    {
+      "id": "P9.2",
+      "phase": 9,
+      "title": "REPORT.md sections 2-7",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/REPORT.md",
+      "artifacts": []
+    },
+    {
+      "id": "P9.3",
+      "phase": 9,
+      "title": "DECISION_LOG.md: 10-15 entries, decision/alternatives/why/what-would-change-my-mind",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/check_report.py --decisions",
+      "artifacts": []
+    },
+    {
+      "id": "P9.4",
+      "phase": 9,
+      "title": "WALKTHROUGH.md: code tour + 15 hostile questions with answers",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/WALKTHROUGH.md",
+      "artifacts": []
+    },
+    {
+      "id": "P9.5",
+      "phase": 9,
+      "title": "README.md: <15min repro, headline table, architecture, Citations & Borrowings, AI disclosure",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f README.md",
+      "artifacts": []
+    },
+    {
+      "id": "P9.6",
+      "phase": 9,
+      "title": "Verify make demo from a clean clone in a temp dir, no API key, timed",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "test -f reports/repro_timing.txt",
+      "artifacts": []
+    },
+    {
+      "id": "P10.1",
+      "phase": 10,
+      "title": "Run full submission checklist",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/submission_gate.py",
+      "artifacts": []
+    },
+    {
+      "id": "P10.2",
+      "phase": 10,
+      "title": "Secret/PII scan of full git history",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "python scripts/scan_secrets.py",
+      "artifacts": []
+    },
+    {
+      "id": "P10.3",
+      "phase": 10,
+      "title": "Print SUBMISSION GATE block and STOP",
+      "status": "todo",
+      "attempts": 0,
+      "gate": "true",
+      "artifacts": []
+    }
+  ]
+}

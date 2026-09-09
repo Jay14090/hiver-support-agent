@@ -1,0 +1,11 @@
+# Raw dataset is ~500MB, fetched by scripts/get_data.sh
+data/raw/
+data/interim/
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
