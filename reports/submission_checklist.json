@@ -142,7 +142,7 @@
   {
     "name": "clean history with sensible commit messages",
     "ok": true,
-    "detail": "10 commits",
+    "detail": "11 commits",
     "fix": "",
     "warn_only": false
   },
