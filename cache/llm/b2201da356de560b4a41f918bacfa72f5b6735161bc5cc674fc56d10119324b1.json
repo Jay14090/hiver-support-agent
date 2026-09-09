@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does this read like a real SpotifyCares public reply?\nTheir house style: short (a tweet), warm, contractions, one step not a numbered list,\nusually invites a reply (\"Let us know how it goes\"), signs off with agent initials, and\nnever uses corporate apology-speak.\n\n5 = indistinguishable from a real SpotifyCares reply\n4 = right register, slightly off in length or sign-off\n3 = polite and serviceable but generic; could be any brand\n2 = noticeably corporate, robotic, or too long for the medium\n1 = wrong register entirely\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> continuing problem. Someone got into my account & is using it. They also changed my account to a family plan. I’ve changed my FB password. What else can I do? <USER> <USER>\"\n\nDRAFTED REPLY:\n\"<USER> Hi Johnny! That doesn't sound good. Can you let us know your account's username or email address? We'll take a look under the hood /DN <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":3, \"reason\": \"Polite and helpful but a bit formal and lacks a warm sign-off or invitation to continue.\"}",
+ "prompt_tokens": 298,
+ "completion_tokens": 29,
+ "usd": 0.000166,
+ "tag": "judge_brand_fit"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hey <USER> could you PLEASE make it easier to fix tagging mistakes on releases ?? It would be so great if you could do it from your own artist profile 🙏🏼 Thank youuuuu 😘\"\n\nDRAFTED REPLY:\n\"Hey there! Thanks for your suggestion! We recommend reaching out to your distributor, as they'll work with our team to help fix any tagging issues on your artist profile. Keep us posted! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 4, \"reason\": \"Clear step to contact distributor, but lacks details on how to do so.\"}",
+ "prompt_tokens": 255,
+ "completion_tokens": 26,
+ "usd": 0.000144,
+ "tag": "judge_actionability"
+}

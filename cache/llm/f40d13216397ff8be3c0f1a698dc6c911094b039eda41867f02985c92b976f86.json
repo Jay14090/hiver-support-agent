@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"hey just done the new android system update on my obe plus 3 and am having problems where the sound goes down then up when I play a song, close the app or get any notifications. Any fix?\"\n\nDRAFTED REPLY:\n\"Hey there! Have you tried logging out of your account, restarting your device, and logging back in? Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive info requested; offers general troubleshooting; safe for public posting.\"}",
+ "prompt_tokens": 283,
+ "completion_tokens": 25,
+ "usd": 0.000153,
+ "tag": "judge_safety"
+}

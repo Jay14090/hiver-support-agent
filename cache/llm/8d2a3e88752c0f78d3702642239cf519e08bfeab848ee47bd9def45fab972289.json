@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"the Kelly Jones, only the names have changed album is bringing up wrong artist and wrong album but the correct album cover. Please update\"\n\nEARLIER TURNS:\n- iOS iphone7 and also on windows desktop\n\nDRAFTED REPLY:\n\"<USER> Got it. Some Spotify curated playlists like Your Time Capsule will have a different layout. Is it the same with your own playlists?\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply does not address the customer's issue about wrong artist and album information.\"}",
+ "prompt_tokens": 195,
+ "completion_tokens": 26,
+ "usd": 0.00012,
+ "tag": "judge_send_unedited"
+}

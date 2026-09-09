@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> it’s almost 2018. When will you “allow” an Apple Watch app? Its like you WANT us to quit and go to Apple Music. Pls get with it.\"\n\nDRAFTED REPLY:\n\"<USER> Hey! Check out the official idea and add your vote to let our devs know it's something you'd like to see: <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"Only asks customer to vote on idea, no concrete next step to resolve issue.\"}",
+ "prompt_tokens": 241,
+ "completion_tokens": 27,
+ "usd": 0.00014,
+ "tag": "judge_actionability"
+}

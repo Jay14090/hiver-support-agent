@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does this read like a real SpotifyCares public reply?\nTheir house style: short (a tweet), warm, contractions, one step not a numbered list,\nusually invites a reply (\"Let us know how it goes\"), signs off with agent initials, and\nnever uses corporate apology-speak.\n\n5 = indistinguishable from a real SpotifyCares reply\n4 = right register, slightly off in length or sign-off\n3 = polite and serviceable but generic; could be any brand\n2 = noticeably corporate, robotic, or too long for the medium\n1 = wrong register entirely\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"can <USER> please bring out a feature that lets you list to 2 playlists at once?🤔 fed up of having to make a new playlist just to merge 2 old ones..\"\n\nDRAFTED REPLY:\n\"<USER> 1: Hi! Adding more info about the record label is a nice idea. You can help make it happen by voting here: <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Reply is unrelated to the customer's request and lacks SpotifyCares tone or style.\"}",
+ "prompt_tokens": 290,
+ "completion_tokens": 27,
+ "usd": 0.000159,
+ "tag": "judge_brand_fit"
+}

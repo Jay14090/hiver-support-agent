@@ -1,0 +1,102 @@
+{
+  "b0_always_escalate": {
+    "macro_f1": {
+      "point": 0.0379,
+      "lo": 0.0309,
+      "hi": 0.0444,
+      "half_width": 0.0067,
+      "n_boot": 1000
+    },
+    "routing": {
+      "expected_cost_per_100": 85.0,
+      "expected_cost_per_100_ci": {
+        "point": 85.0,
+        "lo": 80.0,
+        "hi": 89.5455,
+        "half_width": 4.7727,
+        "n_boot": 1000
+      },
+      "false_auto_count": 0,
+      "false_escalate": 187,
+      "deflection_rate": 0.0,
+      "precision": 0.15,
+      "recall": 1.0,
+      "f1": 0.2609
+    }
+  },
+  "b0_always_auto": {
+    "macro_f1": {
+      "point": 0.0379,
+      "lo": 0.0309,
+      "hi": 0.0444,
+      "half_width": 0.0067,
+      "n_boot": 1000
+    },
+    "routing": {
+      "expected_cost_per_100": 150.0,
+      "expected_cost_per_100_ci": {
+        "point": 150.0,
+        "lo": 104.5455,
+        "hi": 200.0,
+        "half_width": 47.7273,
+        "n_boot": 1000
+      },
+      "false_auto_count": 33,
+      "false_escalate": 0,
+      "deflection_rate": 1.0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "b1_simple": {
+    "macro_f1": {
+      "point": 0.6057,
+      "lo": 0.5312,
+      "hi": 0.6715,
+      "half_width": 0.0701,
+      "n_boot": 1000
+    },
+    "routing": {
+      "expected_cost_per_100": 106.364,
+      "expected_cost_per_100_ci": {
+        "point": 106.3636,
+        "lo": 69.0909,
+        "hi": 146.8182,
+        "half_width": 38.8636,
+        "n_boot": 1000
+      },
+      "false_auto_count": 23,
+      "false_escalate": 4,
+      "deflection_rate": 0.9364,
+      "precision": 0.7143,
+      "recall": 0.303,
+      "f1": 0.4255
+    }
+  },
+  "agent": {
+    "macro_f1": {
+      "point": 0.7894,
+      "lo": 0.7261,
+      "hi": 0.8369,
+      "half_width": 0.0554,
+      "n_boot": 1000
+    },
+    "routing": {
+      "expected_cost_per_100": 43.636,
+      "expected_cost_per_100_ci": {
+        "point": 43.6364,
+        "lo": 21.3636,
+        "hi": 67.75,
+        "half_width": 23.1932,
+        "n_boot": 1000
+      },
+      "false_auto_count": 7,
+      "false_escalate": 26,
+      "deflection_rate": 0.7636,
+      "precision": 0.5,
+      "recall": 0.7879,
+      "f1": 0.6118
+    }
+  }
+}

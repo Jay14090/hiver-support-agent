@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> I can't load spotify on my computer, please help <URL>\"\n\nREPLY A:\n\"Hey there! Could you try restarting your PC into Safe Mode and then reinstalling Spotify? Let us know how it goes! /AI\"\n\nREPLY B:\n\"Hey there! Thanks for your feedback - we'll pass it on. For now, check out <URL> if you haven't had a subscription before. Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"A\"}",
+ "prompt_tokens": 146,
+ "completion_tokens": 6,
+ "usd": 6.8e-05,
+ "tag": "probe_position"
+}

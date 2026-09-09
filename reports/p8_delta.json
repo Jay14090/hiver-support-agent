@@ -1,0 +1,81 @@
+{
+  "n": 220,
+  "before": {
+    "cost_per_100": 43.636,
+    "missed_escalations": 7,
+    "needless_escalations": 26,
+    "deflection_rate": 0.7636,
+    "escalate_f1": 0.6118
+  },
+  "after": {
+    "cost_per_100": 31.364,
+    "missed_escalations": 4,
+    "needless_escalations": 29,
+    "deflection_rate": 0.7364,
+    "escalate_f1": 0.6374
+  },
+  "paired_delta_cost_per_100": {
+    "point": -12.273,
+    "ci_lo": -30.011,
+    "ci_hi": 0.92,
+    "share_of_resamples_where_fix_helps": 94.7,
+    "clears_noise_floor": false
+  },
+  "decisions_changed": 6,
+  "changed_examples": [
+    {
+      "id": "492432",
+      "text": "with the $99 for a year offer will I get half-back on my quicksilver card like I do with m",
+      "before_escalate": false,
+      "after_escalate": true,
+      "reason_code": "billing_dispute",
+      "gold_escalate": false,
+      "correct_change": false
+    },
+    {
+      "id": "993168",
+      "text": "hello Spotify has taken 9.99 out my bank when I have the student spotify?",
+      "before_escalate": false,
+      "after_escalate": true,
+      "reason_code": "billing_dispute",
+      "gold_escalate": true,
+      "correct_change": true
+    },
+    {
+      "id": "464476",
+      "text": "can you help reset my password? I got the email to reset because of a breach and this is a",
+      "before_escalate": false,
+      "after_escalate": true,
+      "reason_code": "suspected_account_compromise",
+      "gold_escalate": true,
+      "correct_change": true
+    },
+    {
+      "id": "601868",
+      "text": "won't send me a link to reset my password when I try? I need help <URL>",
+      "before_escalate": false,
+      "after_escalate": true,
+      "reason_code": "suspected_account_compromise",
+      "gold_escalate": false,
+      "correct_change": false
+    },
+    {
+      "id": "490769",
+      "text": "Hi team, I registered Spotify when I was in London. But now I have moved back to China, so",
+      "before_escalate": false,
+      "after_escalate": true,
+      "reason_code": "suspected_account_compromise",
+      "gold_escalate": false,
+      "correct_change": false
+    },
+    {
+      "id": "2939739",
+      "text": "Jullie hebben 15 euro 2x in rekening gebracht terwijl ik maar 1 family account heb",
+      "before_escalate": false,
+      "after_escalate": true,
+      "reason_code": "billing_dispute",
+      "gold_escalate": true,
+      "correct_change": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"why cant I invite my family to my spotify family? everytime they accept my invitation and try to put their details \"ooops something went wrong\" always pops out when confirming. can you make it more specific? why make invitations so complicated now?? .\"\n\nDRAFTED REPLY:\n\"Hey there! Sorry to hear that! Can you ask your family members if they're seeing any error messages? A screenshot could help us out! \n\nLet us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply lacks troubleshooting steps and empathy for frustration; needs clearer guidance and reassurance.\"}",
+ "prompt_tokens": 210,
+ "completion_tokens": 27,
+ "usd": 0.000127,
+ "tag": "judge_send_unedited"
+}

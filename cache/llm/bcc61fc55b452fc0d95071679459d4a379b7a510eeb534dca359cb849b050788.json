@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hi team, I registered Spotify when I was in London. But now I have moved back to China, so I always need to use VPN with a US IP to use spotify. Whenever I try to log in, it tells me I can't log in abroad. And I don't want to buy premium account all the time..\"\n\nDRAFTED REPLY:\n\"<USER> Hey Lupita! Would you mind sending us a DM? We'd like to talk more about your son's account in private. We'll be right here /TF <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Reply is unrelated to user's issue and invents a scenario about a son’s account.\"}",
+ "prompt_tokens": 308,
+ "completion_tokens": 28,
+ "usd": 0.000168,
+ "tag": "judge_groundedness"
+}

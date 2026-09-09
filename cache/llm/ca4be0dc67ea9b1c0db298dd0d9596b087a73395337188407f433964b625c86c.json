@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You check whether a drafted support reply satisfies a checklist.\n\nFor each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,\nnot wording: \"suggest troubleshooting steps\" is satisfied by \"Can you try an incognito\nwindow?\" even though they share no words.\n\nFor each PROHIBITION, answer whether the reply violates it.\n\nReturn JSON only:\n{\"requirements_met\": [true/false per requirement, in order],\n \"prohibitions_violated\": [true/false per prohibition, in order]}",
+ "prompt": "DRAFTED REPLY:\n\"Hey there! I totally get it—some songs can be tricky due to licensing agreements. We’d love to have all versions available, but you can check out more info about content here: <URL>. Keep us posted! /AI\"\n\nREQUIREMENTS:\n1. acknowledge the request\n2. explain content availability process\n\nPROHIBITIONS:\n1. promise to add the song\n2. disregard the user's opinion",
+ "temperature": 0.0,
+ "max_tokens": 120,
+ "text": "{\"requirements_met\": [true, true], \"prohibitions_violated\": [false, false]}",
+ "prompt_tokens": 209,
+ "completion_tokens": 22,
+ "usd": 0.000119,
+ "tag": "judge_compliance"
+}

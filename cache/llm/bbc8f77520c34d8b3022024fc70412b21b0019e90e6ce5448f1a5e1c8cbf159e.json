@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hey guys! I have a query relating to a release date bug on the latest macOS client. Everything updated, fresh install. Has been persisting for about a month. Shows the correct year on artist page but then one year off on album page. See pics for details. TIA :) <URL>\"\n\nDRAFTED REPLY:\n\"Hey there! Thanks for reaching out! Can you try logging out and back in to see if that helps with the release date issue? Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":4, \"reason\": \"Clear step to log out and back in, but lacks details on how to do it or where to find the option.\"}",
+ "prompt_tokens": 270,
+ "completion_tokens": 34,
+ "usd": 0.000162,
+ "tag": "judge_actionability"
+}

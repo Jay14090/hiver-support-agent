@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"my awesome daily mix of electronic music that i listened to on the reg has vanished and been replaced by a pop music daily mix, an 80s dm, and a classical music dm. my listening habits havent changed, beyond more acoustic indie. wtf??\"\n\nDRAFTED REPLY:\n\"<USER> Hey Joe, we hear you! Daily Mix is based on your music taste, but you can always tap ❤️ or 🚫 to improve your mix. Stay awesome 😁\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply lacks empathy and doesn't address the missing electronic mix issue directly.\"}",
+ "prompt_tokens": 213,
+ "completion_tokens": 25,
+ "usd": 0.000125,
+ "tag": "judge_send_unedited"
+}

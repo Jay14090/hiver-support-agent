@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hey guys! I have a query relating to a release date bug on the latest macOS client. Everything updated, fresh install. Has been persisting for about a month. Shows the correct year on artist page but then one year off on album page. See pics for details. TIA :) <URL>\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! What device and Spotify version is this happening on? Also, does logging out and back in help at all?\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Requesting device info is good, but should acknowledge issue and thank user first.\"}",
+ "prompt_tokens": 213,
+ "completion_tokens": 28,
+ "usd": 0.00013,
+ "tag": "judge_send_unedited"
+}

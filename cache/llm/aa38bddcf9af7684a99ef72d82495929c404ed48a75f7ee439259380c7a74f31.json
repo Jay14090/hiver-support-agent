@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"me and my wife have separate spotify accounts but we want to get the family plan. Do one of us have cancel an account and get invited to the family plan? what about the payment plan? do the single accounts automatically switch to the family account?\"\n\nDRAFTED REPLY:\n\"Hey there! To switch to a family plan, one of you will need to cancel your individual account and then get invited to the family plan. The payment will be handled through the family plan account. Let us know if you have more questions! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Incorrect info: individual accounts don't need cancellation to join Family Plan.\"}",
+ "prompt_tokens": 225,
+ "completion_tokens": 25,
+ "usd": 0.00013,
+ "tag": "judge_send_unedited"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Hi spotify, I am having trouble using the Family membership feature. One of the members does not appear to be getting invites even although they have had an account for several years previously. Can you help?\"\n\nDRAFTED REPLY:\n\"Hey there! We can definitely help with that. Please DM us the details, and we'll take a closer look! Let us know how it goes /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Requesting a DM is good, but 'Let us know how it goes /AI' is informal and unclear.\"}",
+ "prompt_tokens": 197,
+ "completion_tokens": 35,
+ "usd": 0.000135,
+ "tag": "judge_send_unedited"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"the whole \"unplayed only\" for Podcast episodes is not really working for me, always shows all episodes - any idea why that could be? Use an amazon echo for playing stuff via Spotify connect, but start the stream via the app on my pone.\"\n\nDRAFTED REPLY:\n\"Hey there! It sounds like you might need to filter your podcast episodes again. Try going to the podcast title and selecting 'unplayed episodes' to see if that helps! Let us know how it goes /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":5,\"reason\":\"Provides a clear, specific step to filter unplayed episodes in the app.\"}",
+ "prompt_tokens": 268,
+ "completion_tokens": 23,
+ "usd": 0.000144,
+ "tag": "judge_actionability"
+}

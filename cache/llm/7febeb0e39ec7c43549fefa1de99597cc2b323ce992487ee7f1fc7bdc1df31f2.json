@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Anyone else’s <USER> app totally not working? I get an error message whenever I try to search or play a non-downloaded song. 😫!?️\"\n\nDRAFTED REPLY:\n\"Hey there! That sounds frustrating. Can you let us know what device and Spotify version you're using? We'll see what we can suggest! \nKeep us posted!\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": true, \"reason\": \"Friendly, clear, and requests necessary info to assist further.\"}",
+ "prompt_tokens": 189,
+ "completion_tokens": 24,
+ "usd": 0.000114,
+ "tag": "judge_send_unedited"
+}

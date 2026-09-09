@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> So, I started the 3 months premium. When do I have I cancel if I want to? I mean, is it okay to cancel 2 days before the 3 months runs out? Or do I have to give you a month's notice, meaning 1 month before the 3 months runs out?\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! You can buy gift cards here: <URL> We'll be right here if you have any questions 🙂\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply does not address the customer's question about cancellation timing.\"}",
+ "prompt_tokens": 214,
+ "completion_tokens": 23,
+ "usd": 0.000122,
+ "tag": "judge_send_unedited"
+}

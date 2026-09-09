@@ -136,8 +136,10 @@ def send_unedited(item: dict, golden_row=None, model=None) -> dict:
             "reason": str(parsed.get("reason", ""))[:100]}
 
 
-def judge_replies(per_example: list, golden: list, model=None) -> dict:
+def judge_replies(per_example: list, golden: list, model=None, system_name: str = "agent") -> dict:
     """Score every reply on all four axes plus the binary. Returns aggregates + rows."""
+    # Per-system output file so evaluating two systems in one run does not clobber.
+    name = "judge_scores.jsonl" if system_name == "agent" else f"judge_scores_{system_name}.jsonl"
     gmap = {g["id"]: g for g in golden}
     jobs = []
     for item in per_example:
@@ -198,8 +200,9 @@ def judge_replies(per_example: list, golden: list, model=None) -> dict:
     agg["judge_model"] = model or config.JUDGE_MODEL
     agg["parse_failures"] = _STATS["parse_failures"]
     agg["calls"] = _STATS["calls"]
+    agg["scores_file"] = name
 
-    (config.REPORTS / "judge_scores.jsonl").write_text(
+    (config.REPORTS / name).write_text(
         "\n".join(json.dumps(r, ensure_ascii=False) for r in rows), encoding="utf-8")
     return {"aggregate": agg, "n_rows": len(rows)}
 
@@ -222,3 +225,81 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
+# --------------------------------------------------------------------------- compliance
+COMPLIANCE_SYSTEM = """You check whether a drafted support reply satisfies a checklist.
+
+For each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,
+not wording: "suggest troubleshooting steps" is satisfied by "Can you try an incognito
+window?" even though they share no words.
+
+For each PROHIBITION, answer whether the reply violates it.
+
+Return JSON only:
+{"requirements_met": [true/false per requirement, in order],
+ "prohibitions_violated": [true/false per prohibition, in order]}"""
+
+
+def check_compliance(reply: str, must: list, must_not: list, model=None) -> dict:
+    """Semantic replacement for the lexical must_include check.
+
+    Why this exists: the deterministic token-overlap check in run_eval.py scored 7.4% on
+    the agent, which is not a performance number -- it is a measurement failure. The
+    requirements are ABSTRACT DESCRIPTIONS of actions ("suggest troubleshooting steps")
+    while replies PERFORM those actions ("Can you try an incognito window?"). The two
+    share almost no vocabulary, so lexical overlap measures the wrong thing entirely.
+
+    Both numbers are reported: the lexical one as a documented-broken baseline, this one
+    as the real compliance estimate. The gap between them is itself a finding about how
+    easy it is to ship a metric that looks rigorous and measures nothing.
+    """
+    must, must_not = must or [], must_not or []
+    if not must and not must_not:
+        return {"met": None, "violated": None, "n_req": 0, "n_pro": 0}
+    prompt = (f'DRAFTED REPLY:\n"{reply}"\n\n'
+              + ("REQUIREMENTS:\n" + "\n".join(f"{i+1}. {m}" for i, m in enumerate(must)) + "\n\n" if must else "")
+              + ("PROHIBITIONS:\n" + "\n".join(f"{i+1}. {m}" for i, m in enumerate(must_not)) if must_not else ""))
+    parsed, _ = llm.complete_json(prompt, system=COMPLIANCE_SYSTEM,
+                                  model=model or config.JUDGE_MODEL, max_tokens=120,
+                                  tag="judge_compliance")
+    if parsed is None:
+        return {"met": None, "violated": None, "n_req": len(must), "n_pro": len(must_not),
+                "parse_failed": True}
+    met = [bool(x) for x in (parsed.get("requirements_met") or [])][: len(must)]
+    vio = [bool(x) for x in (parsed.get("prohibitions_violated") or [])][: len(must_not)]
+    return {"met": sum(met), "n_req": len(must), "violated": sum(vio), "n_pro": len(must_not),
+            "rate": (sum(met) / len(must)) if must else None}
+
+
+def compliance_over(per_example: list, golden: list, model=None) -> dict:
+    """Run the semantic compliance check across a system's replies."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    gmap = {g["id"]: g for g in golden}
+    items = [x for x in per_example if (x.get("draft_reply") or "").strip()]
+
+    def work(x):
+        g = gmap.get(x["id"], {})
+        return x["id"], check_compliance(x["draft_reply"], g.get("reply_must_include"),
+                                         g.get("reply_must_not_include"), model)
+
+    print(f"[judge] compliance check over {len(items)} replies")
+    out = {}
+    with ThreadPoolExecutor(max_workers=WORKERS) as ex:
+        for _id, res in ex.map(work, items):
+            out[_id] = res
+    llm.flush_ledger()
+
+    rates = [v["rate"] for v in out.values() if v.get("rate") is not None]
+    viol = sum(v["violated"] or 0 for v in out.values() if v.get("violated") is not None)
+    from eval import metrics as M
+
+    return {
+        "n": len(rates),
+        "requirement_satisfaction_rate": round(sum(rates) / len(rates), 4) if rates else None,
+        "ci": M.bootstrap_ci(rates, lambda xs: sum(xs) / len(xs) if xs else 0.0) if rates else None,
+        "prohibition_violations": viol,
+        "fully_compliant_replies": sum(1 for v in out.values() if v.get("rate") == 1.0),
+        "per_example": out,
+    }

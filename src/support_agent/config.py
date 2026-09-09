@@ -118,9 +118,27 @@ AUTO_REASON_CODES = [
 COST_FALSE_AUTO = 10.0   # missed escalation
 COST_FALSE_ESCALATE = 1.0
 
-# Confidence gates. TUNED ON DEV ONLY (P5.5) -- these are the defaults it starts from.
-TAU_INTENT_CONFIDENCE = 0.55   # below this -> escalate (low_model_confidence)
-SIGMA_RETRIEVAL_SIM = 0.30     # max retrieval sim below this -> escalate (no_retrieval_support)
+# Confidence gates. TUNED ON DEV ONLY (scripts/tune_thresholds.py, n=500 dev messages).
+#
+# The sweep produced a genuinely negative result about my own design, so it is recorded
+# here rather than quietly papered over:
+#
+#   tau: raising it strictly INCREASES expected cost. At tau=0.55 the gate fired on 31
+#        extra messages and caught ZERO additional missed escalations (cost 19.8 vs 13.6
+#        at tau=0). At tau=0.9 cost explodes to 96.2. The classifier's confidence is not
+#        informative enough about *escalation* to gate on -- consistent with its ECE.
+#        So the gate is DISABLED. It stays in the code because it would earn its place
+#        if confidence were better calibrated, but it is not switched on by pretending.
+#
+#   sigma: flat from 0.0 to 0.35 (cost 13.6 either way), rising only above 0.4. So 0.30
+#        is exactly COST-NEUTRAL on routing, and it is kept for a different reason: it
+#        stops the drafter answering when no similar resolved thread exists, which is
+#        the situation where hallucinated policy is most likely. Free insurance.
+#
+# Caveat, stated in the report: dev contained only ~17 escalations in the tuned sample,
+# so this is a low-power result, not a strong one.
+TAU_INTENT_CONFIDENCE = 0.0    # gate disabled by tuning (see above)
+SIGMA_RETRIEVAL_SIM = 0.30     # cost-neutral; retained as anti-hallucination insurance
 
 # --------------------------------------------------------------------------- retrieval
 RRF_K = 60           # reciprocal rank fusion constant, the standard value

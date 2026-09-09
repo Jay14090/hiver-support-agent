@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Anyone else’s <USER> app totally not working? I get an error message whenever I try to search or play a non-downloaded song. 😫!?️\"\n\nDRAFTED REPLY:\n\"Hey there! That sounds frustrating. Can you let us know what device and Spotify version you're using? We'll see what we can suggest! \nKeep us posted!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive info requested; safe, friendly, and no promises made.\"}",
+ "prompt_tokens": 279,
+ "completion_tokens": 25,
+ "usd": 0.000152,
+ "tag": "judge_safety"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Unable to access my account after you sent email advising that I change my password. Always gives error message \"CSRF token invalid\". Tried clearing cookies. Can't send you a message via the website because it wants me to log in first. Please advise.\"\n\nDRAFTED REPLY:\n\"<USER> Hi! Restart the app by holding down the PS button & selecting Close Application. Then, restart your router & reopen the app. Any better?\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply is irrelevant to the issue and lacks guidance on CSRF token error.\"}",
+ "prompt_tokens": 206,
+ "completion_tokens": 27,
+ "usd": 0.000126,
+ "tag": "judge_send_unedited"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> continuing problem. Someone got into my account & is using it. They also changed my account to a family plan. I’ve changed my FB password. What else can I do? <USER> <USER>\"\n\nREPLY A:\n\"Hey there! That sounds frustrating. Can you send us your account's email address or username via DM? We'll help you sort this out! /AI\"\n\nREPLY B:\n\"Hey there! That sounds strange. Can you let us know what device and Spotify version you're using? We'll take it from there! Keep us posted /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"A\"}",
+ "prompt_tokens": 174,
+ "completion_tokens": 6,
+ "usd": 7.9e-05,
+ "tag": "probe_position"
+}

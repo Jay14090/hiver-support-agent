@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I still wish the <USER> iPad app was more like the desktop version and not the phone version. It just looks and feels really bad to use. Not how you make a tablet app at all.\"\n\nDRAFTED REPLY:\n\"Hey there! Thanks for your feedback! We’re always looking to improve, and I’ll make sure your thoughts reach the team. Keep us posted if you have more to share! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Remove '/AI' and add empathy for better tone and professionalism.\"}",
+ "prompt_tokens": 203,
+ "completion_tokens": 25,
+ "usd": 0.000121,
+ "tag": "judge_send_unedited"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> how you let <USER> have 2 Holiday Spotify Singles but no <USER> ?? <URL>\"\n\nDRAFTED REPLY:\n\"Hey there! I get your frustration. While we’d love to have all artists available, some content may not be ready yet. Check out our updates here: <URL> Keep us posted!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":3, \"reason\": \"Reply is plausible but does not specifically address Holiday Spotify Singles or content availability details.\"}",
+ "prompt_tokens": 271,
+ "completion_tokens": 26,
+ "usd": 0.00015,
+ "tag": "judge_groundedness"
+}

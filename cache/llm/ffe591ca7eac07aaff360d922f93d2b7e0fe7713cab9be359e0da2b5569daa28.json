@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hi, I'm having an issue with local files. I imported several mp3 files to a playlist on the Spotify library on my MacBook, and they showed up fine on my phone so I was happy. Then I signed into my OTHER computer and they weren't there. How do I fix this?\"\n\nDRAFTED REPLY:\n\"Hey there! It sounds like you might need to sync your local files again. Make sure both devices have the same playlist settings enabled! Let us know how it goes\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive data requested; advice is general and safe for public posting.\"}",
+ "prompt_tokens": 306,
+ "completion_tokens": 25,
+ "usd": 0.000162,
+ "tag": "judge_safety"
+}

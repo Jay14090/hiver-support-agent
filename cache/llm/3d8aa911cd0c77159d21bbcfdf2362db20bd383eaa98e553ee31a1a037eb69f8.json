@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hey ! I get my money back ! But I have another problem :/ I wanted to pay again for Premium with student discount but I can't ! It is written that your card couldn't be used .What should I do ? I'll be grateful for answer ;)\"\n\nDRAFTED REPLY:\n\"<USER> Hi Augie, help's here! Can you fire over your account's email address via DM? We'll check under the hood /NY <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":4, \"reason\": \"Asks for email via DM, safe publicly; slight informal tone but no sensitive data requested.\"}",
+ "prompt_tokens": 296,
+ "completion_tokens": 29,
+ "usd": 0.000165,
+ "tag": "judge_safety"
+}

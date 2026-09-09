@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> This always happens to my playlist at some point, but I'm trying to stream the same song on a playlist and it stays stuck on the first track. What is with this?\"\n\nDRAFTED REPLY:\n\"Hey there! Can you try using an incognito window or connecting to a different network to see if that helps? Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\":false,\"reason\":\"Reply lacks empathy and troubleshooting steps specific to the playlist issue.\"}",
+ "prompt_tokens": 190,
+ "completion_tokens": 22,
+ "usd": 0.000111,
+ "tag": "judge_send_unedited"
+}

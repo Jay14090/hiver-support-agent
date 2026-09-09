@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I need to merge two accounts, one was linked to fb (which I deleted) ended up having to create a new one and don't want to lose all the music I saved please\"\n\nDRAFTED REPLY:\n\"Hey there! We recommend reaching out to your distributor for help with merging your accounts. They'll work with our team to get it sorted! Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Incorrect advice; Spotify does not merge accounts or involve distributors for this issue.\"}",
+ "prompt_tokens": 196,
+ "completion_tokens": 27,
+ "usd": 0.000122,
+ "tag": "judge_send_unedited"
+}

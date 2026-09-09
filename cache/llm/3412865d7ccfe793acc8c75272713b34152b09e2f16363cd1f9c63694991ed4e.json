@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"And now it's on Spotify. <URL>\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! Are you currently attending classes at an accredited higher education institution such as a college or university?\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply is unrelated to customer's message about Spotify content.\"}",
+ "prompt_tokens": 155,
+ "completion_tokens": 22,
+ "usd": 9.7e-05,
+ "tag": "judge_send_unedited"
+}

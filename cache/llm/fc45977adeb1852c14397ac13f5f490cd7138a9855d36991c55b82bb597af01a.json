@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does this read like a real SpotifyCares public reply?\nTheir house style: short (a tweet), warm, contractions, one step not a numbered list,\nusually invites a reply (\"Let us know how it goes\"), signs off with agent initials, and\nnever uses corporate apology-speak.\n\n5 = indistinguishable from a real SpotifyCares reply\n4 = right register, slightly off in length or sign-off\n3 = polite and serviceable but generic; could be any brand\n2 = noticeably corporate, robotic, or too long for the medium\n1 = wrong register entirely\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"why cant I invite my family to my spotify family? everytime they accept my invitation and try to put their details \"ooops something went wrong\" always pops out when confirming. can you make it more specific? why make invitations so complicated now?? .\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! Just to check, is your family member getting any error messages? A screenshot can be handy\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":3, \"reason\": \"Polite and helpful but lacks warmth and a friendly sign-off typical of SpotifyCares.\"}",
+ "prompt_tokens": 293,
+ "completion_tokens": 28,
+ "usd": 0.000162,
+ "tag": "judge_brand_fit"
+}

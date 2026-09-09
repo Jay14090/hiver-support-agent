@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I just wanna how may i do to add a buttom or link to my playlist. So, I attach a screenshot to let you see what i'm talking about, thank you. <URL>\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! Not right now, but we'll let the team know it's something you'd like. In the meantime, check out <URL> 🙂\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":1, \"reason\":\"No actionable step provided; only acknowledges and redirects without guidance.\"}",
+ "prompt_tokens": 243,
+ "completion_tokens": 21,
+ "usd": 0.000131,
+ "tag": "judge_actionability"
+}

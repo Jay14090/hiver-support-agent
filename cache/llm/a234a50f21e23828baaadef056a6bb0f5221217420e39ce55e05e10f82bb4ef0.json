@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "You decide whether a customer support message must be handled by a\nHUMAN or can be answered AUTOMATICALLY. Deterministic safety rules have already run and\ndid not fire, so judge the remaining, subtler cases.\n\nEscalate to a human when:\n- the customer has ALREADY tried the standard fix and it failed (check the thread context)\n- answering would require looking at their private account data\n- they are explicitly cancelling or threatening to cancel\n- they are abusive, or genuinely distressed rather than merely annoyed\n\nOtherwise auto-handle.\n\nReturn JSON only:\n{\"route\": \"auto\"|\"escalate\", \"reason_code\": \"<code>\", \"confidence\": <0.0-1.0>}\n\nreason_code when escalating: requires_account_specific_pii | troubleshooting_already_failed |\nexplicit_cancellation_threat | abusive_or_distressed_language\nreason_code when auto: known_troubleshooting_flow | informational_answer | chitchat_or_praise",
+ "prompt": "EARLIER TURNS FROM THIS CUSTOMER:\n- All I'm saying is that I've been trying to login for two months now and all I get is \"We're encountering problems, try later.\" And YES I've been through each and every of your help and assistances, th\n- <USER> Le mec a en réalité recommencé à Twitter pour faire chier des CM.\n- <USER> Big Fernand c'est juste le royaume des fils de pute, à égalité avec La Star.\n\nMESSAGE:\n\"Hello , J'ai parcouru vos rubriques d'aide en long en large et en travers mais aucune n'est intitulée \"cela fait deux mois que nous rencontrons des problèmes et que nous vous suggérons de réessayer plus tard\".\"\n\nClassified intent: account_access_login",
+ "temperature": 0.0,
+ "max_tokens": 100,
+ "text": "{\"route\": \"escalate\", \"reason_code\": \"troubleshooting_already_failed\", \"confidence\": 0.9}",
+ "prompt_tokens": 364,
+ "completion_tokens": 28,
+ "usd": 7.1e-05,
+ "tag": "route"
+}

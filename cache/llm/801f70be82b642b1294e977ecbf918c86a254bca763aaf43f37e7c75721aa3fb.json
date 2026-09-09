@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"- I have set my Android device to store all downloads on my SD card with 25gb of space yet when checking my device's storage the downloads are being stored there instead. I've cleared data and cache and verified the setting for the storage location.\"\n\nDRAFTED REPLY:\n\"<USER> Hi there. Can you let us know what Android and Spotify version are you running? Also, how much space do you have left on your SD card?\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"The reply asks for relevant information without making unsupported claims.\"}",
+ "prompt_tokens": 290,
+ "completion_tokens": 22,
+ "usd": 0.000151,
+ "tag": "judge_groundedness"
+}

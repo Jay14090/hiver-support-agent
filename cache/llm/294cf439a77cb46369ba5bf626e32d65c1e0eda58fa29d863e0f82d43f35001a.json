@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"WHY DOES THE <USER> WEB BROWSER NEVER WORK!!?? First, my desktop version stopped working, now my browser version won't work. I JUST WANNA LISTEN TO MY THROWBACK THURSDAY PLAYLIST 😭😭😭😭\"\n\nDRAFTED REPLY:\n\"<USER> Hey! Can you try copying the Album Link from the web player and looking it up on the app? Just click on the 3 dots > Copy Album Link\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive data requested; provides safe, generic troubleshooting advice.\"}",
+ "prompt_tokens": 298,
+ "completion_tokens": 23,
+ "usd": 0.000156,
+ "tag": "judge_safety"
+}

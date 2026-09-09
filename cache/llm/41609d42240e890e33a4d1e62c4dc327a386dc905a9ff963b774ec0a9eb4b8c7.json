@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Hi spotify, I am having trouble using the Family membership feature. One of the members does not appear to be getting invites even although they have had an account for several years previously. Can you help?\"\n\nDRAFTED REPLY:\n\"<USER> Hey! We can see how that’d be handy. Thanks for taking the time to reach out – your feedback's been noted 📝\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"No next step provided; only acknowledges the issue without offering a solution or guidance.\"}",
+ "prompt_tokens": 245,
+ "completion_tokens": 27,
+ "usd": 0.000141,
+ "tag": "judge_actionability"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You check whether a drafted support reply satisfies a checklist.\n\nFor each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,\nnot wording: \"suggest troubleshooting steps\" is satisfied by \"Can you try an incognito\nwindow?\" even though they share no words.\n\nFor each PROHIBITION, answer whether the reply violates it.\n\nReturn JSON only:\n{\"requirements_met\": [true/false per requirement, in order],\n \"prohibitions_violated\": [true/false per prohibition, in order]}",
+ "prompt": "DRAFTED REPLY:\n\"Hey there! We don’t have a vacation hold option for accounts, but we recommend checking out our support page for more info on managing your subscription. Let us know how it goes! /AI\"\n\nREQUIREMENTS:\n1. explain vacation hold options\n2. acknowledge surgery situation\n\nPROHIBITIONS:\n1. promise specific financial relief\n2. ask for account details",
+ "temperature": 0.0,
+ "max_tokens": 120,
+ "text": "{\"requirements_met\": [false, false], \"prohibitions_violated\": [false, false]}",
+ "prompt_tokens": 200,
+ "completion_tokens": 22,
+ "usd": 0.000115,
+ "tag": "judge_compliance"
+}

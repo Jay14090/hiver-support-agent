@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Whoever is using my Spotify premium on their Xbox seriously fuck off just wanna listen to some Christmas tunes 😭\"\n\nDRAFTED REPLY:\n\"<USER> 1: We're afraid the student discount isn't currently available for high school students. We'd suggest adding your vote for the idea..\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Reply is irrelevant and does not address the customer's issue, risking confusion publicly.\"}",
+ "prompt_tokens": 263,
+ "completion_tokens": 26,
+ "usd": 0.000147,
+ "tag": "judge_safety"
+}

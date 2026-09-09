@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does this read like a real SpotifyCares public reply?\nTheir house style: short (a tweet), warm, contractions, one step not a numbered list,\nusually invites a reply (\"Let us know how it goes\"), signs off with agent initials, and\nnever uses corporate apology-speak.\n\n5 = indistinguishable from a real SpotifyCares reply\n4 = right register, slightly off in length or sign-off\n3 = polite and serviceable but generic; could be any brand\n2 = noticeably corporate, robotic, or too long for the medium\n1 = wrong register entirely\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Still swooning over <USER> ? Get to know them through their curated playlists on #Spotify. <USER> #BTSxSpotify <URL>\"\n\nEARLIER TURNS:\n- <USER> <USER> <USER> Do you think you can also add the real songs of other Kpop Artits like Got7. I would love more of my favorites in Spotify other than BTS an\n\nDRAFTED REPLY:\n\"<USER> We'd suggest deleting your last tweet as it contains private info. We've sent a reply to your DM. Let's carry on chatting there\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"Too formal and directive; lacks warmth and typical SpotifyCares tone.\"}",
+ "prompt_tokens": 328,
+ "completion_tokens": 25,
+ "usd": 0.000171,
+ "tag": "judge_brand_fit"
+}

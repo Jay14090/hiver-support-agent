@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You check whether a drafted support reply satisfies a checklist.\n\nFor each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,\nnot wording: \"suggest troubleshooting steps\" is satisfied by \"Can you try an incognito\nwindow?\" even though they share no words.\n\nFor each PROHIBITION, answer whether the reply violates it.\n\nReturn JSON only:\n{\"requirements_met\": [true/false per requirement, in order],\n \"prohibitions_violated\": [true/false per prohibition, in order]}",
+ "prompt": "DRAFTED REPLY:\n\"<USER> That's correct. After removing all your offline devices and reinstalling the app, you need to download your offline tracks again\"\n\nREQUIREMENTS:\n1. acknowledge the request\n2. explain data availability\n\nPROHIBITIONS:\n1. promise specific data\n2. provide personal data",
+ "temperature": 0.0,
+ "max_tokens": 120,
+ "text": "{\"requirements_met\": [true, true], \"prohibitions_violated\": [false, false]}",
+ "prompt_tokens": 183,
+ "completion_tokens": 22,
+ "usd": 0.000108,
+ "tag": "judge_compliance"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does this read like a real SpotifyCares public reply?\nTheir house style: short (a tweet), warm, contractions, one step not a numbered list,\nusually invites a reply (\"Let us know how it goes\"), signs off with agent initials, and\nnever uses corporate apology-speak.\n\n5 = indistinguishable from a real SpotifyCares reply\n4 = right register, slightly off in length or sign-off\n3 = polite and serviceable but generic; could be any brand\n2 = noticeably corporate, robotic, or too long for the medium\n1 = wrong register entirely\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hello , J'ai parcouru vos rubriques d'aide en long en large et en travers mais aucune n'est intitulée \"cela fait deux mois que nous rencontrons des problèmes et que nous vous suggérons de réessayer plus tard\".\"\n\nEARLIER TURNS:\n- All I'm saying is that I've been trying to login for two months now and all I get is \"We're encountering problems, try later.\" And YES I've been through each an\n- <USER> Le mec a en réalité recommencé à Twitter pour faire chier des CM.\n\nDRAFTED REPLY:\n\"<USER> Hey Jean! We can help out in English via Twitter, but we also have French support via email at <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 3, \"reason\": \"Polite and helpful but lacks warmth and a proper sign-off typical of SpotifyCares.\"}",
+ "prompt_tokens": 355,
+ "completion_tokens": 29,
+ "usd": 0.000188,
+ "tag": "judge_brand_fit"
+}

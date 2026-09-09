@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"So I cannot listen to #Spotify unless I install the app on my computer .. or what?\"\n\nDRAFTED REPLY:\n\"<USER> Got it. Does this happen with any other artists? If not, can you let us know your devices' operating system and Spotify versions?\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"Only asks diagnostic questions, provides no concrete next step for the customer.\"}",
+ "prompt_tokens": 221,
+ "completion_tokens": 25,
+ "usd": 0.000128,
+ "tag": "judge_actionability"
+}

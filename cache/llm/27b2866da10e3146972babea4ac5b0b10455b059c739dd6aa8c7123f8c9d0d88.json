@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o-mini",
+ "system": "You decide whether a customer support message must be handled by a\nHUMAN or can be answered AUTOMATICALLY. Deterministic safety rules have already run and\ndid not fire, so judge the remaining, subtler cases.\n\nEscalate to a human when:\n- the customer has ALREADY tried the standard fix and it failed (check the thread context)\n- answering would require looking at their private account data\n- they are explicitly cancelling or threatening to cancel\n- they are abusive, or genuinely distressed rather than merely annoyed\n\nOtherwise auto-handle.\n\nReturn JSON only:\n{\"route\": \"auto\"|\"escalate\", \"reason_code\": \"<code>\", \"confidence\": <0.0-1.0>}\n\nreason_code when escalating: requires_account_specific_pii | troubleshooting_already_failed |\nexplicit_cancellation_threat | abusive_or_distressed_language\nreason_code when auto: known_troubleshooting_flow | informational_answer | chitchat_or_praise",
+ "prompt": "MESSAGE:\n\"<USER> can we get more <USER> added 🙏🏾🙏🏾\"\n\nClassified intent: feature_request_or_complaint",
+ "temperature": 0.0,
+ "max_tokens": 100,
+ "text": "{\"route\": \"auto\", \"reason_code\": \"chitchat_or_praise\", \"confidence\": 0.8}",
+ "prompt_tokens": 238,
+ "completion_tokens": 26,
+ "usd": 5.1e-05,
+ "tag": "route"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I had to break down and get <USER> because my <USER> doesn’t work on my iPhone X. Now I have to cancel my Spotify and lose all my playlist. 😔\"\n\nDRAFTED REPLY:\n\"Hey there! I totally understand how frustrating that is. You can check out this link for info on how to recover your playlists if you decide to cancel: <URL>. Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 3, \"reason\": \"Reply is plausible but lacks specific recovery steps or direct evidence from history.\"}",
+ "prompt_tokens": 288,
+ "completion_tokens": 25,
+ "usd": 0.000155,
+ "tag": "judge_groundedness"
+}

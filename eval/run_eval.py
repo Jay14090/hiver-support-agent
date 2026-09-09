@@ -143,10 +143,15 @@ def evaluate_system(system, golden: list, name: str, judge: bool = False,
     res = compute_metrics(per_example, name)
 
     if judge:
-        from eval.judge import judge_replies
+        from eval.judge import compliance_over, judge_replies
 
         subset = per_example if judge_n is None else per_example[:judge_n]
-        res["reply_quality"] = judge_replies(subset, golden)
+        res["reply_quality"] = judge_replies(subset, golden, system_name=name)
+        # Semantic compliance, alongside the lexical check. The lexical one is retained
+        # and reported as a DOCUMENTED-BROKEN baseline -- see judge.check_compliance.
+        comp = compliance_over(subset, golden)
+        comp.pop("per_example", None)
+        res["reply_checks"]["semantic_compliance"] = comp
 
     res["pipeline_reliability"] = {
         "classify": classify.stats(),
@@ -202,7 +207,7 @@ def compute_metrics(pe: list, name: str) -> dict:
         },
         "routing": routing,
         "reply_checks": {
-            "must_include_rate_mean": round(sum(mi) / len(mi), 4) if mi else None,
+            "lexical_must_include_rate_BROKEN": round(sum(mi) / len(mi), 4) if mi else None,
             "must_not_violations": sum(x["must_not_violated"] for x in pe),
             "mean_reply_chars": round(sum(x["reply_chars"] for x in pe) / max(1, len(pe)), 1),
             "empty_replies": sum(1 for x in pe if not x["draft_reply"].strip()),
@@ -294,7 +299,11 @@ def main() -> int:
 
         print("\n[eval] b1_simple (fitting TF-IDF + LogReg) ...")
         s = B1Simple().fit(corpus)
-        systems["b1_simple"] = evaluate_system(s, golden, "b1_simple")
+        # B1 is judged too. "Does verbatim copy-paste of a real human reply beat a
+        # generated one on groundedness?" is the most interesting question this
+        # comparison can answer, and it needs both systems scored on the same rubric.
+        systems["b1_simple"] = evaluate_system(s, golden, "b1_simple", judge=a.judge,
+                                               judge_n=a.judge_n)
 
     if "agent" in want:
         from src.support_agent.agent import SupportAgent

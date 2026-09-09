@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Why can't I find <USER> latest release #ImNotRacist It's cool, we all make mistakes but please be sure to correct this Asap Rocky. <URL>\"\n\nEARLIER TURNS:\n- <USER> <USER> <USER> I really need this track for a shared playlist. <URL>\n\nDRAFTED REPLY:\n\"<USER> Hey! We’d love to have all of their stuff available, but we have some info about content here: <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 3, \"reason\": \"Reply is plausible but does not provide specific supported steps or detailed info from history.\"}",
+ "prompt_tokens": 302,
+ "completion_tokens": 27,
+ "usd": 0.000164,
+ "tag": "judge_groundedness"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Why is there a cap on adding songs to my library? I don't want the company line. This policy needs to be reexamined.\"\n\nDRAFTED REPLY:\n\"Hey! There’s a 10k limit on songs in Your Music right now. You can share your feedback and vote for changes here: <URL>. Keep us posted! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":5,\"reason\":\"The 10k song limit is a known Spotify policy; feedback link is standard procedure.\"}",
+ "prompt_tokens": 276,
+ "completion_tokens": 26,
+ "usd": 0.000152,
+ "tag": "judge_groundedness"
+}

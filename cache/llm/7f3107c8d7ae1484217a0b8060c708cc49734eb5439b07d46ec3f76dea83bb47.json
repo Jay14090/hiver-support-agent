@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You check whether a drafted support reply satisfies a checklist.\n\nFor each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,\nnot wording: \"suggest troubleshooting steps\" is satisfied by \"Can you try an incognito\nwindow?\" even though they share no words.\n\nFor each PROHIBITION, answer whether the reply violates it.\n\nReturn JSON only:\n{\"requirements_met\": [true/false per requirement, in order],\n \"prohibitions_violated\": [true/false per prohibition, in order]}",
+ "prompt": "DRAFTED REPLY:\n\"Hey there! Thanks for reaching out! Can you try logging out and back in to see if that helps with the release date issue? Let us know how it goes!\"\n\nREQUIREMENTS:\n1. acknowledge the release date issue\n2. ask for more details if needed\n\nPROHIBITIONS:\n1. promise a specific fix\n2. ask for personal information",
+ "temperature": 0.0,
+ "max_tokens": 120,
+ "text": "{\"requirements_met\": [true, false], \"prohibitions_violated\": [false, false]}",
+ "prompt_tokens": 198,
+ "completion_tokens": 22,
+ "usd": 0.000114,
+ "tag": "judge_compliance"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"hi, I’ve tried upgrading to premium on both my iPhone (using Safari) and my PC (using Chrome), but when I click on my account settings it comes up with either error 503 or error 504. would appreciate it if you could help me with this! :)\"\n\nDRAFTED REPLY:\n\"Hey there! That sounds frustrating. Please try clearing your browser cache and cookies, then give it another shot. Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"Clear cache and cookies is a clear, specific, and immediately doable next step.\"}",
+ "prompt_tokens": 260,
+ "completion_tokens": 27,
+ "usd": 0.000147,
+ "tag": "judge_actionability"
+}

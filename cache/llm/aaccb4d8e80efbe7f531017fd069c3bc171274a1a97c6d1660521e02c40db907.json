@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hello , J'ai parcouru vos rubriques d'aide en long en large et en travers mais aucune n'est intitulée \"cela fait deux mois que nous rencontrons des problèmes et que nous vous suggérons de réessayer plus tard\".\"\n\nEARLIER TURNS:\n- All I'm saying is that I've been trying to login for two months now and all I get is \"We're encountering problems, try later.\" And YES I've been through each an\n- <USER> Le mec a en réalité recommencé à Twitter pour faire chier des CM.\n\nDRAFTED REPLY:\n\"<USER> Hey Jean! We can help out in English via Twitter, but we also have French support via email at <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"Only suggests contacting French support without a clear next step to resolve the login issue.\"}",
+ "prompt_tokens": 310,
+ "completion_tokens": 27,
+ "usd": 0.000167,
+ "tag": "judge_actionability"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"is it possible to put accounts on like a vacation hold? I just had surgery and will be on short term disability for 2 months with limited surplus money.\"\n\nDRAFTED REPLY:\n\"<USER> Hey Kylie! We don't have any info on this. You can sign up for the student discount + Hulu bundle at <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 4, \"reason\": \"Safe and polite, but slightly off-topic and vague about the vacation hold policy.\"}",
+ "prompt_tokens": 272,
+ "completion_tokens": 27,
+ "usd": 0.000152,
+ "tag": "judge_safety"
+}

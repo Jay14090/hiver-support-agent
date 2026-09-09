@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"is there something wrong the app? I can’t log in as it says my password is invalid but it’s not?\"\n\nDRAFTED REPLY:\n\"<USER> Hi there! We'd suggest deleting your previous tweet as it contains personal account info. Can you DM it to us instead? We'll wait for it /GN <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":5,\"reason\":\"Does not request sensitive info publicly; directs user to private DM for account details.\"}",
+ "prompt_tokens": 271,
+ "completion_tokens": 24,
+ "usd": 0.000147,
+ "tag": "judge_safety"
+}

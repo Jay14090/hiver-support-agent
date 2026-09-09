@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> <USER> Why are the first 2 tracks of my single \"Madeline - EP\" showing up as \"Unavailable\" to play on Spotify? spotify:album:1xCh1tMWNy0ZOyLjM7OENx\"\n\nDRAFTED REPLY:\n\"Hey there! That’s frustrating! Sometimes tracks can be temporarily unavailable due to licensing changes. Keep us posted if you need more help! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive data requested; explains issue generally without promises or account specifics.\"}",
+ "prompt_tokens": 296,
+ "completion_tokens": 25,
+ "usd": 0.000158,
+ "tag": "judge_safety"
+}

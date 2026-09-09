@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> So, I started the 3 months premium. When do I have I cancel if I want to? I mean, is it okay to cancel 2 days before the 3 months runs out? Or do I have to give you a month's notice, meaning 1 month before the 3 months runs out?\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! You can buy gift cards here: <URL> We'll be right here if you have any questions 🙂\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":1, \"reason\": \"No relevant next step; reply does not address cancellation timing question.\"}",
+ "prompt_tokens": 264,
+ "completion_tokens": 23,
+ "usd": 0.000142,
+ "tag": "judge_actionability"
+}

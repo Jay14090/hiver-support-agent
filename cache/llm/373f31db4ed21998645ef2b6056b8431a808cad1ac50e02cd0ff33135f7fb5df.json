@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"When <USER> / just doesn’t work anymore after being in Denmark for 4 months <URL>\"\n\nREPLY A:\n\"Hey there! That's strange. Can you let us know if you've tried reinstalling the app? We're here to help!\"\n\nREPLY B:\n\"Hey there! We're glad you love the new buttons! If you have any suggestions for more features, feel free to share them in our Community! Keep us posted! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"A\"}",
+ "prompt_tokens": 147,
+ "completion_tokens": 6,
+ "usd": 6.8e-05,
+ "tag": "probe_position"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"WTELF..?! The song showing on app is not the song playing, & <USER> Android app stops updating scrobbles after 2 or 3 tracks & I can't restart the app to track properly. The blue hell is going on here? I'm not even using Connect FCOL! X_X;\"\n\nDRAFTED REPLY:\n\"<USER> Thanks for that. Does logging out, restarting your device, and logging back into Spotify help with resyncing? Keep us in the loop\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply is informal and lacks empathy; needs clearer guidance and a polite tone.\"}",
+ "prompt_tokens": 219,
+ "completion_tokens": 27,
+ "usd": 0.000131,
+ "tag": "judge_send_unedited"
+}

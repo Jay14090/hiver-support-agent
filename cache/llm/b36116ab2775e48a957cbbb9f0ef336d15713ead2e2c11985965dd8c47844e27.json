@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> continuing problem. Someone got into my account & is using it. They also changed my account to a family plan. I’ve changed my FB password. What else can I do? <USER> <USER>\"\n\nDRAFTED REPLY:\n\"Hey there! That sounds frustrating. Can you send us your account's email address or username via DM? We'll help you sort this out! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Requesting sensitive info via DM is good, but add security advice and remove '/AI' tag.\"}",
+ "prompt_tokens": 199,
+ "completion_tokens": 32,
+ "usd": 0.000131,
+ "tag": "judge_send_unedited"
+}

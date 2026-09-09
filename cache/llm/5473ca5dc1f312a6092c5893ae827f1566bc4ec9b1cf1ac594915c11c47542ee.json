@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hello , J'ai parcouru vos rubriques d'aide en long en large et en travers mais aucune n'est intitulée \"cela fait deux mois que nous rencontrons des problèmes et que nous vous suggérons de réessayer plus tard\".\"\n\nEARLIER TURNS:\n- All I'm saying is that I've been trying to login for two months now and all I get is \"We're encountering problems, try later.\" And YES I've been through each an\n- <USER> Le mec a en réalité recommencé à Twitter pour faire chier des CM.\n\nDRAFTED REPLY:\n\"Hey there! I’m sorry to hear you’re having trouble logging in. Can you send us a DM with your account's email address? We'll do our best to help you out! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Add French greeting and remove '/AI' for professionalism and clarity.\"}",
+ "prompt_tokens": 274,
+ "completion_tokens": 25,
+ "usd": 0.00015,
+ "tag": "judge_send_unedited"
+}

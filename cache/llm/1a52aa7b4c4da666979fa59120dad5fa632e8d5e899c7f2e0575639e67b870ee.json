@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"huge shoutout to Rick B. of the support team today! He solved my problem quickly and easily and I didn't get to say thank you!\"\n\nREPLY A:\n\"Hey there! Thanks for the shoutout to Rick B.! We're thrilled to hear he helped you out. If you need anything else, just let us know! 😊\"\n\nREPLY B:\n\"Hey there! That sounds frustrating! Can you try using an incognito window to see if that helps? Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"A\"}",
+ "prompt_tokens": 158,
+ "completion_tokens": 6,
+ "usd": 7.3e-05,
+ "tag": "probe_position"
+}

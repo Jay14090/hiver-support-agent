@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I just wanna how may i do to add a buttom or link to my playlist. So, I attach a screenshot to let you see what i'm talking about, thank you. <URL>\"\n\nDRAFTED REPLY:\n\"Hey there! Right now, there's no option to add a button or link directly to your playlist, but we’ll pass your feedback along! Let us know how it goes 😊\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply lacks clarity and doesn't address the screenshot or provide helpful guidance.\"}",
+ "prompt_tokens": 198,
+ "completion_tokens": 25,
+ "usd": 0.000119,
+ "tag": "judge_send_unedited"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"me and my wife have separate spotify accounts but we want to get the family plan. Do one of us have cancel an account and get invited to the family plan? what about the payment plan? do the single accounts automatically switch to the family account?\"\n\nDRAFTED REPLY:\n\"Hey there! To switch to a family plan, one of you will need to cancel your individual account and then get invited to the family plan. The payment will be handled through the family plan account. Let us know if you have more questions! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"History does not confirm that individual accounts must be canceled before joining a family plan.\"}",
+ "prompt_tokens": 310,
+ "completion_tokens": 27,
+ "usd": 0.000167,
+ "tag": "judge_groundedness"
+}

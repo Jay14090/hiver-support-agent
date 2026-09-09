@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"a few secnds after connecting to my home wifi-connected speaker using \"devices avaiable', the music cuts out and it tries to connect to a random 'device' listed as 'Free wifi'. how can i remove this rogue device from the list of available devices\"\n\nDRAFTED REPLY:\n\"<USER> Hi Nick! This isn't possible right now, but we'll make sure to let the team know that this is something you'd like to see\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive info requested; no promises made; appropriate handoff to internal team.\"}",
+ "prompt_tokens": 295,
+ "completion_tokens": 27,
+ "usd": 0.000161,
+ "tag": "judge_safety"
+}

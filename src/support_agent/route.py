@@ -106,9 +106,42 @@ def check_rules(text: str, context=None) -> tuple:
     return None, None
 
 
+# ---------------------------------------------------------------- P8 targeted fix
+# Failure Mode 5: 7 of 220 missed escalations, and in EVERY ONE the intent classifier was
+# already correct (`billing_charge_dispute` / `account_access_login`) while the router
+# auto-handled anyway. The phrasing rules above require explicit language ("charged twice",
+# "unauthorized charge"), so a calmly-worded real dispute -- "Spotify has taken 9.99 out my
+# bank when I have the student spotify?" -- matched nothing and fell through to the model,
+# which read it as a polite question.
+#
+# The pipeline already HAD the information and discarded it. This rule joins the intent
+# head to the rule layer: for the two highest-stakes intents, corroborating evidence
+# (a money amount, or a security noun) is enough to escalate without magic phrasing.
+MONEY_RE = re.compile(r"(?:[$£€]\s?\d|\b\d+[.,]\d{2}\b|\b\d+\s?(?:usd|gbp|eur|dollars?|pounds?|euros?)\b)", re.I)
+SECURITY_RE = re.compile(r"\b(breach|reset my password|password reset|locked out|"
+                         r"can'?t (log|sign) ?in|didn'?t authorise|didn'?t authorize|"
+                         r"suspicious|someone else)\b", re.I)
+HIGH_STAKES_INTENTS = {
+    "billing_charge_dispute": ("billing_dispute", MONEY_RE),
+    "account_access_login": ("suspected_account_compromise", SECURITY_RE),
+}
+
+
+def check_intent_corroborated(message: str, thread_context, intent: str) -> tuple:
+    """Escalate a high-stakes intent when the text corroborates it, whatever the phrasing."""
+    entry = HIGH_STAKES_INTENTS.get(intent)
+    if not entry:
+        return None, None
+    code, rx = entry
+    blob = " ".join([message] + list(thread_context or []))
+    m = rx.search(blob)
+    return (code, m.group(0)) if m else (None, None)
+
+
 def route(message: str, thread_context=None, intent: str = "", intent_confidence: float = 1.0,
           max_retrieval_sim: float = 1.0, tau: float | None = None, sigma: float | None = None,
-          model: str | None = None, use_model: bool = True) -> RouteDecision:
+          model: str | None = None, use_model: bool = True,
+          intent_corroboration: bool = True) -> RouteDecision:
     tau = config.TAU_INTENT_CONFIDENCE if tau is None else tau
     sigma = config.SIGMA_RETRIEVAL_SIM if sigma is None else sigma
 
@@ -118,6 +151,16 @@ def route(message: str, thread_context=None, intent: str = "", intent_confidence
         _STATS["rule_fired"] += 1
         return RouteDecision("escalate", code,
                              f"{HUMAN_SENTENCE[code]} (matched: \"{span}\")", 1.0, "rule")
+
+    # ---- layer 1b: intent-corroborated escalation (the P8 fix, see above)
+    if intent_corroboration:
+        code, span = check_intent_corroborated(message, thread_context, intent)
+        if code:
+            _STATS["intent_rule_fired"] = _STATS.get("intent_rule_fired", 0) + 1
+            return RouteDecision(
+                "escalate", code,
+                f"{HUMAN_SENTENCE[code]} (intent `{intent}` corroborated by: \"{span}\")",
+                1.0, "intent_rule")
 
     # ---- layer 2: the model, for judgement calls
     model_route, model_code, model_conf = "auto", "informational_answer", 0.5

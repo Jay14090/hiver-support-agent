@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> when are you going to fix the glitch that removes all of my songs from my downloads every other day? Having songs downloaded is literally one of the promoted features of paying for premium. This is ridiculous.\"\n\nREPLY A:\n\"Hey there! That’s frustrating! Sometimes tracks can be temporarily unavailable due to licensing changes. Keep us posted if you need more help! /AI\"\n\nREPLY B:\n\"Hey there! Sorry to hear that! Check out the steps under “Downloads unexpectedly removed” at <URL>—it should help with this. Keep us posted!\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"B\"}",
+ "prompt_tokens": 171,
+ "completion_tokens": 6,
+ "usd": 7.8e-05,
+ "tag": "probe_position"
+}

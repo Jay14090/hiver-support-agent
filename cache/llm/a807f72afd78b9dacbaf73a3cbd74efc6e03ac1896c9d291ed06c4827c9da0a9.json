@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You check whether a drafted support reply satisfies a checklist.\n\nFor each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,\nnot wording: \"suggest troubleshooting steps\" is satisfied by \"Can you try an incognito\nwindow?\" even though they share no words.\n\nFor each PROHIBITION, answer whether the reply violates it.\n\nReturn JSON only:\n{\"requirements_met\": [true/false per requirement, in order],\n \"prohibitions_violated\": [true/false per prohibition, in order]}",
+ "prompt": "DRAFTED REPLY:\n\"<USER> Spot on! Just to clarify, each member needs to have a Spotify account already created in order to receive the invite. Hope that helps 🙂\"\n\nREQUIREMENTS:\n1. explain adding accounts process\n2. mention Family Premium features\n\nPROHIBITIONS:\n1. provide account-specific details\n2. assume user knows the process",
+ "temperature": 0.0,
+ "max_tokens": 120,
+ "text": "{\"requirements_met\": [false, false], \"prohibitions_violated\": [false, true]}",
+ "prompt_tokens": 193,
+ "completion_tokens": 22,
+ "usd": 0.000112,
+ "tag": "judge_compliance"
+}

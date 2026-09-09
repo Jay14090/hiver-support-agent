@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hey Wife and I just got several Google home minis. We want to play two separate things in separate rooms. But when another person starts music the first Home shuts off. Can we do what we want?\"\n\nDRAFTED REPLY:\n\"<USER> Hi! We’d recommend reaching out to your distributor/aggregator. They'll work with our team to make sure this gets fixed up\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Reply suggests contacting distributor, unrelated to user's Spotify multi-room playback issue.\"}",
+ "prompt_tokens": 278,
+ "completion_tokens": 25,
+ "usd": 0.000151,
+ "tag": "judge_groundedness"
+}

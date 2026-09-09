@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Yo <USER> try this out during 2018 and compensate me <URL>\"\n\nEARLIER TURNS:\n- <USER> Also will you hire me once I graduate thank you\n\nDRAFTED REPLY:\n\"Hey there! It sounds like you're looking for some help with a feature. While we can't offer compensation, we’d love to assist you with any questions you have! Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":5, \"reason\": \"No unsupported claims; refusal of compensation aligns with standard support policies.\"}",
+ "prompt_tokens": 290,
+ "completion_tokens": 23,
+ "usd": 0.000153,
+ "tag": "judge_groundedness"
+}

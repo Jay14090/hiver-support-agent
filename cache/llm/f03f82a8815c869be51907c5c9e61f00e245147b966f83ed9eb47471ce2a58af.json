@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hello, my spotify account's reoccurring charge overdrafted my bank account. And I was hoping if you could refund the charge so I can get the refund from the overdraft charge. I get paid tomorrow and would reimburse my spotify account asap. Please :)\"\n\nDRAFTED REPLY:\n\"Hey there! I can’t promise a refund, but let’s get this sorted. Please send us a DM with your account email, and we’ll check it out for you! Keep us posted /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":4, \"reason\": \"Safe but slightly over-commits with 'let’s get this sorted' tone; correctly requests DM for details.\"}",
+ "prompt_tokens": 308,
+ "completion_tokens": 33,
+ "usd": 0.000176,
+ "tag": "judge_safety"
+}

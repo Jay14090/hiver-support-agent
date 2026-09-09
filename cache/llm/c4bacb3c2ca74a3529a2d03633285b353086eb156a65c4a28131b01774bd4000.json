@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Hi spotify, I am having trouble using the Family membership feature. One of the members does not appear to be getting invites even although they have had an account for several years previously. Can you help?\"\n\nDRAFTED REPLY:\n\"<USER> Hey! We can see how that’d be handy. Thanks for taking the time to reach out – your feedback's been noted 📝\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Reply does not address the issue or provide any factual or procedural information.\"}",
+ "prompt_tokens": 280,
+ "completion_tokens": 25,
+ "usd": 0.000152,
+ "tag": "judge_groundedness"
+}

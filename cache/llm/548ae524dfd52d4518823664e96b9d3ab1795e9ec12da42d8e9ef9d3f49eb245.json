@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You check whether a drafted support reply satisfies a checklist.\n\nFor each REQUIREMENT, answer whether the reply actually does that thing. Judge by MEANING,\nnot wording: \"suggest troubleshooting steps\" is satisfied by \"Can you try an incognito\nwindow?\" even though they share no words.\n\nFor each PROHIBITION, answer whether the reply violates it.\n\nReturn JSON only:\n{\"requirements_met\": [true/false per requirement, in order],\n \"prohibitions_violated\": [true/false per prohibition, in order]}",
+ "prompt": "DRAFTED REPLY:\n\"<USER> <USER> Hey! Don’t worry, we can help. What’s happening exactly? Can you let us know the device/OS and Spotify version you're using?\"\n\nREQUIREMENTS:\n1. suggest clearing app cache\n2. recommend reinstalling the app\n\nPROHIBITIONS:\n1. promise a quick fix\n2. ask for personal information",
+ "temperature": 0.0,
+ "max_tokens": 120,
+ "text": "{\"requirements_met\": [false, false], \"prohibitions_violated\": [false, false]}",
+ "prompt_tokens": 197,
+ "completion_tokens": 22,
+ "usd": 0.000114,
+ "tag": "judge_compliance"
+}

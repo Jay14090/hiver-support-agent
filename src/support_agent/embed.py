@@ -7,6 +7,7 @@ encoding the corpus takes minutes on CPU and gets re-run constantly during devel
 from __future__ import annotations
 
 import hashlib
+import threading
 from pathlib import Path
 
 import numpy as np
@@ -14,16 +15,24 @@ import numpy as np
 from . import config
 
 _model = None
+_model_lock = threading.Lock()
 
 
 def get_model():
-    """Lazy singleton -- importing sentence_transformers costs ~5s and pulls in torch."""
+    """Lazy singleton -- importing sentence_transformers costs ~5s and pulls in torch.
+
+    Locked because the eval runs 8 worker threads: without it, every thread saw
+    `_model is None` at once and loaded its own copy of the model (8x the RAM and 8x
+    the startup cost, visible as eight "loading" lines in the logs).
+    """
     global _model
     if _model is None:
-        from sentence_transformers import SentenceTransformer
+        with _model_lock:
+            if _model is None:            # re-check: another thread may have won the race
+                from sentence_transformers import SentenceTransformer
 
-        print(f"[embed] loading {config.EMBED_MODEL} (first run downloads ~90MB)")
-        _model = SentenceTransformer(config.EMBED_MODEL)
+                print(f"[embed] loading {config.EMBED_MODEL} (first run downloads ~90MB)")
+                _model = SentenceTransformer(config.EMBED_MODEL)
     return _model
 
 

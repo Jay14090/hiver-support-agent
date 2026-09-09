@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"WTELF..?! The song showing on app is not the song playing, & <USER> Android app stops updating scrobbles after 2 or 3 tracks & I can't restart the app to track properly. The blue hell is going on here? I'm not even using Connect FCOL! X_X;\"\n\nDRAFTED REPLY:\n\"<USER> Thanks for that. Does logging out, restarting your device, and logging back into Spotify help with resyncing? Keep us in the loop\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 5, \"reason\": \"No sensitive data requested; offers general troubleshooting; no promises or policy mentioned.\"}",
+ "prompt_tokens": 309,
+ "completion_tokens": 26,
+ "usd": 0.000165,
+ "tag": "judge_safety"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does this read like a real SpotifyCares public reply?\nTheir house style: short (a tweet), warm, contractions, one step not a numbered list,\nusually invites a reply (\"Let us know how it goes\"), signs off with agent initials, and\nnever uses corporate apology-speak.\n\n5 = indistinguishable from a real SpotifyCares reply\n4 = right register, slightly off in length or sign-off\n3 = polite and serviceable but generic; could be any brand\n2 = noticeably corporate, robotic, or too long for the medium\n1 = wrong register entirely\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I need to merge two accounts, one was linked to fb (which I deleted) ended up having to create a new one and don't want to lose all the music I saved please\"\n\nDRAFTED REPLY:\n\"<USER> We suggest you delete that last tweet as it contains sensitive info. Can you send it to us again through DM? We'll be waiting 🙂 /DQ <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":2, \"reason\": \"Reply is off-topic, robotic, and doesn't address the customer's issue about merging accounts.\"}",
+ "prompt_tokens": 288,
+ "completion_tokens": 27,
+ "usd": 0.000158,
+ "tag": "judge_brand_fit"
+}

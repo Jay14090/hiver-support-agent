@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> I got an offer for one year of Premium for $99 but I can't figure out how to enact it? Stuck on page with info about Premium..I get it..I want it..\"\n\nDRAFTED REPLY:\n\"<USER> Sorry for the confusion. Could you DM us your account's email address or username? We'll take a closer look /AY <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Requesting personal info publicly; better to ask for DM without sharing details here.\"}",
+ "prompt_tokens": 194,
+ "completion_tokens": 28,
+ "usd": 0.000122,
+ "tag": "judge_send_unedited"
+}

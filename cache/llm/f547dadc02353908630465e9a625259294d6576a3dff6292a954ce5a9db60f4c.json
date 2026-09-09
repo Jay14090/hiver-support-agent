@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I sent a support request on 18/11 and haven’t heard back yet. Can someone help me with Case # <NUM> please?\"\n\nDRAFTED REPLY:\n\"<USER> Hi! Taylor Swift's 'Reputation' isn't available to stream just yet – stay tuned! For now, check out the singles: <URL>\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Reply ignores customer's request and invents unrelated policy about Taylor Swift's album availability.\"}",
+ "prompt_tokens": 268,
+ "completion_tokens": 27,
+ "usd": 0.00015,
+ "tag": "judge_groundedness"
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> I’M FREAKING DESPERATE PLEASE GIVE A SPOTIFY PREMIUM ACCOUNT FOR FREE I’M BEGGING YOU\"\n\nREPLY A:\n\"Hey there! Sorry for the wait. Can you send us a DM with your account's email address? We'll look into it for you! /AI\"\n\nREPLY B:\n\"Hey there! I totally get that you're eager to enjoy Premium. You can grab a 30-day trial if you haven't had it before at this link: <URL>. Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"B\"}",
+ "prompt_tokens": 167,
+ "completion_tokens": 6,
+ "usd": 7.6e-05,
+ "tag": "probe_position"
+}

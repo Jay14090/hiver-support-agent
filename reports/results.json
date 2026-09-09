@@ -1,0 +1,1866 @@
+{
+  "generated_at": "2026-09-09T12:31:50.160906+00:00",
+  "status": {
+    "is_provisional": true,
+    "provisional_rows": 220,
+    "human_adjudicated_rows": 0,
+    "total_rows": 220,
+    "banner": "PROVISIONAL - 220/220 golden rows have NOT been human-adjudicated. These numbers are measured against machine labels."
+  },
+  "config": {
+    "brand": "SpotifyCares",
+    "generator_model": "gpt-4o-mini",
+    "judge_model": "gpt-4.1-mini",
+    "tau": 0.0,
+    "sigma": 0.3,
+    "cost_false_auto": 10.0,
+    "bootstrap_n": 1000,
+    "random_state": 20260909
+  },
+  "systems": {
+    "b0_always_escalate": {
+      "system": "b0_always_escalate",
+      "n": 220,
+      "intent": {
+        "macro_f1": {
+          "point": 0.0379,
+          "lo": 0.0309,
+          "hi": 0.0444,
+          "half_width": 0.0067,
+          "n_boot": 1000
+        },
+        "accuracy": {
+          "point": 0.2636,
+          "lo": 0.2045,
+          "hi": 0.3227,
+          "half_width": 0.0591,
+          "n_boot": 1000
+        },
+        "per_class": {
+          "playback_streaming_issue": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17
+          },
+          "account_access_login": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17
+          },
+          "billing_charge_dispute": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 12
+          },
+          "subscription_cancel_refund": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 13
+          },
+          "plan_or_premium_management": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17
+          },
+          "content_missing_or_metadata": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 21
+          },
+          "device_integration_issue": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 14
+          },
+          "app_bug_or_crash": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 20
+          },
+          "feature_request_or_complaint": {
+            "precision": 0.2636,
+            "recall": 1.0,
+            "f1": 0.4173,
+            "support": 58
+          },
+          "praise_or_chitchat": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 16
+          },
+          "other": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 15
+          }
+        },
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            21,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            20,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            58,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            15,
+            0,
+            0
+          ]
+        ],
+        "labels": [
+          "playback_streaming_issue",
+          "account_access_login",
+          "billing_charge_dispute",
+          "subscription_cancel_refund",
+          "plan_or_premium_management",
+          "content_missing_or_metadata",
+          "device_integration_issue",
+          "app_bug_or_crash",
+          "feature_request_or_complaint",
+          "praise_or_chitchat",
+          "other"
+        ],
+        "ece": 0.7364,
+        "reliability_bins": [
+          {
+            "bin_lo": 0.0,
+            "bin_hi": 0.1,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.3,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.3,
+            "bin_hi": 0.4,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.6,
+            "bin_hi": 0.7,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.7,
+            "bin_hi": 0.8,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 220,
+            "mean_confidence": 1.0,
+            "accuracy": 0.2636
+          }
+        ]
+      },
+      "routing": {
+        "precision": 0.15,
+        "recall": 1.0,
+        "f1": 0.2609,
+        "true_escalate": 33,
+        "false_escalate": 187,
+        "false_auto": 0,
+        "true_auto": 0,
+        "false_auto_count": 0,
+        "false_auto_of": 220,
+        "false_auto_rate": 0.0,
+        "deflection_rate": 0.0,
+        "expected_cost_per_100": 85.0,
+        "expected_cost_per_100_ci": {
+          "point": 85.0,
+          "lo": 80.0,
+          "hi": 89.5455,
+          "half_width": 4.7727,
+          "n_boot": 1000
+        },
+        "f1_ci": {
+          "point": 0.2609,
+          "lo": 0.1893,
+          "hi": 0.3333,
+          "half_width": 0.072,
+          "n_boot": 1000
+        },
+        "deflection_rate_ci": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "half_width": 0.0,
+          "n_boot": 1000
+        },
+        "cost_sensitivity": {
+          "1": 85.0,
+          "2": 85.0,
+          "5": 85.0,
+          "10": 85.0,
+          "20": 85.0,
+          "50": 85.0
+        }
+      },
+      "reply_checks": {
+        "lexical_must_include_rate_BROKEN": 0.0,
+        "must_not_violations": 0,
+        "mean_reply_chars": 96.0,
+        "empty_replies": 0,
+        "grounded_rate": 0.0
+      },
+      "slices": {
+        "hard": {
+          "n": 32,
+          "accuracy": 0.2812,
+          "missed_escalations": 0
+        },
+        "easy": {
+          "n": 188,
+          "accuracy": 0.2606,
+          "missed_escalations": 0
+        }
+      },
+      "pipeline_reliability": {
+        "classify": {
+          "calls": 0,
+          "parse_failures": 0,
+          "invalid_intent": 0,
+          "parse_failure_rate": 0.0,
+          "invalid_intent_rate": 0.0
+        },
+        "draft": {
+          "calls": 0,
+          "parse_failures": 0,
+          "over_length": 0,
+          "ungrounded": 0,
+          "parse_failure_rate": 0.0,
+          "over_length_rate": 0.0,
+          "ungrounded_rate": 0.0
+        },
+        "route": {
+          "calls": 0,
+          "parse_failures": 0,
+          "rule_fired": 0,
+          "gate_fired": 0,
+          "model_decided": 0
+        }
+      }
+    },
+    "b0_always_auto": {
+      "system": "b0_always_auto",
+      "n": 220,
+      "intent": {
+        "macro_f1": {
+          "point": 0.0379,
+          "lo": 0.0309,
+          "hi": 0.0444,
+          "half_width": 0.0067,
+          "n_boot": 1000
+        },
+        "accuracy": {
+          "point": 0.2636,
+          "lo": 0.2045,
+          "hi": 0.3227,
+          "half_width": 0.0591,
+          "n_boot": 1000
+        },
+        "per_class": {
+          "playback_streaming_issue": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17
+          },
+          "account_access_login": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17
+          },
+          "billing_charge_dispute": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 12
+          },
+          "subscription_cancel_refund": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 13
+          },
+          "plan_or_premium_management": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 17
+          },
+          "content_missing_or_metadata": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 21
+          },
+          "device_integration_issue": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 14
+          },
+          "app_bug_or_crash": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 20
+          },
+          "feature_request_or_complaint": {
+            "precision": 0.2636,
+            "recall": 1.0,
+            "f1": 0.4173,
+            "support": 58
+          },
+          "praise_or_chitchat": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 16
+          },
+          "other": {
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0,
+            "support": 15
+          }
+        },
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            12,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            21,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            20,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            58,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            16,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            15,
+            0,
+            0
+          ]
+        ],
+        "labels": [
+          "playback_streaming_issue",
+          "account_access_login",
+          "billing_charge_dispute",
+          "subscription_cancel_refund",
+          "plan_or_premium_management",
+          "content_missing_or_metadata",
+          "device_integration_issue",
+          "app_bug_or_crash",
+          "feature_request_or_complaint",
+          "praise_or_chitchat",
+          "other"
+        ],
+        "ece": 0.7364,
+        "reliability_bins": [
+          {
+            "bin_lo": 0.0,
+            "bin_hi": 0.1,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.3,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.3,
+            "bin_hi": 0.4,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.6,
+            "bin_hi": 0.7,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.7,
+            "bin_hi": 0.8,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 220,
+            "mean_confidence": 1.0,
+            "accuracy": 0.2636
+          }
+        ]
+      },
+      "routing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "true_escalate": 0,
+        "false_escalate": 0,
+        "false_auto": 33,
+        "true_auto": 187,
+        "false_auto_count": 33,
+        "false_auto_of": 220,
+        "false_auto_rate": 0.15,
+        "deflection_rate": 1.0,
+        "expected_cost_per_100": 150.0,
+        "expected_cost_per_100_ci": {
+          "point": 150.0,
+          "lo": 104.5455,
+          "hi": 200.0,
+          "half_width": 47.7273,
+          "n_boot": 1000
+        },
+        "f1_ci": {
+          "point": 0.0,
+          "lo": 0.0,
+          "hi": 0.0,
+          "half_width": 0.0,
+          "n_boot": 1000
+        },
+        "deflection_rate_ci": {
+          "point": 1.0,
+          "lo": 1.0,
+          "hi": 1.0,
+          "half_width": 0.0,
+          "n_boot": 1000
+        },
+        "cost_sensitivity": {
+          "1": 15.0,
+          "2": 30.0,
+          "5": 75.0,
+          "10": 150.0,
+          "20": 300.0,
+          "50": 750.0
+        }
+      },
+      "reply_checks": {
+        "lexical_must_include_rate_BROKEN": 0.0,
+        "must_not_violations": 0,
+        "mean_reply_chars": 96.0,
+        "empty_replies": 0,
+        "grounded_rate": 0.0
+      },
+      "slices": {
+        "hard": {
+          "n": 32,
+          "accuracy": 0.2812,
+          "missed_escalations": 6
+        },
+        "easy": {
+          "n": 188,
+          "accuracy": 0.2606,
+          "missed_escalations": 27
+        }
+      },
+      "pipeline_reliability": {
+        "classify": {
+          "calls": 0,
+          "parse_failures": 0,
+          "invalid_intent": 0,
+          "parse_failure_rate": 0.0,
+          "invalid_intent_rate": 0.0
+        },
+        "draft": {
+          "calls": 0,
+          "parse_failures": 0,
+          "over_length": 0,
+          "ungrounded": 0,
+          "parse_failure_rate": 0.0,
+          "over_length_rate": 0.0,
+          "ungrounded_rate": 0.0
+        },
+        "route": {
+          "calls": 0,
+          "parse_failures": 0,
+          "rule_fired": 0,
+          "gate_fired": 0,
+          "model_decided": 0
+        }
+      }
+    },
+    "b1_simple": {
+      "system": "b1_simple",
+      "n": 220,
+      "intent": {
+        "macro_f1": {
+          "point": 0.6057,
+          "lo": 0.5312,
+          "hi": 0.6715,
+          "half_width": 0.0701,
+          "n_boot": 1000
+        },
+        "accuracy": {
+          "point": 0.6455,
+          "lo": 0.5817,
+          "hi": 0.7045,
+          "half_width": 0.0614,
+          "n_boot": 1000
+        },
+        "per_class": {
+          "playback_streaming_issue": {
+            "precision": 0.5172,
+            "recall": 0.8824,
+            "f1": 0.6522,
+            "support": 17
+          },
+          "account_access_login": {
+            "precision": 0.7778,
+            "recall": 0.8235,
+            "f1": 0.8,
+            "support": 17
+          },
+          "billing_charge_dispute": {
+            "precision": 1.0,
+            "recall": 0.5833,
+            "f1": 0.7368,
+            "support": 12
+          },
+          "subscription_cancel_refund": {
+            "precision": 0.6,
+            "recall": 0.4615,
+            "f1": 0.5217,
+            "support": 13
+          },
+          "plan_or_premium_management": {
+            "precision": 0.6538,
+            "recall": 1.0,
+            "f1": 0.7907,
+            "support": 17
+          },
+          "content_missing_or_metadata": {
+            "precision": 0.625,
+            "recall": 0.7143,
+            "f1": 0.6667,
+            "support": 21
+          },
+          "device_integration_issue": {
+            "precision": 0.6667,
+            "recall": 0.4286,
+            "f1": 0.5217,
+            "support": 14
+          },
+          "app_bug_or_crash": {
+            "precision": 0.6842,
+            "recall": 0.65,
+            "f1": 0.6667,
+            "support": 20
+          },
+          "feature_request_or_complaint": {
+            "precision": 0.6667,
+            "recall": 0.7241,
+            "f1": 0.6942,
+            "support": 58
+          },
+          "praise_or_chitchat": {
+            "precision": 1.0,
+            "recall": 0.1875,
+            "f1": 0.3158,
+            "support": 16
+          },
+          "other": {
+            "precision": 0.3333,
+            "recall": 0.2667,
+            "f1": 0.2963,
+            "support": 15
+          }
+        },
+        "confusion_matrix": [
+          [
+            15,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            14,
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            7,
+            0,
+            3,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            1,
+            0,
+            6,
+            2,
+            0,
+            1,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            17,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            15,
+            1,
+            0,
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            1,
+            0,
+            6,
+            2,
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            13,
+            3,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            7,
+            1,
+            3,
+            42,
+            0,
+            4
+          ],
+          [
+            0,
+            2,
+            0,
+            2,
+            0,
+            1,
+            0,
+            1,
+            4,
+            3,
+            3
+          ],
+          [
+            3,
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            5,
+            0,
+            4
+          ]
+        ],
+        "labels": [
+          "playback_streaming_issue",
+          "account_access_login",
+          "billing_charge_dispute",
+          "subscription_cancel_refund",
+          "plan_or_premium_management",
+          "content_missing_or_metadata",
+          "device_integration_issue",
+          "app_bug_or_crash",
+          "feature_request_or_complaint",
+          "praise_or_chitchat",
+          "other"
+        ],
+        "ece": 0.0523,
+        "reliability_bins": [
+          {
+            "bin_lo": 0.0,
+            "bin_hi": 0.1,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 1,
+            "mean_confidence": 0.1786,
+            "accuracy": 0.0
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.3,
+            "n": 13,
+            "mean_confidence": 0.2667,
+            "accuracy": 0.1538
+          },
+          {
+            "bin_lo": 0.3,
+            "bin_hi": 0.4,
+            "n": 26,
+            "mean_confidence": 0.3582,
+            "accuracy": 0.4231
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 37,
+            "mean_confidence": 0.445,
+            "accuracy": 0.4865
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6,
+            "n": 28,
+            "mean_confidence": 0.5458,
+            "accuracy": 0.5357
+          },
+          {
+            "bin_lo": 0.6,
+            "bin_hi": 0.7,
+            "n": 33,
+            "mean_confidence": 0.6481,
+            "accuracy": 0.697
+          },
+          {
+            "bin_lo": 0.7,
+            "bin_hi": 0.8,
+            "n": 15,
+            "mean_confidence": 0.7482,
+            "accuracy": 0.6
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 28,
+            "mean_confidence": 0.8558,
+            "accuracy": 0.9286
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 39,
+            "mean_confidence": 0.962,
+            "accuracy": 0.9744
+          }
+        ]
+      },
+      "routing": {
+        "precision": 0.7143,
+        "recall": 0.303,
+        "f1": 0.4255,
+        "true_escalate": 10,
+        "false_escalate": 4,
+        "false_auto": 23,
+        "true_auto": 183,
+        "false_auto_count": 23,
+        "false_auto_of": 220,
+        "false_auto_rate": 0.1045,
+        "deflection_rate": 0.9364,
+        "expected_cost_per_100": 106.364,
+        "expected_cost_per_100_ci": {
+          "point": 106.3636,
+          "lo": 69.0909,
+          "hi": 146.8182,
+          "half_width": 38.8636,
+          "n_boot": 1000
+        },
+        "f1_ci": {
+          "point": 0.4255,
+          "lo": 0.2439,
+          "hi": 0.5882,
+          "half_width": 0.1722,
+          "n_boot": 1000
+        },
+        "deflection_rate_ci": {
+          "point": 0.9364,
+          "lo": 0.9045,
+          "hi": 0.9682,
+          "half_width": 0.0318,
+          "n_boot": 1000
+        },
+        "cost_sensitivity": {
+          "1": 12.273,
+          "2": 22.727,
+          "5": 54.091,
+          "10": 106.364,
+          "20": 210.909,
+          "50": 524.545
+        }
+      },
+      "reply_checks": {
+        "lexical_must_include_rate_BROKEN": 0.0069,
+        "must_not_violations": 0,
+        "mean_reply_chars": 122.8,
+        "empty_replies": 0,
+        "grounded_rate": 1.0,
+        "semantic_compliance": {
+          "n": 217,
+          "requirement_satisfaction_rate": 0.3003,
+          "ci": {
+            "point": 0.3003,
+            "lo": 0.2527,
+            "hi": 0.348,
+            "half_width": 0.0476,
+            "n_boot": 1000
+          },
+          "prohibition_violations": 53,
+          "fully_compliant_replies": 31
+        }
+      },
+      "slices": {
+        "hard": {
+          "n": 32,
+          "accuracy": 0.75,
+          "missed_escalations": 3
+        },
+        "easy": {
+          "n": 188,
+          "accuracy": 0.6277,
+          "missed_escalations": 20
+        }
+      },
+      "reply_quality": {
+        "aggregate": {
+          "groundedness": {
+            "mean": 3.027,
+            "n": 220,
+            "ci": {
+              "point": 3.0273,
+              "lo": 2.8227,
+              "hi": 3.2227,
+              "half_width": 0.2,
+              "n_boot": 1000
+            }
+          },
+          "actionability": {
+            "mean": 2.0,
+            "n": 220,
+            "ci": {
+              "point": 2.0,
+              "lo": 1.859,
+              "hi": 2.1591,
+              "half_width": 0.1501,
+              "n_boot": 1000
+            }
+          },
+          "brand_fit": {
+            "mean": 2.668,
+            "n": 220,
+            "ci": {
+              "point": 2.6682,
+              "lo": 2.5409,
+              "hi": 2.7864,
+              "half_width": 0.1227,
+              "n_boot": 1000
+            }
+          },
+          "safety": {
+            "mean": 4.577,
+            "n": 220,
+            "ci": {
+              "point": 4.5773,
+              "lo": 4.4545,
+              "hi": 4.6818,
+              "half_width": 0.1136,
+              "n_boot": 1000
+            }
+          },
+          "send_unedited": {
+            "rate": 0.0091,
+            "n_yes": 2,
+            "n": 220,
+            "ci": {
+              "point": 0.0091,
+              "lo": 0.0,
+              "hi": 0.0227,
+              "half_width": 0.0114,
+              "n_boot": 1000
+            }
+          },
+          "judge_model": "gpt-4.1-mini",
+          "parse_failures": 0,
+          "calls": 1100,
+          "scores_file": "judge_scores_b1_simple.jsonl"
+        },
+        "n_rows": 220
+      },
+      "pipeline_reliability": {
+        "classify": {
+          "calls": 0,
+          "parse_failures": 0,
+          "invalid_intent": 0,
+          "parse_failure_rate": 0.0,
+          "invalid_intent_rate": 0.0
+        },
+        "draft": {
+          "calls": 0,
+          "parse_failures": 0,
+          "over_length": 0,
+          "ungrounded": 0,
+          "parse_failure_rate": 0.0,
+          "over_length_rate": 0.0,
+          "ungrounded_rate": 0.0
+        },
+        "route": {
+          "calls": 0,
+          "parse_failures": 0,
+          "rule_fired": 0,
+          "gate_fired": 0,
+          "model_decided": 0
+        }
+      }
+    },
+    "agent": {
+      "system": "agent",
+      "n": 220,
+      "intent": {
+        "macro_f1": {
+          "point": 0.7894,
+          "lo": 0.7261,
+          "hi": 0.8369,
+          "half_width": 0.0554,
+          "n_boot": 1000
+        },
+        "accuracy": {
+          "point": 0.8,
+          "lo": 0.7455,
+          "hi": 0.85,
+          "half_width": 0.0523,
+          "n_boot": 1000
+        },
+        "per_class": {
+          "playback_streaming_issue": {
+            "precision": 0.5714,
+            "recall": 0.9412,
+            "f1": 0.7111,
+            "support": 17
+          },
+          "account_access_login": {
+            "precision": 0.9444,
+            "recall": 1.0,
+            "f1": 0.9714,
+            "support": 17
+          },
+          "billing_charge_dispute": {
+            "precision": 0.8,
+            "recall": 1.0,
+            "f1": 0.8889,
+            "support": 12
+          },
+          "subscription_cancel_refund": {
+            "precision": 0.9091,
+            "recall": 0.7692,
+            "f1": 0.8333,
+            "support": 13
+          },
+          "plan_or_premium_management": {
+            "precision": 0.7619,
+            "recall": 0.9412,
+            "f1": 0.8421,
+            "support": 17
+          },
+          "content_missing_or_metadata": {
+            "precision": 0.6923,
+            "recall": 0.8571,
+            "f1": 0.766,
+            "support": 21
+          },
+          "device_integration_issue": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "support": 14
+          },
+          "app_bug_or_crash": {
+            "precision": 0.9333,
+            "recall": 0.7,
+            "f1": 0.8,
+            "support": 20
+          },
+          "feature_request_or_complaint": {
+            "precision": 0.9778,
+            "recall": 0.7586,
+            "f1": 0.8544,
+            "support": 58
+          },
+          "praise_or_chitchat": {
+            "precision": 1.0,
+            "recall": 0.3125,
+            "f1": 0.4762,
+            "support": 16
+          },
+          "other": {
+            "precision": 0.4545,
+            "recall": 0.6667,
+            "f1": 0.5405,
+            "support": 15
+          }
+        },
+        "confusion_matrix": [
+          [
+            16,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            17,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0,
+            10,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1,
+            0,
+            16,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0,
+            0,
+            0,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            14,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            5,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            14,
+            0,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            8,
+            0,
+            0,
+            44,
+            0,
+            4
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            5,
+            8
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            3,
+            0,
+            0,
+            0,
+            1,
+            0,
+            10
+          ]
+        ],
+        "labels": [
+          "playback_streaming_issue",
+          "account_access_login",
+          "billing_charge_dispute",
+          "subscription_cancel_refund",
+          "plan_or_premium_management",
+          "content_missing_or_metadata",
+          "device_integration_issue",
+          "app_bug_or_crash",
+          "feature_request_or_complaint",
+          "praise_or_chitchat",
+          "other"
+        ],
+        "ece": 0.0793,
+        "reliability_bins": [
+          {
+            "bin_lo": 0.0,
+            "bin_hi": 0.1,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          },
+          {
+            "bin_lo": 0.1,
+            "bin_hi": 0.2,
+            "n": 6,
+            "mean_confidence": 0.2,
+            "accuracy": 0.3333
+          },
+          {
+            "bin_lo": 0.2,
+            "bin_hi": 0.3,
+            "n": 6,
+            "mean_confidence": 0.3,
+            "accuracy": 0.5
+          },
+          {
+            "bin_lo": 0.3,
+            "bin_hi": 0.4,
+            "n": 8,
+            "mean_confidence": 0.4,
+            "accuracy": 0.25
+          },
+          {
+            "bin_lo": 0.4,
+            "bin_hi": 0.5,
+            "n": 1,
+            "mean_confidence": 0.5,
+            "accuracy": 1.0
+          },
+          {
+            "bin_lo": 0.5,
+            "bin_hi": 0.6,
+            "n": 2,
+            "mean_confidence": 0.6,
+            "accuracy": 1.0
+          },
+          {
+            "bin_lo": 0.6,
+            "bin_hi": 0.7,
+            "n": 29,
+            "mean_confidence": 0.7,
+            "accuracy": 0.6207
+          },
+          {
+            "bin_lo": 0.7,
+            "bin_hi": 0.8,
+            "n": 117,
+            "mean_confidence": 0.8,
+            "accuracy": 0.8462
+          },
+          {
+            "bin_lo": 0.8,
+            "bin_hi": 0.9,
+            "n": 51,
+            "mean_confidence": 0.8578,
+            "accuracy": 0.9608
+          },
+          {
+            "bin_lo": 0.9,
+            "bin_hi": 1.0,
+            "n": 0,
+            "mean_confidence": null,
+            "accuracy": null
+          }
+        ]
+      },
+      "routing": {
+        "precision": 0.5,
+        "recall": 0.8788,
+        "f1": 0.6374,
+        "true_escalate": 29,
+        "false_escalate": 29,
+        "false_auto": 4,
+        "true_auto": 158,
+        "false_auto_count": 4,
+        "false_auto_of": 220,
+        "false_auto_rate": 0.0182,
+        "deflection_rate": 0.7364,
+        "expected_cost_per_100": 31.364,
+        "expected_cost_per_100_ci": {
+          "point": 31.3636,
+          "lo": 15.4432,
+          "hi": 51.8182,
+          "half_width": 18.1875,
+          "n_boot": 1000
+        },
+        "f1_ci": {
+          "point": 0.6374,
+          "lo": 0.5079,
+          "hi": 0.7407,
+          "half_width": 0.1164,
+          "n_boot": 1000
+        },
+        "deflection_rate_ci": {
+          "point": 0.7364,
+          "lo": 0.6773,
+          "hi": 0.7955,
+          "half_width": 0.0591,
+          "n_boot": 1000
+        },
+        "cost_sensitivity": {
+          "1": 15.0,
+          "2": 16.818,
+          "5": 22.273,
+          "10": 31.364,
+          "20": 49.545,
+          "50": 104.091
+        }
+      },
+      "reply_checks": {
+        "lexical_must_include_rate_BROKEN": 0.0737,
+        "must_not_violations": 4,
+        "mean_reply_chars": 146.4,
+        "empty_replies": 0,
+        "grounded_rate": 0.7864,
+        "semantic_compliance": {
+          "n": 217,
+          "requirement_satisfaction_rate": 0.5376,
+          "ci": {
+            "point": 0.5376,
+            "lo": 0.4877,
+            "hi": 0.5876,
+            "half_width": 0.05,
+            "n_boot": 1000
+          },
+          "prohibition_violations": 43,
+          "fully_compliant_replies": 70
+        }
+      },
+      "slices": {
+        "hard": {
+          "n": 32,
+          "accuracy": 0.8438,
+          "missed_escalations": 0
+        },
+        "easy": {
+          "n": 188,
+          "accuracy": 0.7926,
+          "missed_escalations": 4
+        }
+      },
+      "reply_quality": {
+        "aggregate": {
+          "groundedness": {
+            "mean": 4.068,
+            "n": 220,
+            "ci": {
+              "point": 4.0682,
+              "lo": 3.9182,
+              "hi": 4.2227,
+              "half_width": 0.1523,
+              "n_boot": 1000
+            }
+          },
+          "actionability": {
+            "mean": 2.895,
+            "n": 220,
+            "ci": {
+              "point": 2.8955,
+              "lo": 2.7272,
+              "hi": 3.0637,
+              "half_width": 0.1683,
+              "n_boot": 1000
+            }
+          },
+          "brand_fit": {
+            "mean": 3.968,
+            "n": 220,
+            "ci": {
+              "point": 3.9682,
+              "lo": 3.8818,
+              "hi": 4.0545,
+              "half_width": 0.0864,
+              "n_boot": 1000
+            }
+          },
+          "safety": {
+            "mean": 4.923,
+            "n": 220,
+            "ci": {
+              "point": 4.9227,
+              "lo": 4.8818,
+              "hi": 4.9591,
+              "half_width": 0.0386,
+              "n_boot": 1000
+            }
+          },
+          "send_unedited": {
+            "rate": 0.1,
+            "n_yes": 22,
+            "n": 220,
+            "ci": {
+              "point": 0.1,
+              "lo": 0.0636,
+              "hi": 0.1455,
+              "half_width": 0.0409,
+              "n_boot": 1000
+            }
+          },
+          "judge_model": "gpt-4.1-mini",
+          "parse_failures": 0,
+          "calls": 2200,
+          "scores_file": "judge_scores.jsonl"
+        },
+        "n_rows": 220
+      },
+      "pipeline_reliability": {
+        "classify": {
+          "calls": 220,
+          "parse_failures": 0,
+          "invalid_intent": 0,
+          "parse_failure_rate": 0.0,
+          "invalid_intent_rate": 0.0
+        },
+        "draft": {
+          "calls": 220,
+          "parse_failures": 0,
+          "over_length": 0,
+          "ungrounded": 47,
+          "parse_failure_rate": 0.0,
+          "over_length_rate": 0.0,
+          "ungrounded_rate": 0.2136
+        },
+        "route": {
+          "calls": 207,
+          "parse_failures": 0,
+          "rule_fired": 4,
+          "gate_fired": 0,
+          "model_decided": 207,
+          "intent_rule_fired": 9
+        }
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "a": "b0_always_escalate",
+      "b": "b0_always_auto",
+      "metric": "intent_macro_f1",
+      "a_point": 0.0379,
+      "b_point": 0.0379,
+      "gap": 0.0,
+      "meaningful": false,
+      "note": "CIs OVERLAP -- this gap is NOT a result and must not be claimed"
+    },
+    {
+      "a": "b0_always_escalate",
+      "b": "b1_simple",
+      "metric": "intent_macro_f1",
+      "a_point": 0.0379,
+      "b_point": 0.6057,
+      "gap": -0.5678,
+      "meaningful": true,
+      "note": "CIs do not overlap"
+    },
+    {
+      "a": "b0_always_escalate",
+      "b": "agent",
+      "metric": "intent_macro_f1",
+      "a_point": 0.0379,
+      "b_point": 0.7894,
+      "gap": -0.7515,
+      "meaningful": true,
+      "note": "CIs do not overlap"
+    },
+    {
+      "a": "b0_always_auto",
+      "b": "b1_simple",
+      "metric": "intent_macro_f1",
+      "a_point": 0.0379,
+      "b_point": 0.6057,
+      "gap": -0.5678,
+      "meaningful": true,
+      "note": "CIs do not overlap"
+    },
+    {
+      "a": "b0_always_auto",
+      "b": "agent",
+      "metric": "intent_macro_f1",
+      "a_point": 0.0379,
+      "b_point": 0.7894,
+      "gap": -0.7515,
+      "meaningful": true,
+      "note": "CIs do not overlap"
+    },
+    {
+      "a": "b1_simple",
+      "b": "agent",
+      "metric": "intent_macro_f1",
+      "a_point": 0.6057,
+      "b_point": 0.7894,
+      "gap": -0.1837,
+      "meaningful": true,
+      "note": "CIs do not overlap"
+    }
+  ],
+  "spend_usd": 2.4014
+}

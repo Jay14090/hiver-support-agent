@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hi, I'm having an issue with local files. I imported several mp3 files to a playlist on the Spotify library on my MacBook, and they showed up fine on my phone so I was happy. Then I signed into my OTHER computer and they weren't there. How do I fix this?\"\n\nDRAFTED REPLY:\n\"Hey there! It sounds like you might need to sync your local files again. Make sure both devices have the same playlist settings enabled! Let us know how it goes\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 3, \"reason\": \"Suggests syncing and checking playlist settings but lacks detailed instructions on how to do so.\"}",
+ "prompt_tokens": 266,
+ "completion_tokens": 28,
+ "usd": 0.000151,
+ "tag": "judge_actionability"
+}

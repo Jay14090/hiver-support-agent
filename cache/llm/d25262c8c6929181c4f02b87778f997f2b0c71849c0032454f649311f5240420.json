@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"i want to switch to spotify premium with Indosat, I already entering my number but I don't get the pin code. Help please :(\"\n\nDRAFTED REPLY:\n\"<USER> Hey Megha! Could you try logging in to your account page here: <URL> Then press \"Learn More\" to get the ball rolling\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Reply doesn't address PIN code issue or Indosat payment method specifically.\"}",
+ "prompt_tokens": 185,
+ "completion_tokens": 26,
+ "usd": 0.000116,
+ "tag": "judge_send_unedited"
+}

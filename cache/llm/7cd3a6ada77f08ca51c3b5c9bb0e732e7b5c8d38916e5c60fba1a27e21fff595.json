@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Someone hacked my Spotify and deleted all of my playlists.. why would you do that to a person\"\n\nREPLY A:\n\"Hey there! I'm really sorry to hear that. Please DM us so we can help you get your account back on track! Keep us posted /AI\"\n\nREPLY B:\n\"Hey there! I get your frustration. If you're having issues with your downloads, check out the steps under “Downloads unexpectedly removed” at <URL>. Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"A\"}",
+ "prompt_tokens": 154,
+ "completion_tokens": 6,
+ "usd": 7.1e-05,
+ "tag": "probe_position"
+}

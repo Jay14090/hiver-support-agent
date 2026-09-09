@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You compare two drafted support replies to the SAME customer message.\nWhich is better overall (grounded, actionable, on-brand, safe)?\nReturn JSON only: {\"winner\": \"A\"|\"B\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"IS THERE A REASON I DONT SEE ANY <USER> MUSIC ON <USER> ?? IM HURT.\"\n\nREPLY A:\n\"Hey there! No worries, we can help with that. Could you DM us your username or email address so we can check your account? /AI\"\n\nREPLY B:\n\"Hey there! We totally get how frustrating that can be. Sometimes it comes down to licensing agreements. Let us know if you see any specific error messages or details about your device! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 40,
+ "text": "{\"winner\": \"A\"}",
+ "prompt_tokens": 160,
+ "completion_tokens": 6,
+ "usd": 7.4e-05,
+ "tag": "probe_position"
+}

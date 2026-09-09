@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> You guys have the worst user interface on pc and mobile. You can't find your way to a specific album or song without having to dig through all the folders. I listen to pretty much the same songs all the time but it still takes like 6 clicks just to play a song.\"\n\nDRAFTED REPLY:\n\"<USER> Hi there! We'd suggest adding a vote for this idea here: <URL> Let your friends know as well to convince our devs 🙂\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":2, \"reason\": \"Only suggests voting, no concrete step to improve user's current experience.\"}",
+ "prompt_tokens": 263,
+ "completion_tokens": 23,
+ "usd": 0.000142,
+ "tag": "judge_actionability"
+}

@@ -1,0 +1,42 @@
+{
+  "bias_probes": {
+    "position": {
+      "n_pairs": 40,
+      "inconsistent_pairs": 2,
+      "flip_rate": 0.05,
+      "interpretation": "flip_rate is the share of pairs where swapping the order changed the winner. 0.0 = no position bias, 0.5 = coin toss."
+    },
+    "length": {
+      "groundedness": {
+        "n": 220,
+        "spearman_rho_length_vs_score": -0.0074,
+        "flag": false
+      },
+      "actionability": {
+        "n": 220,
+        "spearman_rho_length_vs_score": -0.0494,
+        "flag": false
+      },
+      "brand_fit": {
+        "n": 220,
+        "spearman_rho_length_vs_score": -0.061,
+        "flag": false
+      },
+      "safety": {
+        "n": 220,
+        "spearman_rho_length_vs_score": -0.103,
+        "flag": false
+      },
+      "interpretation": "rho between reply length in tokens and the axis score. |rho| > 0.4 suggests the judge is partly measuring length."
+    },
+    "self_preference": {
+      "n": 30,
+      "judge_model": "gpt-4.1-mini",
+      "generator_model": "gpt-4o-mini",
+      "mean_score_on_own_model_output": 4.175,
+      "mean_score_on_other_model_output": 3.95,
+      "self_preference_delta": 0.225,
+      "interpretation": "positive delta = the judge scores its own model's replies higher on identical inputs. Both models share a provider, so this is a WEAKER separation than a different family would give."
+    }
+  }
+}

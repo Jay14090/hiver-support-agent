@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> You know what would be cool? If users could search by lyrics. Real cool.\"\n\nDRAFTED REPLY:\n\"<USER> Hey there! We can see how this can be useful. You can make this idea happen by adding your vote here: <URL> 🙂\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":4, \"reason\": \"Provides a clear next step to vote via a link, but lacks detail on where the link leads.\"}",
+ "prompt_tokens": 223,
+ "completion_tokens": 30,
+ "usd": 0.000137,
+ "tag": "judge_actionability"
+}

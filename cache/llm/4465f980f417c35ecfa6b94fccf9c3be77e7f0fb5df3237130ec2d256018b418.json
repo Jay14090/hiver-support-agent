@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"I've canceled my premium Spotify and used Tidal HiFi/Masters for a few months. The sound quality is superb, especially with a DAC/AMP and premium 🎧. Yet, I find Spotify for \"daily listening\" better because of the UX and playlists. Why there is no Spotify HiFi? :(\"\n\nDRAFTED REPLY:\n\"Hey there! We totally get that sound quality is important. While HiFi isn't available yet, you can show your support for the idea at <URL>. Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\":2, \"reason\": \"Only asks to show support at a URL, no concrete next step to improve experience now.\"}",
+ "prompt_tokens": 275,
+ "completion_tokens": 28,
+ "usd": 0.000155,
+ "tag": "judge_actionability"
+}
