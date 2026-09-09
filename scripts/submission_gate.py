@@ -42,7 +42,8 @@ def main() -> int:
     t_ok, t_detail = False, "not timed yet"
     if timing.exists():
         txt = timing.read_text(encoding="utf-8")
-        m = re.search(r"(\d+(?:\.\d+)?)\s*(?:s|sec|seconds)", txt)
+        # anchor on the TOTAL line -- a bare number regex matched the clone time first
+        m = re.search(r"TOTAL\s*:\s*(\d+(?:\.\d+)?)\s*s", txt)
         if m:
             secs = float(m.group(1))
             t_ok = secs < 900

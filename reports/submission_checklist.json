@@ -2,7 +2,7 @@
   {
     "name": "make demo works from a clean clone, no API key, < 15 min",
     "ok": true,
-    "detail": "6s (0.1 min), budget 15 min",
+    "detail": "253s (4.2 min), budget 15 min",
     "fix": "python scripts/verify_repro.py",
     "warn_only": false
   },
@@ -16,7 +16,7 @@
   {
     "name": "golden/v1.jsonl has 150-250 examples",
     "ok": true,
-    "detail": "220 rows",
+    "detail": "224 rows",
     "fix": "",
     "warn_only": false
   },
@@ -29,15 +29,15 @@
   },
   {
     "name": "every intent has >= 12 examples",
-    "ok": false,
-    "detail": "below floor: {'billing_charge_dispute': 8}",
+    "ok": true,
+    "detail": "min per intent = 12",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "HUMAN REVIEW PASS COMPLETE",
     "ok": false,
-    "detail": "0/105 queue items reviewed; 0/220 rows adjudicated",
+    "detail": "0/105 queue items reviewed; 0/224 rows adjudicated",
     "fix": "python golden/label_cli.py   (then: python scripts/build_golden.py)",
     "warn_only": false
   },
@@ -79,7 +79,7 @@
   {
     "name": "REPORT.md <= 6 pages",
     "ok": true,
-    "detail": "~2464 words (~4.1 pages)",
+    "detail": "~2566 words (~4.3 pages)",
     "fix": "",
     "warn_only": false
   },
@@ -135,21 +135,21 @@
   {
     "name": "repo < 100MB",
     "ok": true,
-    "detail": "37.6 MB",
+    "detail": "38.7 MB",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "clean history with sensible commit messages",
     "ok": true,
-    "detail": "9 commits",
+    "detail": "10 commits",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "cost_ledger.json total under budget",
     "ok": true,
-    "detail": "$3.43 of $25",
+    "detail": "$3.45 of $25",
     "fix": "",
     "warn_only": false
   }
