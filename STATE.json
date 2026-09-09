@@ -2,7 +2,7 @@
   "project": "hiver-support-agent",
   "brand": "SpotifyCares",
   "budget_usd_cap": 25.0,
-  "current_phase": 0,
+  "current_phase": 1,
   "tasks": [
     {
       "id": "P0.1",
@@ -53,7 +53,7 @@
       "id": "P0.6",
       "phase": 0,
       "title": "Commit P0 scaffold",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "git log --oneline | grep -q P0",
       "artifacts": []
@@ -62,7 +62,7 @@
       "id": "P1.1",
       "phase": 1,
       "title": "scripts/get_data.sh: kaggle -> HF mirror -> local search -> synthetic",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f data/raw/twcs.csv",
       "artifacts": []
@@ -71,7 +71,7 @@
       "id": "P1.2",
       "phase": 1,
       "title": "ingest.py: load csv with forced str dtypes, verify schema + row count",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python -m src.support_agent.ingest --verify-schema",
       "artifacts": []
@@ -80,7 +80,7 @@
       "id": "P1.3",
       "phase": 1,
       "title": "threads.py: parent->child graph, comma-list ids, cycle guard, depth cap, branch pick",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "pytest tests/test_threads.py -q",
       "artifacts": []
@@ -89,7 +89,7 @@
       "id": "P1.4",
       "phase": 1,
       "title": "Brand slice for SpotifyCares + D3 fallback check (>=2000 threads, >=15% resolution rate)",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python -m src.support_agent.ingest --brand-stats",
       "artifacts": []
@@ -98,7 +98,7 @@
       "id": "P1.5",
       "phase": 1,
       "title": "Resolution-bearing scorer (transparent heuristic, no LLM) + rate reported",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "pytest tests/test_resolution.py -q",
       "artifacts": []
@@ -107,7 +107,7 @@
       "id": "P1.6",
       "phase": 1,
       "title": "clean.py: mention/signature strip, PII scrub, emoji keep, punctuation normalise",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "pytest tests/test_clean.py -q",
       "artifacts": []
@@ -116,7 +116,7 @@
       "id": "P1.7",
       "phase": 1,
       "title": "Language filter, min-token filter, near-duplicate dedupe",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "pytest tests/test_clean.py -q",
       "artifacts": []
@@ -125,7 +125,7 @@
       "id": "P1.8",
       "phase": 1,
       "title": "Time-based 70/15/15 split on root created_at -> corpus/dev/test.jsonl",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -s data/processed/test.jsonl",
       "artifacts": []
@@ -134,7 +134,7 @@
       "id": "P1.9",
       "phase": 1,
       "title": "Commit processed subsample (<40MB) + data funnel figure",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "test -f reports/figures/data_funnel.png",
       "artifacts": []
@@ -143,7 +143,7 @@
       "id": "P1.10",
       "phase": 1,
       "title": "Gate: ingest --verify prints funnel; thread+clean tests pass",
-      "status": "todo",
+      "status": "done",
       "attempts": 0,
       "gate": "python -m src.support_agent.ingest --verify",
       "artifacts": []

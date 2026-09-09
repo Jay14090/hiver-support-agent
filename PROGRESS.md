@@ -7,3 +7,14 @@ Append-only. One line per completed task.
 - [2026-09-09 15:46] P0.3 DONE - scaffold
 - [2026-09-09 15:46] P0.4 DONE - scaffold
 - [2026-09-09 15:46] P0.5 DONE - scaffold
+- [2026-09-09 15:46] P0.6 DONE - committed
+- [2026-09-09 15:58] P1.1 DONE - phase1
+- [2026-09-09 15:58] P1.2 DONE - phase1
+- [2026-09-09 15:58] P1.3 DONE - phase1
+- [2026-09-09 15:58] P1.4 DONE - phase1
+- [2026-09-09 15:58] P1.5 DONE - phase1
+- [2026-09-09 15:58] P1.6 DONE - phase1
+- [2026-09-09 15:58] P1.7 DONE - phase1
+- [2026-09-09 15:58] P1.8 DONE - phase1
+- [2026-09-09 15:58] P1.9 DONE - phase1
+- [2026-09-09 15:58] P1.10 DONE - phase1

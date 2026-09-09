@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4.1-mini",
+ "system": "You are auditing a customer-support dataset. For a single public reply from\na brand's support account, decide whether it is RESOLUTION-BEARING.\n\nRESOLUTION-BEARING = the reply contains actionable content that could help the customer:\n  - concrete troubleshooting steps to perform, OR\n  - a link to a support/help article or an official idea/community page, OR\n  - an explanation of a policy, a process, or why something is happening, OR\n  - confirmation that the brand has taken an action that resolves the issue.\n\nNOT RESOLUTION-BEARING = the reply is purely:\n  - a handoff (\"DM us\", \"we've sent you a DM\", \"we'll take a look backstage\"), OR\n  - an acknowledgement or apology with no content (\"sorry to hear that!\", \"oh no!\"), OR\n  - an information-gathering question with no suggested action, OR\n  - generic chit-chat.\n\nA reply that gives a real step AND also asks them to DM is still RESOLUTION-BEARING.\n\nReturn JSON only: {\"resolution_bearing\": true|false, \"why\": \"<10 words>\"}",
+ "prompt": "Brand reply:\n\"\"\"@129021 Hey Daniel! Thanks for your feedback. To reduce the number of Suggested Tracks you get, try adding more artists into your playlists /CH\"\"\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"resolution_bearing\": true, \"why\": \"Provides concrete troubleshooting steps to reduce Suggested Tracks\"}",
+ "prompt_tokens": 280,
+ "completion_tokens": 20,
+ "usd": 0.000144,
+ "tag": "resolution_filter_validation"
+}

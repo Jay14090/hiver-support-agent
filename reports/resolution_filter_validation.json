@@ -1,0 +1,720 @@
+{
+  "n": 100,
+  "adjudicator_model": "gpt-4.1-mini",
+  "adjudicator_is_human": false,
+  "confusion": {
+    "tp": 29,
+    "fp": 7,
+    "fn": 5,
+    "tn": 59
+  },
+  "precision": 0.806,
+  "recall": 0.853,
+  "f1": 0.829,
+  "raw_agreement": 0.88,
+  "cohens_kappa": 0.736,
+  "heuristic_positive_rate": 0.36,
+  "adjudicator_positive_rate": 0.34,
+  "examples": [
+    {
+      "text": "@229358 Hi Beth! Can you send us a DM with your account's email address or username? We'll take a look behind the scenes /AY https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM for further help"
+    },
+    {
+      "text": "@202221 Hey there. We’ll have it available to you as soon as it’s available to us! https://t.co/0i8GpimuDa /SU",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": true,
+      "why": "Provides link and info on availability"
+    },
+    {
+      "text": "@289041 Hi John! Our best tech folks are on the case as we speak. Hopefully, we'll have a fix soon 🔍 /RR",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content or troubleshooting steps provided"
+    },
+    {
+      "text": "@767205 Hi there, help's here! Can you DM us with your account's username and email address? We'll see what's going on /WW https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@203575 Hey Vincent! Fingers crossed we'll be able to have it soon, but there's info about Spotify content here: https://t.co/0i8GpimuDa /LO",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to Spotify content info"
+    },
+    {
+      "text": "@226112 Hey Tomy! Can you DM us your account's username or email address? We'll see what we can suggest /TC https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for DM, no actionable content"
+    },
+    {
+      "text": "@568480 Hey Chris, help's here! Can you DM us your account's username and email address? We'll take a look backstage /MQ https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info gathering"
+    },
+    {
+      "text": "@133322 Hey Alice! That's not cool. Could you DM us the email address linked to your account? We'll take a look backstage /I https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info gathering"
+    },
+    {
+      "text": "@416431 Hey there! On the desktop app, just head to Settings &gt; Allow Spotify to be opened from the web, and toggle the switch. Hope this helps /JO",
+      "heuristic_score": 3,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides concrete troubleshooting steps"
+    },
+    {
+      "text": "@272817 Awesome! If you need help with anything else, just give us a shout. Otherwise, have a... https://t.co/FQulrDtFky 😉 /GU",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "No actionable content, just a friendly closing"
+    },
+    {
+      "text": "@714901 Hey there! We don't have any info on this right now, but we'll let the right team know it's something you'd like to see. For anything else, let us know /GU",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content, just acknowledgment and handoff"
+    },
+    {
+      "text": "@120417 Hey there, help's here! Can you DM us your account's username? We'll see what we can suggest /MO https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@369027 Hi Belinda, help's here! Can you DM us your account's email address? We'll take a look backstage /DV https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info gathering"
+    },
+    {
+      "text": "@691805 Hey Norman! We understand - we’re working on it as we speak. Stay tuned. For anything else, let us know /GU",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content or troubleshooting steps provided"
+    },
+    {
+      "text": "@496479 Hi Nick! Sorry to hear that you feel that way. Let's not throw in the towel just yet. Can you DM us your account's email address, along with the device that you're using? Sending us a screenshot would also help. Keep us posted /MU https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info, no actionable steps provided"
+    },
+    {
+      "text": "@745332 Hey, help's here! Can you DM us your account's email address or username? We'll take a look backstage /CO https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info and offers DM support"
+    },
+    {
+      "text": "@634688 Hey! We’d love to have all of their stuff available, but we have some info about content here: https://t.co/0i8GpimuDa /RH",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to content information"
+    },
+    {
+      "text": "@216222 Hi Rien! That doesn't sound good. Can you DM us your account's email address? We'll take a look backstage /AU https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and offers to look backstage"
+    },
+    {
+      "text": "@764755 Hey there! We don't have any updates on this yet. Rest assured, you guys will be in the know pretty soon. Let us know if you have other questions /GK",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content or explanation provided"
+    },
+    {
+      "text": "@524904 Got it. Can you try to see if logging out &gt; restarting your phone &gt; logging back in to your account makes a difference? /DV",
+      "heuristic_score": 3,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides concrete troubleshooting steps"
+    },
+    {
+      "text": "@558926 Hey, help's arrived! Could you DM us your email address and username? We'll take a closer look 🔍 /JQ https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@326680 2: You can also get lyrics and annotations on some tracks via our partnership with Genius. More info here: https://t.co/0Tj77lCNeC 🙂 /SY",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link with info on lyrics feature"
+    },
+    {
+      "text": "@287992 Hey there! We can help out in English via Twitter, but we also have Indonesian support via email at https://t.co/ZgU70TbP8M 🙂 /JI",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides support channel and link for help"
+    },
+    {
+      "text": "@413652 Hey! We can see how that’d be handy. Thanks for taking the time to reach out – your feedback's been noted /NQ",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "Only acknowledges feedback, no actionable content"
+    },
+    {
+      "text": "@503796 Hi there! Can you DM us your account's email address or username? We'll take a look backstage /NQ https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info gathering"
+    },
+    {
+      "text": "@735203 Hey Elaine! Sorry to hear that. Can you DM us your account's username or email address? We'll take a look backstage /AP https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for DM, no actionable content"
+    },
+    {
+      "text": "@769065 Thanks for the feedback – we appreciate it! We’ll get this passed onto the right team 💚 /JS",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Acknowledgement with no actionable content"
+    },
+    {
+      "text": "@551559 Hey! Can you DM us your account's username and email address? A screenshot of the exact message you're getting might also help /JL https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests information, no actionable content"
+    },
+    {
+      "text": "@326867 Hi Henry. Thanks for the heads up. We'll get this reported. Great detective work! https://t.co/LpsmyUtme0 /QI",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": true,
+      "why": "Includes link and confirms reporting issue"
+    },
+    {
+      "text": "@135880 Hey Jonathan! Can you DM us your account's username and email address, along with a screenshot of the error message that you're getting? We'll take a look backstage /SY https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info and offers DM support"
+    },
+    {
+      "text": "@580394 Hi there! That's not cool. Can you send us a DM with your email address or username? We'll take a look under the hood /XF https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@225820 Thanks! Could you try logging out &gt; restarting your device &gt; logging back in to see if it helps? Keep us posted /AR",
+      "heuristic_score": 3,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides concrete troubleshooting steps"
+    },
+    {
+      "text": "@554621 That doesn't sound good! Did the app crash at any point during the 30 minutes? That can cause the ad-free time to reset /FR",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks a question, no actionable content"
+    },
+    {
+      "text": "@623319 1: It seems that you're referring to your Suggested Tracks. This is part of our Free service. More info at https://t.co/Uv9kyGcsCc",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides explanation and link to more info"
+    },
+    {
+      "text": "@300266 Hey Jenna! Fingers crossed we'll be able to have it soon, but there's info about Spotify content here: https://t.co/MEjmIRL2eB /PX",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to relevant support information"
+    },
+    {
+      "text": "@503649 Hey there, thanks for the feedback – we appreciate it! We’ll get this passed onto the right team 💚 /MT",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content or troubleshooting steps provided"
+    },
+    {
+      "text": "@582903 Hey, help's here. Could you send us a DM with your account's email address or username? We'll check things out /AY https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@373804 Hey there! Could you DM us your account's username and email address? We'll take a look backstage /DF https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info gathering"
+    },
+    {
+      "text": "@568336 Hey, that's not cool! Can you DM us your account's username or email address? We'll see what's happening backstage /JM https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@601391 Hey Ellen! Glad to hear everything's sorted. If you ever need us again, give us a shout. We'd be... https://t.co/LgAM6ky9Vv /AN",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "No actionable content, just a friendly closing message"
+    },
+    {
+      "text": "@129021 Hey Daniel! Thanks for your feedback. To reduce the number of Suggested Tracks you get, try adding more artists into your playlists /CH",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides concrete troubleshooting steps to reduce Suggested Tracks"
+    },
+    {
+      "text": "@328943 Hey Julian! Can you DM us your account's username and email address? We'll take a look backstage /TF https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info gathering"
+    },
+    {
+      "text": "@736710 Hi there, help's arrived! Can you send us your and your dad's username or account's email address via DM? We'll take a look backstage /GT https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info and offers DM assistance"
+    },
+    {
+      "text": "@670983 Hey! Can you send us the email address or username on your wife's account, as well as your own? We'll take a look backstage /NQ https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Requesting info, no actionable help provided"
+    },
+    {
+      "text": "@372039 Hey! Fingers crossed we'll be able to have it soon, but there's info about Spotify content here: https://t.co/0i8GpimuDa /RC",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to support information"
+    },
+    {
+      "text": "@196330 Hey, we're glad you're enjoying it! If you need us down the road, just give us a shout. Have a great weekend 🙂 /BH",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content or troubleshooting steps provided"
+    },
+    {
+      "text": "@304151 Best thing to try here is a reinstall. Just follow the steps at https://t.co/EqisDMwZAT. Let us know how it goes /VK",
+      "heuristic_score": 4,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides troubleshooting steps and support link"
+    },
+    {
+      "text": "@194116 Hey Andrew! Don't worry, help's here. We have some info to share with you in private. Not to worry, you can click the DM link to get things rolling /MT https://t.co/ldFdZRiNAt",
+      "heuristic_score": 3,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "Only directs to DM, no actionable content"
+    },
+    {
+      "text": "@559464 Hey Kenny! We can help out in English via Twitter, but we also have Indonesian support via email at https://t.co/ZgU70TbP8M /AY",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides support channel and link for help"
+    },
+    {
+      "text": "@438259 No worries! We're glad we could help out. If you ever need anything else, just shout and we'll come running 🏃 /DF",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content, just a friendly closing"
+    },
+    {
+      "text": "@643702 Hey! Can you send us any email addresses or usernames that may have been used to create the account via DM? We'll take a look backstage /RC https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info and offers DM assistance"
+    },
+    {
+      "text": "@651828 Sorry to hear you feel that way. Rest assured, your feedback's been noted and passed onto the team. Let us know if there's anything else /AU",
+      "heuristic_score": 3,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "Only acknowledges and notes feedback, no actionable content"
+    },
+    {
+      "text": "@610678 Hey there, help's here! You'll need a Spotify account in order to be eligible. You can find more info at https://t.co/nswbAeBvyv /RV",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides eligibility info and support link"
+    },
+    {
+      "text": "@573467 Hey Mike! Fingers crossed we'll be able to have it all soon, but there's info about Spotify content here: https://t.co/0i8GpimuDa /ND",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to Spotify content information"
+    },
+    {
+      "text": "@770257 Hi Preston. Thanks for bringing this up. We're sorry about what happened. We'll pass your feedback on to the relevant folks to look into our ads /JU",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Apology and feedback pass, no actionable content"
+    },
+    {
+      "text": "@794906 Hey, help's here! Can you let us know your car's make/model, phone operating system, and Spotify version? We'll see what we can suggest /JZ",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for information, no actionable content"
+    },
+    {
+      "text": "@741938 Hey! We've just sent you a DM. Check your inbox /RH",
+      "heuristic_score": -1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only a handoff, no actionable content provided"
+    },
+    {
+      "text": "@128355 Hey there! We’ll have it available to you as soon as it’s available to us. There's more info at https://t.co/0i8GpimuDa /JE",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link with more information"
+    },
+    {
+      "text": "@162916 Hi Ivan! Can you DM us your account's email address? We'll take a look under the hood /HC https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and offers to investigate"
+    },
+    {
+      "text": "@164981 Hey Gareth! Are you getting any specific error messages? If so, can you send over a screenshot? We'll take a closer look /TM",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for info, no actionable content provided"
+    },
+    {
+      "text": "@714904 Hey there, Suggested Tracks are part of our Free service on mobile. More info here: https://t.co/Uv9kyGcsCc. Thanks for sharing your thoughts, we'll pass it on to the relevant folks /SY",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link and explains feature"
+    },
+    {
+      "text": "@267248 Hey there! Does logging out of your account, restarting your device, and logging back in help at all? Let us know how that goes /TF",
+      "heuristic_score": 3,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides concrete troubleshooting steps to try"
+    },
+    {
+      "text": "@821438 Hey there! We're afraid that's not possible, but you can help make it happen by supporting the official idea here: https://t.co/OQNM0pPUzU /NS",
+      "heuristic_score": 4,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to official idea for support"
+    },
+    {
+      "text": "@807994 You're welcome! Give us a shout if there's anything else we can help you with. https://t.co/m4HWSbgHVZ 🙂 /JS",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": true,
+      "why": "Includes a link to support/help article"
+    },
+    {
+      "text": "@232358 Sorry for the confusion. We'd suggest deleting your last tweet as it contains private info. You can DM it to us instead /JP https://t.co/ldFdZRiNAt",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Suggests deleting tweet and provides next step"
+    },
+    {
+      "text": "@769074 Hi there! We're launching in new countries as often as possible. Be sure to add your email at https://t.co/USiTd696hl /HR",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to sign up for updates"
+    },
+    {
+      "text": "@156658 Hi David! Free users could stream music in shuffle using the mobile app while connected to the internet. We'd suggest playing music on-demand using a computer or a tablet. Here's how to make the most out of Spotify Free: https://t.co/MInQRSMgzZ /JE",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides usage explanation and helpful link"
+    },
+    {
+      "text": "@311247 Sometimes content gets temporarily removed because of licensing changes. Hopefully we'll have it available again soon! /SU",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": true,
+      "why": "Explains why content is removed temporarily"
+    },
+    {
+      "text": "@262206 Hi Hayden, help's here! We'll pass your feedback onto the right team. As for the Share feature, can you send us a screenshot of what happens when you try to share a track? /DV",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "Only asks for info, no actionable content"
+    },
+    {
+      "text": "@581453 Hey there! Not right now, but we'll let the team know it's something you'd like. In the meantime, check out https://t.co/F9UTMcJm4p 🙂 /VK",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides a helpful link to support information"
+    },
+    {
+      "text": "@493767 Hey there, help's here! Could you send us a DM with your account's email address or username? We'll take a look under the hood /AG https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@251942 Hi there! Can you DM us your account's email address or username? We'll see what we can suggest /NQ https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info, no actionable content provided"
+    },
+    {
+      "text": "@551459 Hey Dylan, that's not cool! Can you DM us the best email address we can use to reach you? We'll help out backstage /JX https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for DM, no actionable content"
+    },
+    {
+      "text": "@783260 Hey Emma! We can see how that'd be handy. We'd suggest adding your support for the idea in our Community at https://t.co/llJeAWF6x8 /AR",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to support idea in Community"
+    },
+    {
+      "text": "@602033 Hey there! Can you DM us a screenshot of the Spotify payment? Make sure it doesn't show your private payment info /RB https://t.co/ldFdZRiNAt",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and screenshot, no actionable steps"
+    },
+    {
+      "text": "@213193 Hey, we can see how that'd be handy! To help make it happen, add your vote to a similar idea at https://t.co/3NH2BpKAXw /AR",
+      "heuristic_score": 4,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to support idea page"
+    },
+    {
+      "text": "@649715 Hey there! We'd like to share more info via DM. Could you send us one? /TC https://t.co/ldFdZRiNAt",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content provided"
+    },
+    {
+      "text": "@507448 Hey Alex! Can you let us know what country your account is set to? We'll take a look backstage /RS",
+      "heuristic_score": -2,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for info, no actionable content"
+    },
+    {
+      "text": "@579705 Thanks! Can you try logging out, restarting your desktop, then logging back in? Let us know if that helps /QI",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides concrete troubleshooting steps to try"
+    },
+    {
+      "text": "@190022 Hey Chris! Just to clarify, are you trying to use Spotify Connect to link with your Roku device? Keep us posted /MT",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": false,
+      "why": "Only asks a clarifying question, no action given"
+    },
+    {
+      "text": "@236087 Hi there, that doesn't seem right! Can you DM us your account's email address or username? We'll take a look backstage /GT https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and offers to check backstage"
+    },
+    {
+      "text": "@364179 Hey Andrew! Can you DM us your account's email address or username? We'll take a look /NS https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and info, no actionable content"
+    },
+    {
+      "text": "@446223 Hey, help's here. Could you fire over your account's email address or username via DM? We'll take a look backstage /AY https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info and offers DM assistance"
+    },
+    {
+      "text": "@409636 Hi Deron. Don't worry, help's here. Can you DM us your username or email address so we can check? /JU https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for info, no actionable content"
+    },
+    {
+      "text": "@672479 We've just sent a DM your way. Let's carry on chatting there /SV",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only a handoff, no actionable content provided"
+    },
+    {
+      "text": "@475305 Hey there! Can you let us know the versions of your Bluesound software, operating system and Spotify app? We'll see what we can suggest /PC",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for information, no actionable content"
+    },
+    {
+      "text": "@335345 Hey Jack! Don't worry, we're on it. Our developers are looking into this, and we'll keep everyone updated /CP",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable content or explanation provided"
+    },
+    {
+      "text": "@551361 Hey Andrei! We're launching regularly in countries around the world. Sign up here to be first to hear: https://t.co/XDwWzj7cLP /DH",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to sign up for launch updates"
+    },
+    {
+      "text": "@315392 Hey! We've just replied to your DM. Let's carry on chatting there /RH",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only a handoff to DM, no actionable content"
+    },
+    {
+      "text": "@397914 Hey there! What's happening exactly? We'll help out /AR",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for information, no actionable content"
+    },
+    {
+      "text": "@585966 Hey there! This isn't currently possible on iOS devices. Don't worry, we'll let the right team know it's something you'd like to see /GU",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "No actionable steps or solutions provided"
+    },
+    {
+      "text": "@600742 Hey Pete! We're here to help. Can you DM us your account's email address and that of your wife? We'll take a look backstage /KT https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM and offers to check backstage"
+    },
+    {
+      "text": "@421270 Hey! We've just sent you a DM. Check your inbox /RH",
+      "heuristic_score": -1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only a handoff, no actionable content provided"
+    },
+    {
+      "text": "@371468 Hey there! Can you let us know your device, operating system, and Spotify version? We'll see what we can suggest /RC",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for information, no actionable content"
+    },
+    {
+      "text": "@675123 2: account's email address or username? We'll check backstage /AR https://t.co/ldFdZRiNAt",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only asks for info and mentions backstage check"
+    },
+    {
+      "text": "@433213 Fingers crossed we'll be able to have it soon, but there's info about Spotify content here: https://t.co/0i8GpimuDa /DF",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Provides link to relevant support information"
+    },
+    {
+      "text": "@367442 Hey there! We can see how this can be useful, but we have more info here: https://t.co/ulx9bR1rnT /PL",
+      "heuristic_score": 1,
+      "heuristic": false,
+      "adjudicator": true,
+      "why": "Provides a link to more information"
+    },
+    {
+      "text": "@612079 Hi Ashley, help's here! Can you DM us your account's username or email address? We'll take a look backstage /DV https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests info and offers DM assistance"
+    },
+    {
+      "text": "@570119 Hey there! Help's here. Can you DM us your account's email address or username? We'll see what we can suggest /PB https://t.co/ldFdZRiNAt",
+      "heuristic_score": 0,
+      "heuristic": false,
+      "adjudicator": false,
+      "why": "Only requests DM, no actionable content"
+    },
+    {
+      "text": "@356133 Hey, help's here! What's the exact error message you're getting? Does clearing cache/cookies on your browser help at all? We'll see what we can suggest /NJ",
+      "heuristic_score": 2,
+      "heuristic": true,
+      "adjudicator": true,
+      "why": "Suggests clearing cache/cookies as troubleshooting step"
+    }
+  ]
+}
