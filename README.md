@@ -157,3 +157,9 @@ number in the report.
 The dataset is CC BY-NC-SA 4.0 (non-commercial). All committed text is PII-scrubbed
 (`scripts/scan_secrets.py` verifies the working tree and the full git history); tweet ids
 are retained so every example in the report is traceable.
+
+**Cache note:** `cache/llm/` is pruned to exactly what `make demo` replays (agent
+decisions + judge scoring, ~4,600 entries / 8.5MB). The bulk labelling calls (corpus,
+dev, and golden pre-labels) are not included because their *outputs* are committed as
+data — `make full` re-issues those against a live API, which is what it is for. See
+`scripts/prune_cache.py`.
