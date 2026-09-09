@@ -55,23 +55,42 @@ you should discount it.
    at 1:1 outright. I have no data on the true cost of either error, so the size of the
    agent's routing advantage is a function of a number I guessed.
 
-8. **The judge is unvalidated against a human, and a second judge disagrees with it a
-   lot.** Biases are measured — position flip rate 5.0%, length correlation |ρ| < 0.11,
-   self-preference **+0.225** — but Spearman ρ against a *human* is **not computed**. What
-   I did measure is worse than I expected: rescoring the same 70 replies with `gpt-4o`
-   gives an overall **mean ρ of only 0.424** against the `gpt-4.1-mini` judge
-   (groundedness 0.57, actionability 0.54, brand-fit 0.43, safety 0.16). By my own
-   pre-set threshold (ρ < 0.6 = weak), **every reply-quality difference in this report is
-   weak evidence.**
+8. **The judge is unvalidated against a human, and across model families it barely
+   agrees with anything.** The same 70 replies were scored three times: by the project's
+   judge (`gpt-4.1-mini`), by `gpt-4o`, and by `claude-opus-5` — the last being the
+   *different model family* that decision D7 asked for and that this machine could not
+   otherwise provide (only `OPENAI_API_KEY` exists).
 
-9. **My "10% would be sent unedited" headline does not survive a change of judge.** The
-   second judge answered "would you send this as-is?" **no on all 70 replies** — a 0% rate
-   against my reported 10%. Raw agreement looks fine at 90% only because both mostly say
-   no; Cohen's **κ is exactly 0.00**. That single number was the most interpretable thing
-   in my results section, and it is entirely an artefact of which model was asked.
-   (Similarly, the safety axis has ρ 0.16 not because the judges conflict but because both
-   sit at 4.9/5 — a ceiling effect, where correlation is meaningless and the *level* is
-   what matters.)
+   | axis | gpt-4.1-mini | gpt-4o | claude | ρ same-family | ρ cross-family |
+   |---|---|---|---|---|---|
+   | groundedness | 3.83 | 3.30 | 3.60 | 0.47 | **−0.06** |
+   | actionability | 2.92 | 2.92 | 3.30 | 0.52 | 0.58 |
+   | brand fit | 4.00 | 4.12 | 3.75 | 0.49 | 0.42 |
+   | safety | 4.95 | 4.95 | 4.67 | −0.05 | **−0.12** |
+
+   Two OpenAI models agree moderately (mean ρ 0.42). **Across families the mean ρ is
+   0.204, and groundedness and safety are at or below zero — no relationship at all.**
+   Only actionability, the most concrete axis, survives. My pre-set threshold was ρ < 0.6
+   = weak evidence; this is far below it. **Every reply-quality number in this report is
+   weak evidence, and the groundedness and safety scores in particular should be treated
+   as close to meaningless.**
+
+9. **A worked example of the judge endorsing a hallucination.** To the message *"can you
+   turn off explicit music?"* the agent replied *"Right now, there's no option to turn off
+   explicit music, but you can vote for this idea"* — **false**; Spotify has shipped an
+   explicit-content filter for years. The project's judge scored that **5/5 on
+   groundedness** and justified it: *"No explicit content filter option currently;
+   suggesting voting aligns with known Spotify practices."* Both other raters scored it 1.
+   Two more of the same shape: a confident *"yes, Family members can access their music
+   while travelling in the US and Canada"* (Family plan has same-address constraints), and
+   *"your feedback is being heard as we work with Roku on improvements"* (an invented
+   partnership). **My groundedness figure of 4.07/5 is therefore an overestimate of unknown
+   size**, because the instrument measuring it shares a training family with the thing it
+   is measuring.
+
+   The binary makes the same point brutally: "would you send this unedited?" is **10%**
+   (gpt-4.1-mini), **0%** (gpt-4o) and **27.5%** (claude). Cohen's κ between the judge and
+   the cross-family rater is **−0.17 — worse than chance.**
 
 10. **Time-based splitting limits leakage but does not eliminate it.** Brand vocabulary,
    product eras and recurring incidents persist across the boundary. The agent can still
@@ -214,11 +233,10 @@ claims that are not supported for *this* customer's problem.** Groundedness is a
 of the match, not of the authorship. B1 cites a source for 100% of its replies and still
 scores a point lower.
 
-**The most sobering number is 10%.** Only 10% of the agent's replies would be sent
-unedited by the judge acting as a support agent. This is a drafting aid, not an
-autoresponder. **But see limitation 9: a second judge said 0%.** The honest reading is
-"somewhere between none and one in ten", which is the same qualitative conclusion and a
-much weaker quantitative one.
+**The most sobering number is 10%** — the share of replies the judge would send unedited.
+This is a drafting aid, not an autoresponder. **But three raters put that figure at 0%,
+10% and 27.5% (κ = −0.17), so the only defensible claim is the qualitative one:** a
+minority of these replies are sendable as-is, and nobody should quote a percentage.
 
 **Calibration** (![calibration](figures/calibration.png)): ECE **0.099**. Well-calibrated
 enough to report, not well-calibrated enough to gate on — which is exactly what the

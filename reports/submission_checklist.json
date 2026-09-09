@@ -79,7 +79,7 @@
   {
     "name": "REPORT.md <= 6 pages",
     "ok": true,
-    "detail": "~2566 words (~4.3 pages)",
+    "detail": "~2744 words (~4.6 pages)",
     "fix": "",
     "warn_only": false
   },
@@ -135,14 +135,14 @@
   {
     "name": "repo < 100MB",
     "ok": true,
-    "detail": "38.7 MB",
+    "detail": "38.8 MB",
     "fix": "",
     "warn_only": false
   },
   {
     "name": "clean history with sensible commit messages",
     "ok": true,
-    "detail": "11 commits",
+    "detail": "12 commits",
     "fix": "",
     "warn_only": false
   },

@@ -171,3 +171,24 @@ decisions + judge scoring, ~4,600 entries / 8.5MB). The bulk labelling calls (co
 dev, and golden pre-labels) are not included because their *outputs* are committed as
 data — `make full` re-issues those against a live API, which is what it is for. See
 `scripts/prune_cache.py`.
+
+## Judge validation status (important)
+
+The LLM judge was checked against **two other raters** on the same 70 replies —
+`gpt-4o` and `claude-opus-5`, the latter being the different *model family* that
+decision D7 wanted and this machine could not otherwise supply.
+
+| | gpt-4.1-mini (judge) | gpt-4o | claude-opus-5 |
+|---|---|---|---|
+| would send unedited | 10% | 0% | 27.5% |
+
+Cross-family mean Spearman ρ is **0.204**; groundedness and safety are at or below zero.
+The judge also scored a **factual hallucination 5/5 on groundedness** (it agreed that
+Spotify has no explicit-content filter — it does). See REPORT.md limitations 8 and 9.
+
+**Consequence:** treat every reply-quality number here as weak evidence. The intent and
+routing metrics are unaffected — those are measured against labels, not against the judge.
+
+**Still outstanding:** all three raters are AI. `reports/claude_rater_scores.jsonl` is
+explicitly `is_human: false`, `judge_validation --report` still returns NOT_DONE, and the
+submission gate stays RED until a person runs `python eval/human_judge_cli.py`.

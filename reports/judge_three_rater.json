@@ -1,0 +1,58 @@
+{
+  "raters": {
+    "A": "gpt-4.1-mini (judge)",
+    "B": "gpt-4o",
+    "C": "claude-opus-5 (different FAMILY)"
+  },
+  "n": 40,
+  "is_human_validation": false,
+  "axes": {
+    "groundedness": {
+      "mean_A": 3.825,
+      "mean_B": 3.3,
+      "mean_C": 3.6,
+      "rho_A_vs_B": 0.4676,
+      "rho_A_vs_C": -0.0639,
+      "rho_B_vs_C": -0.1146,
+      "alpha_A_vs_C": -0.0859,
+      "within_1_A_vs_C": 0.75
+    },
+    "actionability": {
+      "mean_A": 2.925,
+      "mean_B": 2.925,
+      "mean_C": 3.3,
+      "rho_A_vs_B": 0.5172,
+      "rho_A_vs_C": 0.5842,
+      "rho_B_vs_C": 0.4612,
+      "alpha_A_vs_C": 0.5421,
+      "within_1_A_vs_C": 0.775
+    },
+    "brand_fit": {
+      "mean_A": 4.0,
+      "mean_B": 4.125,
+      "mean_C": 3.75,
+      "rho_A_vs_B": 0.4903,
+      "rho_A_vs_C": 0.4182,
+      "rho_B_vs_C": 0.2655,
+      "alpha_A_vs_C": 0.3817,
+      "within_1_A_vs_C": 1.0
+    },
+    "safety": {
+      "mean_A": 4.95,
+      "mean_B": 4.95,
+      "mean_C": 4.675,
+      "rho_A_vs_B": -0.0526,
+      "rho_A_vs_C": -0.1227,
+      "rho_B_vs_C": 0.3817,
+      "alpha_A_vs_C": -0.1127,
+      "within_1_A_vs_C": 0.925
+    }
+  },
+  "send_unedited": {
+    "yes_rate_A": 0.1,
+    "yes_rate_B": 0.0,
+    "yes_rate_C": 0.275,
+    "kappa_A_vs_C": -0.1719
+  },
+  "overall_mean_rho_A_vs_C": 0.204
+}
