@@ -38,5 +38,11 @@
       "self_preference_delta": 0.225,
       "interpretation": "positive delta = the judge scores its own model's replies higher on identical inputs. Both models share a provider, so this is a WEAKER separation than a different family would give."
     }
+  },
+  "human_agreement": {
+    "status": "NOT_DONE",
+    "human_scored": 0,
+    "required": 70,
+    "message": "No human judge scores yet. Run `python eval/human_judge_cli.py` to score 70 replies. Until then the judge is UNVALIDATED and every reply-quality number must be reported as such."
   }
 }

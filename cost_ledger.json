@@ -6,15 +6,6 @@
   {
    "ts": "2026-09-09T18:35:32",
    "model": "gpt-4o-mini",
-   "tag": "classify",
-   "prompt_tokens": 0,
-   "completion_tokens": 0,
-   "usd": 0.0,
-   "cache_hit": true
-  },
-  {
-   "ts": "2026-09-09T18:35:32",
-   "model": "gpt-4o-mini",
    "tag": "draft",
    "prompt_tokens": 0,
    "completion_tokens": 0,
@@ -17996,6 +17987,15 @@
   },
   {
    "ts": "2026-09-09T18:38:48",
+   "model": "test-model",
+   "tag": "test",
+   "prompt_tokens": 0,
+   "completion_tokens": 0,
+   "usd": 0.0,
+   "cache_hit": true
+  },
+  {
+   "ts": "2026-09-10T01:53:00",
    "model": "test-model",
    "tag": "test",
    "prompt_tokens": 0,

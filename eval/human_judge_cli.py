@@ -79,6 +79,17 @@ def main() -> int:
         print("selftest OK")
         return 0
 
+    # Refuse to run without a real terminal. A non-interactive run reads EOF, silently
+    # records default scores, and writes them as scorer:"human" -- which once put a
+    # fabricated "human" row into reports/. The whole point of this file is that a person
+    # produced it, so it must not be creatable by a pipe.
+    if not sys.stdin.isatty():
+        print("REFUSING TO RUN: stdin is not a terminal.\n"
+              "This tool records HUMAN scores. Running it non-interactively would write\n"
+              "default values labelled as human, which would be a false claim in the\n"
+              "submission. Run it directly in a terminal.")
+        return 2
+
     already = done_ids()
     todo = [r for r in pool if r["id"] not in already]
     if a.progress:
