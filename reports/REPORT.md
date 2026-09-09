@@ -1,10 +1,11 @@
 # SpotifyCares Support Agent — Report
 
 **Dataset:** `thoughtvector/customer-support-on-twitter` (2,811,774 tweets) · **Brand:**
-`SpotifyCares` · **Golden set:** 220 examples · **Total LLM spend:** $2.46
+`SpotifyCares` · **Golden set:** 220 examples · **Total LLM spend:** $4.35
 
-> ⚠ **STATUS: PROVISIONAL.** 220/220 golden rows are machine-labelled and awaiting human
-> adjudication (96-item queue prepared). Judge-vs-human agreement is **not yet measured**.
+> ⚠ **STATUS: PROVISIONAL.** 220/220 golden rows are machine-labelled. 64 contested rows
+> were settled by a 2-of-3 majority across **three blind model passes**, but no human has
+> reviewed any row (105-item queue prepared). Judge-vs-human agreement is **not measured**.
 > Every number below is measured against machine labels. `run_eval.py` stamps this
 > automatically and cannot be silenced without doing the human pass.
 
@@ -13,22 +14,24 @@
 ## 1. What is misleading about my headline number?
 
 Written first, deliberately, so the results section is honest by construction. My headline
-is **macro-F1 0.789 [0.726, 0.837] and expected cost 31.4 per 100 messages**. Here is why
+is **macro-F1 0.774 [0.706, 0.829] and expected cost 29.5 per 100 messages**. Here is why
 you should discount it.
 
-1. **The labels are machine-made, and the two machines disagreed a lot.** Pass A and
-   Pass B agree on intent at **κ = 0.655** and raw 69.6%. Nearly a third of the golden set
-   (76/220) had a disagreement. My 0.789 is agreement with *one* labelling pass, and a
-   second competent pass would have scored it differently.
+1. **The labels are machine-made, and three models disagreed a lot.** Pairwise intent κ:
+   A–B 0.655, A–C 0.621, B–C 0.718. All three agreed unanimously on only **128 of 220**
+   intents; 12 were three-way splits with no majority at all. My 0.774 is agreement with a
+   majority of models, not with a person.
 
-2. **My escalation ground truth is unstable, and this is the worst problem here.** Pass A
-   escalates **15.0%** of the golden set; Pass B, differing *only in prompt framing*,
-   escalates **22.3%** of the same items. A 7-point swing from framing alone means the
-   boundary is genuinely ambiguous. Since routing "accuracy" is measured against that
-   boundary, **every routing number inherits that ambiguity**.
+2. **My escalation ground truth is unstable, and this is the worst problem here.** On the
+   same 220 items: Pass A escalates **15.0%**, Pass C **14.5%**, but Pass B — differing
+   *only in prompt framing* (escalation-first rather than intent-first) — escalates
+   **22.3%**. A 7-point swing from framing alone means the boundary is genuinely
+   ambiguous, and the third pass tells me it is B's framing that inflates it rather than
+   A being lax. Since routing "accuracy" is measured against that boundary, **every
+   routing number inherits that ambiguity**.
 
 3. **n=220 makes the CI wider than most differences I could claim.** The 95% CI half-width
-   on macro-F1 is ±0.056. Any gap below ~0.11 between two systems is not a result. My
+   on macro-F1 is ±0.062. Any gap below ~0.11 between two systems is not a result. My
    Phase 8 fix improved cost by 12.3 per 100 and I *still* report it as not clearing the
    noise floor (paired CI **[−30.0, +0.92]**, includes zero).
 
@@ -46,33 +49,46 @@ you should discount it.
    real test split but 26% of the golden set. **Macro-F1 flatters rare classes**, and the
    **73.6% deflection rate does not transfer** to real inbound volume.
 
-7. **The 10:1 cost ratio is asserted, not measured — and the ranking depends on it.** At a
-   **1:1** ratio B1 actually *beats* the agent (12.3 vs 15.0 per 100). The agent only wins
-   from roughly 2:1 upward. If the true cost of a needless escalation is closer to that of
-   a missed one, my headline conclusion inverts.
+7. **The 10:1 cost ratio is asserted, not measured — and the margin depends on it.** At
+   **1:1** the agent and B1 are effectively tied (13.2 vs 14.1 per 100); the agent's lead
+   only becomes decisive from about 2:1 upward. Under my previous labelling B1 was ahead
+   at 1:1 outright. I have no data on the true cost of either error, so the size of the
+   agent's routing advantage is a function of a number I guessed.
 
-8. **The judge is unvalidated against a human.** I have measured its *biases* — position
-   flip rate 5.0%, length correlation |ρ| < 0.11, **self-preference +0.225 on a 1–5
-   scale** — but Spearman ρ against human scores is **not yet computed**. Until it is,
-   every reply-quality number is one model grading another, and the +0.225 self-preference
-   means the judge mildly favours its own family, which includes the generator.
+8. **The judge is unvalidated against a human, and a second judge disagrees with it a
+   lot.** Biases are measured — position flip rate 5.0%, length correlation |ρ| < 0.11,
+   self-preference **+0.225** — but Spearman ρ against a *human* is **not computed**. What
+   I did measure is worse than I expected: rescoring the same 70 replies with `gpt-4o`
+   gives an overall **mean ρ of only 0.424** against the `gpt-4.1-mini` judge
+   (groundedness 0.57, actionability 0.54, brand-fit 0.43, safety 0.16). By my own
+   pre-set threshold (ρ < 0.6 = weak), **every reply-quality difference in this report is
+   weak evidence.**
 
-9. **Time-based splitting limits leakage but does not eliminate it.** Brand vocabulary,
+9. **My "10% would be sent unedited" headline does not survive a change of judge.** The
+   second judge answered "would you send this as-is?" **no on all 70 replies** — a 0% rate
+   against my reported 10%. Raw agreement looks fine at 90% only because both mostly say
+   no; Cohen's **κ is exactly 0.00**. That single number was the most interpretable thing
+   in my results section, and it is entirely an artefact of which model was asked.
+   (Similarly, the safety axis has ρ 0.16 not because the judges conflict but because both
+   sit at 4.9/5 — a ceiling effect, where correlation is meaningless and the *level* is
+   what matters.)
+
+10. **Time-based splitting limits leakage but does not eliminate it.** Brand vocabulary,
    product eras and recurring incidents persist across the boundary. The agent can still
    benefit from having seen "clear your cache" phrasing a thousand times.
 
-10. **One of my own metrics was broken and I nearly reported it.** The deterministic
+11. **One of my own metrics was broken and I nearly reported it.** The deterministic
     `must_include` check scored the agent at **7.4%** — that is not performance, it is a
     measurement failure (abstract requirements vs concrete replies share no vocabulary).
     The semantic re-check gives **53.8%**. A 7× error in my own instrument, found only by
     reading examples.
 
-11. **B1 is trained on machine labels**, so it learns to imitate `gpt-4o-mini`. Its ceiling
+12. **B1 is trained on machine labels**, so it learns to imitate `gpt-4o-mini`. Its ceiling
     is the labeller's accuracy, which makes it a slightly *unfair* baseline — it is handicapped
     in a way a human-labelled classifier would not be.
 
-12. **The hard-case quota did not do what I intended.** Hard-flagged examples scored
-    *higher* (84.4% vs 79.3%) and produced **zero** missed escalations, because my hard
+13. **The hard-case quota did not do what I intended.** Hard-flagged examples scored
+    *higher* (87.5% vs 77.7%) and produced **zero** missed escalations, because my hard
     flags select for escalation keywords, which make routing *easier*.
 
 ---
@@ -152,19 +168,26 @@ other 6 rest on keyword probes and reading, and are marked red in `figures/taxon
 
 | system | intent macro-F1 (95% CI) | cost/100 | missed escalations | deflection |
 |---|---|---|---|---|
-| B0 always-escalate | 0.038 | 85.0 | **0** of 220 | 0.0% |
-| B0 always-auto | 0.038 | 150.0 | 33 of 220 | 100.0% |
-| B1 TF-IDF + copy-paste | 0.606 [0.531, 0.671] | 106.4 | 23 of 220 | 93.6% |
-| **agent** | **0.789 [0.726, 0.837]** | **31.4 [15, 52]** | **4** of 220 | 73.6% |
+| B0 always-escalate | 0.034 | 83.2 | **0** of 220 | 0.0% |
+| B0 always-auto | 0.034 | 168.2 | 37 of 220 | 100.0% |
+| B1 TF-IDF + copy-paste | 0.592 [0.510, 0.660] | 124.5 | 27 of 220 | 93.6% |
+| **agent** | **0.774 [0.706, 0.829]** | **29.5 [14, 49]** | **4** of 220 | 73.6% |
+
+**Robustness note.** These are measured against the 3-pass majority-adjudicated labels.
+Under the earlier Pass-A-only labels the agent scored 0.789 [0.726, 0.837] with cost 31.4.
+Re-adjudicating 64 contested rows moved every headline number by less than its own CI, so
+the ranking is not an artefact of one labelling pass.
 
 **Where a baseline beats the agent, stated plainly:**
 
 - **B0 always-escalate has zero missed escalations. The agent has four.** On the single
   safety metric that matters most, the dumbest possible policy wins, and it always will.
   The agent's claim is that it removes 73.6% of the human workload for those 4 errors.
-- **At a 1:1 cost ratio, B1 beats the agent** (12.3 vs 15.0 per 100). My headline depends
-  on the asymmetry being real.
-- **B1's keyword router costs 106.4 — worse than escalating everything (85.0)** — despite
+- **At a 1:1 cost ratio the agent and B1 are indistinguishable** (13.2 vs 14.1 per 100 —
+  a gap far inside the noise). The agent's advantage exists *because* the asymmetry is
+  real; strip the asymmetry and the two classical/LLM routers are equivalent. Under the
+  earlier labelling B1 was actually ahead at 1:1, which is how thin this margin is.
+- **B1's keyword router costs 124.5 — worse than escalating everything (83.2)** — despite
   deflecting 93.6%. This is the cleanest demonstration in the project that accuracy is the
   wrong routing metric.
 
@@ -188,9 +211,11 @@ scores a point lower.
 
 **The most sobering number is 10%.** Only 10% of the agent's replies would be sent
 unedited by the judge acting as a support agent. This is a drafting aid, not an
-autoresponder.
+autoresponder. **But see limitation 9: a second judge said 0%.** The honest reading is
+"somewhere between none and one in ten", which is the same qualitative conclusion and a
+much weaker quantitative one.
 
-**Calibration** (![calibration](figures/calibration.png)): ECE **0.079**. Well-calibrated
+**Calibration** (![calibration](figures/calibration.png)): ECE **0.098**. Well-calibrated
 enough to report, not well-calibrated enough to gate on — which is exactly what the
 threshold sweep independently found.
 
@@ -241,9 +266,10 @@ Ranked by expected value per hour.
 2. **Measure retrieval (≈4h).** Recall@k against manually-marked relevant threads.
    Retrieval feeds classification *and* drafting and is currently the **largest completely
    untested link in the chain** — I have no idea whether top-3 contains the right thread.
-3. **Validate the judge against human scores (≈2h).** The CLI exists
-   (`eval/human_judge_cli.py`); 70 replies would give Spearman ρ and Krippendorff's α and
-   would turn every reply-quality claim from provisional into evidence.
+3. **Validate the judge against human scores (≈2h)** — now the *highest*-value item after
+   the annotator, because the cross-model check (ρ=0.42, send-unedited κ=0.00) shows the
+   rubric is not stable across judges. Either the rubric needs tightening or reply quality
+   needs human scoring; right now I cannot tell which, and the CLI is built and waiting.
 4. **Per-intent routing thresholds (≈3h).** One global τ is clearly wrong when
    `billing_charge_dispute` and `praise_or_chitchat` have opposite cost profiles.
 5. **Fix mode 1 (≈2h).** Distinguish profanity-about-product from abuse-at-a-person; it is

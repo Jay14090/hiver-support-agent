@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"having trouble with family members accepting invite and joining family plan. I moved so canceled account and rejoined family plan with updated address. Still, other family members not able to join.\"\n\nDRAFTED REPLY:\n\"Hey there! We can help with that. Can you send us a DM with your account's email address so we can check it out? Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 3, \"reason\": \"Reply is plausible but lacks specific procedural details.\"}",
+ "prompt_tokens": 282,
+ "completion_tokens": 20,
+ "usd": 0.000905,
+ "tag": "judge_groundedness"
+}

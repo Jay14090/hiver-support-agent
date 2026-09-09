@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hey guys! I have a query relating to a release date bug on the latest macOS client. Everything updated, fresh install. Has been persisting for about a month. Shows the correct year on artist page but then one year off on album page. See pics for details. TIA :) <URL>\"\n\nDRAFTED REPLY:\n\"Hey there! Thanks for reaching out! Can you try logging out and back in to see if that helps with the release date issue? Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 3, \"reason\": \"Logout/login is plausible but not evidenced by history.\"}",
+ "prompt_tokens": 305,
+ "completion_tokens": 21,
+ "usd": 0.000972,
+ "tag": "judge_groundedness"
+}

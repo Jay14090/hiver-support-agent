@@ -3,9 +3,10 @@
 An AI support agent for `@SpotifyCares` built from 2.8M real customer-support tweets, and
 — more importantly — **the evaluation that says how much to trust it**.
 
-> ⚠ **Results are currently PROVISIONAL.** The golden set is machine-labelled with a
-> 96-item human adjudication queue prepared but not yet worked. `run_eval.py` stamps this
-> on every number automatically. See [What's outstanding](#whats-outstanding).
+> ⚠ **Results are currently PROVISIONAL.** The golden set is machine-labelled: 64 contested
+> rows were settled by 2-of-3 majority across three blind model passes, but **no human has
+> reviewed any row** (105-item queue prepared). `run_eval.py` stamps this on every number
+> automatically. See [What's outstanding](#whats-outstanding).
 
 ## Reproduce the headline results in under 15 minutes
 
@@ -38,19 +39,22 @@ like to be asked).
 
 | system | intent macro-F1 (95% CI) | cost/100 msgs | missed escalations | deflection |
 |---|---|---|---|---|
-| B0 always-escalate | 0.038 | 85.0 | **0** of 220 | 0.0% |
-| B0 always-auto | 0.038 | 150.0 | 33 of 220 | 100.0% |
-| B1 TF-IDF + BM25 copy-paste | 0.606 [0.531, 0.671] | 106.4 | 23 of 220 | 93.6% |
-| **agent** | **0.789 [0.726, 0.837]** | **31.4 [15, 52]** | **4** of 220 | 73.6% |
+| B0 always-escalate | 0.034 | 83.2 | **0** of 220 | 0.0% |
+| B0 always-auto | 0.034 | 168.2 | 37 of 220 | 100.0% |
+| B1 TF-IDF + BM25 copy-paste | 0.592 [0.510, 0.660] | 124.5 | 27 of 220 | 93.6% |
+| **agent** | **0.774 [0.706, 0.829]** | **29.5 [14, 49]** | **4** of 220 | 73.6% |
 
 `cost/100` is the primary routing metric: a missed escalation costs **10×** a needless one
 (a router is a decision system, not a classifier). Three findings worth more than the
 table itself:
 
-- **B1's keyword router (106.4) costs more than escalating everything (85.0)** despite
+- **B1's keyword router (124.5) costs more than escalating everything (83.2)** despite
   deflecting 93.6% — accuracy is the wrong routing metric.
-- **At a 1:1 cost ratio, B1 beats the agent.** The headline depends on the asymmetry.
-- **Only 10% of the agent's replies would be sent unedited.** This is a drafting aid.
+- **At a 1:1 cost ratio the agent and B1 are tied.** The agent's lead exists *because* the
+  asymmetry is real.
+- **"10% of replies would be sent unedited" does not survive a change of judge** — a second
+  judge (`gpt-4o`) said 0% on the same 70 replies, κ = 0.00. Cross-model judge agreement is
+  only ρ = 0.42 overall, so every reply-quality number here is weak evidence.
 
 ## Architecture
 
@@ -98,10 +102,14 @@ python eval/human_judge_cli.py                  # human judge scoring
 Two human-in-the-loop steps are built and prepared but not yet done. Both are blocking a
 non-provisional result:
 
-1. **Golden-set adjudication** — `python golden/label_cli.py` (96 queued items, ~40 min),
-   then `python scripts/build_golden.py`.
+1. **Golden-set adjudication** — `python golden/label_cli.py` (105 queued items, ~40 min),
+   then `python scripts/build_golden.py`. A third blind model pass (`gpt-4o`) already
+   breaks A/B ties by majority, which is better than an arbitrary default but is **not**
+   human adjudication and is labelled `model_majority_3pass`, not `human_adjudicated`.
 2. **Judge validation against a human** — `python eval/human_judge_cli.py` (70 replies),
-   then `python -m eval.judge_validation --report`.
+   then `python -m eval.judge_validation --report`. This is now the more urgent of the two:
+   the cross-model check (`scripts/judge_cross_model.py`) found only ρ = 0.42 agreement
+   between two judge models, so the rubric may need tightening rather than just scoring.
 
 ## Citations & Borrowings
 

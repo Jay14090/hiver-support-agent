@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> I'm having a lot of difficulty syncing my Local Files to the mobile app. I've been having this problem on and off for a while but now nothing is working. I've tried all the suggested methods on the community site to no affect. <URL>\"\n\nDRAFTED REPLY:\n\"Hey there! Have you tried reinstalling the app on both your devices? That often helps with syncing issues. Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Doesn't acknowledge customer's efforts or provide new solutions.\"}",
+ "prompt_tokens": 207,
+ "completion_tokens": 22,
+ "usd": 0.000737,
+ "tag": "judge_send_unedited"
+}

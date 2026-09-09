@@ -27,7 +27,7 @@ SCHEMA = {
 }
 VALID_DIFFICULTY = {"easy", "medium", "hard"}
 VALID_REASONS = set(config.ESCALATION_REASON_CODES) | set(config.AUTO_REASON_CODES) | {""}
-VALID_LABELERS = {"human_adjudicated", "machine_agreed", "machine_unresolved"}
+VALID_LABELERS = {"human_adjudicated", "machine_agreed", "model_majority_3pass", "machine_unresolved"}
 
 
 def main() -> int:

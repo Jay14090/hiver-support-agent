@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are an experienced customer-support agent at Spotify. You\nare shown a customer message and a drafted public reply.\n\nOne question: would you send this reply AS-IS, with no edits?\n\nSay false if you would change anything at all -- wording, safety, accuracy, or tone.\nThis is the bar for \"this saved me work\", not \"this is a reasonable draft\".\n\nReturn JSON only: {\"send_unedited\": true|false, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> Im trying for a week to pay you guys, if you don't want my money ill look somewhere else\"\n\nDRAFTED REPLY:\n\"Hey there! It sounds like you're having trouble with your payment. Can you try checking your payment method in your account settings? Let us know how it goes!\"",
+ "temperature": 0.0,
+ "max_tokens": 80,
+ "text": "{\"send_unedited\": false, \"reason\": \"Doesn't acknowledge frustration or offer direct assistance.\"}",
+ "prompt_tokens": 178,
+ "completion_tokens": 21,
+ "usd": 0.000655,
+ "tag": "judge_send_unedited"
+}

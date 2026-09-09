@@ -28,9 +28,35 @@ VALID_DIFFICULTY = {"easy", "medium", "hard"}
 VALID_REASONS = set(config.ESCALATION_REASON_CODES) | set(config.AUTO_REASON_CODES) | {""}
 
 
+VALID_REASON_CODES = set(config.ESCALATION_REASON_CODES) | set(config.AUTO_REASON_CODES)
+
+
 def load(name: str) -> list:
     p = GOLDEN / name
     return [json.loads(l) for l in p.open(encoding="utf-8")] if p.exists() else []
+
+
+def normalise_reason(code: str, escalate: bool, fallbacks) -> str:
+    """Force the reason code into the enum.
+
+    Pass C (gpt-4o) invented plausible-sounding codes outside the enum -- e.g.
+    `content_removal_complex`, `account_merge_request`, `customer_threatening_cancellation`.
+    Rather than widening the enum to whatever a model felt like emitting, the code is
+    normalised: keep it if valid AND consistent with the escalate decision, otherwise take
+    the first valid code from the other passes, otherwise leave it empty. The schema gate
+    in validate_golden.py is what surfaced this, and it stays strict.
+    """
+    def ok(c):
+        if c not in VALID_REASON_CODES:
+            return False
+        return (c in config.ESCALATION_REASON_CODES) if escalate else (c in config.AUTO_REASON_CODES)
+
+    if ok(code):
+        return code
+    for f in fallbacks:
+        if ok(f):
+            return f
+    return ""
 
 
 def main() -> None:
@@ -42,16 +68,34 @@ def main() -> None:
     human = {r["id"]: r for r in load("human_labels.jsonl")}   # written by label_cli.py
 
     B_by_id = {r["id"]: r for r in B}
+    C_by_id = {r["id"]: r for r in load("prelabel_C.jsonl")}   # optional third blind pass
     out = []
     for a in A:
         b = B_by_id.get(a["id"], {})
+        c = C_by_id.get(a["id"])
         h = human.get(a["id"])
         agree = (a["intent"] == b.get("intent")) and (bool(a["escalate"]) == bool(b.get("escalate")))
+
+        # 2-of-3 majority where a third blind pass exists. This replaces the previous
+        # behaviour on disagreements, which silently defaulted to Pass A -- an arbitrary
+        # tiebreak that just meant "whichever pass I happened to run first wins".
+        # NOTE: majority of three MODELS is still not human adjudication. Rows resolved
+        # this way are labelled `model_majority_3pass` and stay provisional.
+        maj_intent = maj_escalate = None
+        if c and not h:
+            iv = Counter([a["intent"], b.get("intent"), c["intent"]]).most_common(1)[0]
+            if iv[1] >= 2:
+                maj_intent = iv[0]
+            ev = Counter([bool(a["escalate"]), bool(b.get("escalate")), bool(c["escalate"])]).most_common(1)[0]
+            if ev[1] >= 2:
+                maj_escalate = ev[0]
 
         if h:
             rec = {
                 "intent": h["intent"], "escalate": bool(h["escalate"]),
-                "escalate_reason_code": h.get("escalate_reason_code", ""),
+                "escalate_reason_code": normalise_reason(
+                    h.get("escalate_reason_code", ""), bool(h["escalate"]),
+                    [a.get("escalate_reason_code", "")]),
                 "reply_must_include": h.get("reply_must_include") or a["reply_must_include"],
                 "reply_must_not_include": h.get("reply_must_not_include") or a["reply_must_not_include"],
                 "difficulty": h.get("difficulty", a["difficulty"]),
@@ -60,14 +104,28 @@ def main() -> None:
                 "notes": h.get("notes", ""),
             }
         else:
+            resolved_by_majority = (not agree) and maj_intent is not None
+            # Where the majority sides against A, take the majority; the reason code and
+            # must/must-not fields come from whichever pass supplied the winning escalate
+            # decision, so the row stays internally consistent.
+            src = a
+            if maj_escalate is not None and bool(a["escalate"]) != maj_escalate:
+                src = b if bool(b.get("escalate")) == maj_escalate else (c or a)
+            esc_final = maj_escalate if maj_escalate is not None else bool(a["escalate"])
             rec = {
-                "intent": a["intent"], "escalate": bool(a["escalate"]),
-                "escalate_reason_code": a.get("escalate_reason_code", ""),
+                "intent": maj_intent or a["intent"],
+                "escalate": esc_final,
+                "escalate_reason_code": normalise_reason(
+                    src.get("escalate_reason_code", ""), esc_final,
+                    [a.get("escalate_reason_code", ""), b.get("escalate_reason_code", ""),
+                     (c or {}).get("escalate_reason_code", "")]),
                 "reply_must_include": a["reply_must_include"],
                 "reply_must_not_include": a["reply_must_not_include"],
                 "difficulty": a["difficulty"],
-                "labeler": "machine_agreed" if agree else "machine_unresolved",
-                "provisional": True,
+                "labeler": ("machine_agreed" if agree else
+                            "model_majority_3pass" if resolved_by_majority else
+                            "machine_unresolved"),
+                "provisional": True,       # still true: no human has seen this row
                 "notes": a.get("notes", ""),
             }
         s = sample.get(a["id"], {})
@@ -76,6 +134,7 @@ def main() -> None:
             "hard_flags": s.get("hard_flags", []), "is_hard": s.get("is_hard", False),
             "machine_A": {"intent": a["intent"], "escalate": bool(a["escalate"])},
             "machine_B": {"intent": b.get("intent"), "escalate": bool(b.get("escalate", False))},
+            "machine_C": ({"intent": c["intent"], "escalate": bool(c["escalate"])} if c else None),
             "ab_agreed": agree,
         })
         out.append(rec)

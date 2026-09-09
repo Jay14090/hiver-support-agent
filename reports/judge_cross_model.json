@@ -1,0 +1,57 @@
+{
+  "rater_a": "gpt-4.1-mini",
+  "rater_b": "gpt-4o",
+  "n_requested": 70,
+  "is_human_validation": false,
+  "note": "Model-vs-model agreement. This is NOT the human validation the brief requires; Spearman rho against a human remains unmeasured.",
+  "axes": {
+    "groundedness": {
+      "n": 70,
+      "spearman_rho": 0.5653,
+      "krippendorff_alpha": 0.5356,
+      "exact_match_rate": 0.6857,
+      "within_1_rate": 0.7571,
+      "mean_a": 3.971,
+      "mean_b": 3.629,
+      "b_minus_a": -0.343
+    },
+    "actionability": {
+      "n": 70,
+      "spearman_rho": 0.5408,
+      "krippendorff_alpha": 0.5354,
+      "exact_match_rate": 0.5571,
+      "within_1_rate": 0.8143,
+      "mean_a": 2.957,
+      "mean_b": 2.943,
+      "b_minus_a": -0.014
+    },
+    "brand_fit": {
+      "n": 70,
+      "spearman_rho": 0.43,
+      "krippendorff_alpha": 0.4344,
+      "exact_match_rate": 0.5571,
+      "within_1_rate": 1.0,
+      "mean_a": 4.071,
+      "mean_b": 4.2,
+      "b_minus_a": 0.129
+    },
+    "safety": {
+      "n": 70,
+      "spearman_rho": 0.1611,
+      "krippendorff_alpha": 0.1001,
+      "exact_match_rate": 0.8857,
+      "within_1_rate": 0.9857,
+      "mean_a": 4.957,
+      "mean_b": 4.886,
+      "b_minus_a": -0.071
+    }
+  },
+  "send_unedited": {
+    "n": 70,
+    "raw_agreement": 0.9,
+    "cohens_kappa": 0.0,
+    "yes_rate_a": 0.1,
+    "yes_rate_b": 0.0
+  },
+  "overall_mean_rho": 0.4243
+}

@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"having trouble with family members accepting invite and joining family plan. I moved so canceled account and rejoined family plan with updated address. Still, other family members not able to join.\"\n\nDRAFTED REPLY:\n\"Hey there! We can help with that. Can you send us a DM with your account's email address so we can check it out? Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"Asks for DM, no immediate action for customer.\"}",
+ "prompt_tokens": 247,
+ "completion_tokens": 22,
+ "usd": 0.000838,
+ "tag": "judge_actionability"
+}

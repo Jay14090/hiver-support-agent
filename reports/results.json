@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T12:45:29.182695+00:00",
+  "generated_at": "2026-09-09T12:56:57.491281+00:00",
   "status": {
     "is_provisional": true,
     "provisional_rows": 220,
@@ -23,16 +23,16 @@
       "n": 220,
       "intent": {
         "macro_f1": {
-          "point": 0.0379,
-          "lo": 0.0309,
-          "hi": 0.0444,
-          "half_width": 0.0067,
+          "point": 0.0342,
+          "lo": 0.0268,
+          "hi": 0.041,
+          "half_width": 0.0071,
           "n_boot": 1000
         },
         "accuracy": {
-          "point": 0.2636,
-          "lo": 0.2045,
-          "hi": 0.3227,
+          "point": 0.2318,
+          "lo": 0.1727,
+          "hi": 0.2909,
           "half_width": 0.0591,
           "n_boot": 1000
         },
@@ -41,67 +41,67 @@
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 17
+            "support": 24
           },
           "account_access_login": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 17
+            "support": 19
           },
           "billing_charge_dispute": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 12
+            "support": 8
           },
           "subscription_cancel_refund": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 13
+            "support": 12
           },
           "plan_or_premium_management": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 17
+            "support": 24
           },
           "content_missing_or_metadata": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 21
+            "support": 26
           },
           "device_integration_issue": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 14
+            "support": 13
           },
           "app_bug_or_crash": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 20
+            "support": 17
           },
           "feature_request_or_complaint": {
-            "precision": 0.2636,
+            "precision": 0.2318,
             "recall": 1.0,
-            "f1": 0.4173,
-            "support": 58
+            "f1": 0.3764,
+            "support": 51
           },
           "praise_or_chitchat": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 16
+            "support": 13
           },
           "other": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 15
+            "support": 13
           }
         },
         "confusion_matrix": [
@@ -114,7 +114,7 @@
             0,
             0,
             0,
-            17,
+            24,
             0,
             0
           ],
@@ -127,7 +127,20 @@
             0,
             0,
             0,
-            17,
+            19,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
             0,
             0
           ],
@@ -141,6 +154,32 @@
             0,
             0,
             12,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            24,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            26,
             0,
             0
           ],
@@ -179,7 +218,7 @@
             0,
             0,
             0,
-            21,
+            51,
             0,
             0
           ],
@@ -192,7 +231,7 @@
             0,
             0,
             0,
-            14,
+            13,
             0,
             0
           ],
@@ -205,46 +244,7 @@
             0,
             0,
             0,
-            20,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            58,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            16,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            15,
+            13,
             0,
             0
           ]
@@ -262,7 +262,7 @@
           "praise_or_chitchat",
           "other"
         ],
-        "ece": 0.7364,
+        "ece": 0.7682,
         "reliability_bins": [
           {
             "bin_lo": 0.0,
@@ -332,35 +332,35 @@
             "bin_hi": 1.0,
             "n": 220,
             "mean_confidence": 1.0,
-            "accuracy": 0.2636
+            "accuracy": 0.2318
           }
         ]
       },
       "routing": {
-        "precision": 0.15,
+        "precision": 0.1682,
         "recall": 1.0,
-        "f1": 0.2609,
-        "true_escalate": 33,
-        "false_escalate": 187,
+        "f1": 0.2879,
+        "true_escalate": 37,
+        "false_escalate": 183,
         "false_auto": 0,
         "true_auto": 0,
         "false_auto_count": 0,
         "false_auto_of": 220,
         "false_auto_rate": 0.0,
         "deflection_rate": 0.0,
-        "expected_cost_per_100": 85.0,
+        "expected_cost_per_100": 83.182,
         "expected_cost_per_100_ci": {
-          "point": 85.0,
-          "lo": 80.0,
-          "hi": 89.5455,
+          "point": 83.1818,
+          "lo": 78.1818,
+          "hi": 87.7273,
           "half_width": 4.7727,
           "n_boot": 1000
         },
         "f1_ci": {
-          "point": 0.2609,
-          "lo": 0.1893,
-          "hi": 0.3333,
-          "half_width": 0.072,
+          "point": 0.2879,
+          "lo": 0.2186,
+          "hi": 0.3582,
+          "half_width": 0.0698,
           "n_boot": 1000
         },
         "deflection_rate_ci": {
@@ -371,12 +371,12 @@
           "n_boot": 1000
         },
         "cost_sensitivity": {
-          "1": 85.0,
-          "2": 85.0,
-          "5": 85.0,
-          "10": 85.0,
-          "20": 85.0,
-          "50": 85.0
+          "1": 83.182,
+          "2": 83.182,
+          "5": 83.182,
+          "10": 83.182,
+          "20": 83.182,
+          "50": 83.182
         }
       },
       "reply_checks": {
@@ -389,12 +389,12 @@
       "slices": {
         "hard": {
           "n": 32,
-          "accuracy": 0.2812,
+          "accuracy": 0.25,
           "missed_escalations": 0
         },
         "easy": {
           "n": 188,
-          "accuracy": 0.2606,
+          "accuracy": 0.2287,
           "missed_escalations": 0
         }
       },
@@ -429,16 +429,16 @@
       "n": 220,
       "intent": {
         "macro_f1": {
-          "point": 0.0379,
-          "lo": 0.0309,
-          "hi": 0.0444,
-          "half_width": 0.0067,
+          "point": 0.0342,
+          "lo": 0.0268,
+          "hi": 0.041,
+          "half_width": 0.0071,
           "n_boot": 1000
         },
         "accuracy": {
-          "point": 0.2636,
-          "lo": 0.2045,
-          "hi": 0.3227,
+          "point": 0.2318,
+          "lo": 0.1727,
+          "hi": 0.2909,
           "half_width": 0.0591,
           "n_boot": 1000
         },
@@ -447,67 +447,67 @@
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 17
+            "support": 24
           },
           "account_access_login": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 17
+            "support": 19
           },
           "billing_charge_dispute": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 12
+            "support": 8
           },
           "subscription_cancel_refund": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 13
+            "support": 12
           },
           "plan_or_premium_management": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 17
+            "support": 24
           },
           "content_missing_or_metadata": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 21
+            "support": 26
           },
           "device_integration_issue": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 14
+            "support": 13
           },
           "app_bug_or_crash": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 20
+            "support": 17
           },
           "feature_request_or_complaint": {
-            "precision": 0.2636,
+            "precision": 0.2318,
             "recall": 1.0,
-            "f1": 0.4173,
-            "support": 58
+            "f1": 0.3764,
+            "support": 51
           },
           "praise_or_chitchat": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 16
+            "support": 13
           },
           "other": {
             "precision": 0.0,
             "recall": 0.0,
             "f1": 0.0,
-            "support": 15
+            "support": 13
           }
         },
         "confusion_matrix": [
@@ -520,7 +520,7 @@
             0,
             0,
             0,
-            17,
+            24,
             0,
             0
           ],
@@ -533,7 +533,20 @@
             0,
             0,
             0,
-            17,
+            19,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            8,
             0,
             0
           ],
@@ -547,6 +560,32 @@
             0,
             0,
             12,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            24,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            26,
             0,
             0
           ],
@@ -585,7 +624,7 @@
             0,
             0,
             0,
-            21,
+            51,
             0,
             0
           ],
@@ -598,7 +637,7 @@
             0,
             0,
             0,
-            14,
+            13,
             0,
             0
           ],
@@ -611,46 +650,7 @@
             0,
             0,
             0,
-            20,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            58,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            16,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            15,
+            13,
             0,
             0
           ]
@@ -668,7 +668,7 @@
           "praise_or_chitchat",
           "other"
         ],
-        "ece": 0.7364,
+        "ece": 0.7682,
         "reliability_bins": [
           {
             "bin_lo": 0.0,
@@ -738,7 +738,7 @@
             "bin_hi": 1.0,
             "n": 220,
             "mean_confidence": 1.0,
-            "accuracy": 0.2636
+            "accuracy": 0.2318
           }
         ]
       },
@@ -748,17 +748,17 @@
         "f1": 0.0,
         "true_escalate": 0,
         "false_escalate": 0,
-        "false_auto": 33,
-        "true_auto": 187,
-        "false_auto_count": 33,
+        "false_auto": 37,
+        "true_auto": 183,
+        "false_auto_count": 37,
         "false_auto_of": 220,
-        "false_auto_rate": 0.15,
+        "false_auto_rate": 0.1682,
         "deflection_rate": 1.0,
-        "expected_cost_per_100": 150.0,
+        "expected_cost_per_100": 168.182,
         "expected_cost_per_100_ci": {
-          "point": 150.0,
-          "lo": 104.5455,
-          "hi": 200.0,
+          "point": 168.1818,
+          "lo": 122.7273,
+          "hi": 218.1818,
           "half_width": 47.7273,
           "n_boot": 1000
         },
@@ -777,12 +777,12 @@
           "n_boot": 1000
         },
         "cost_sensitivity": {
-          "1": 15.0,
-          "2": 30.0,
-          "5": 75.0,
-          "10": 150.0,
-          "20": 300.0,
-          "50": 750.0
+          "1": 16.818,
+          "2": 33.636,
+          "5": 84.091,
+          "10": 168.182,
+          "20": 336.364,
+          "50": 840.909
         }
       },
       "reply_checks": {
@@ -795,13 +795,13 @@
       "slices": {
         "hard": {
           "n": 32,
-          "accuracy": 0.2812,
+          "accuracy": 0.25,
           "missed_escalations": 6
         },
         "easy": {
           "n": 188,
-          "accuracy": 0.2606,
-          "missed_escalations": 27
+          "accuracy": 0.2287,
+          "missed_escalations": 31
         }
       },
       "pipeline_reliability": {
@@ -835,98 +835,98 @@
       "n": 220,
       "intent": {
         "macro_f1": {
-          "point": 0.6057,
-          "lo": 0.5312,
-          "hi": 0.6715,
-          "half_width": 0.0701,
+          "point": 0.5922,
+          "lo": 0.5104,
+          "hi": 0.6603,
+          "half_width": 0.075,
           "n_boot": 1000
         },
         "accuracy": {
-          "point": 0.6455,
-          "lo": 0.5817,
-          "hi": 0.7045,
-          "half_width": 0.0614,
+          "point": 0.65,
+          "lo": 0.5864,
+          "hi": 0.7136,
+          "half_width": 0.0636,
           "n_boot": 1000
         },
         "per_class": {
           "playback_streaming_issue": {
-            "precision": 0.5172,
-            "recall": 0.8824,
-            "f1": 0.6522,
-            "support": 17
+            "precision": 0.6207,
+            "recall": 0.75,
+            "f1": 0.6792,
+            "support": 24
           },
           "account_access_login": {
             "precision": 0.7778,
-            "recall": 0.8235,
-            "f1": 0.8,
-            "support": 17
+            "recall": 0.7368,
+            "f1": 0.7568,
+            "support": 19
           },
           "billing_charge_dispute": {
-            "precision": 1.0,
-            "recall": 0.5833,
-            "f1": 0.7368,
-            "support": 12
+            "precision": 0.5714,
+            "recall": 0.5,
+            "f1": 0.5333,
+            "support": 8
           },
           "subscription_cancel_refund": {
-            "precision": 0.6,
-            "recall": 0.4615,
-            "f1": 0.5217,
-            "support": 13
+            "precision": 0.5,
+            "recall": 0.4167,
+            "f1": 0.4545,
+            "support": 12
           },
           "plan_or_premium_management": {
-            "precision": 0.6538,
-            "recall": 1.0,
-            "f1": 0.7907,
-            "support": 17
+            "precision": 0.7692,
+            "recall": 0.8333,
+            "f1": 0.8,
+            "support": 24
           },
           "content_missing_or_metadata": {
-            "precision": 0.625,
-            "recall": 0.7143,
-            "f1": 0.6667,
-            "support": 21
+            "precision": 0.75,
+            "recall": 0.6923,
+            "f1": 0.72,
+            "support": 26
           },
           "device_integration_issue": {
             "precision": 0.6667,
-            "recall": 0.4286,
-            "f1": 0.5217,
-            "support": 14
+            "recall": 0.4615,
+            "f1": 0.5455,
+            "support": 13
           },
           "app_bug_or_crash": {
-            "precision": 0.6842,
-            "recall": 0.65,
-            "f1": 0.6667,
-            "support": 20
+            "precision": 0.5789,
+            "recall": 0.6471,
+            "f1": 0.6111,
+            "support": 17
           },
           "feature_request_or_complaint": {
-            "precision": 0.6667,
-            "recall": 0.7241,
-            "f1": 0.6942,
-            "support": 58
+            "precision": 0.619,
+            "recall": 0.7647,
+            "f1": 0.6842,
+            "support": 51
           },
           "praise_or_chitchat": {
-            "precision": 1.0,
-            "recall": 0.1875,
-            "f1": 0.3158,
-            "support": 16
+            "precision": 0.6667,
+            "recall": 0.1538,
+            "f1": 0.25,
+            "support": 13
           },
           "other": {
-            "precision": 0.3333,
-            "recall": 0.2667,
-            "f1": 0.2963,
-            "support": 15
+            "precision": 0.5,
+            "recall": 0.4615,
+            "f1": 0.48,
+            "support": 13
           }
         },
         "confusion_matrix": [
           [
-            15,
+            18,
             0,
             0,
             0,
             0,
             0,
             0,
-            0,
-            2,
+            3,
+            3,
             0,
             0
           ],
@@ -934,8 +934,8 @@
             0,
             14,
             0,
-            1,
-            1,
+            2,
+            2,
             1,
             0,
             0,
@@ -946,26 +946,39 @@
           [
             0,
             0,
-            7,
+            4,
             0,
             3,
             0,
             0,
             0,
-            1,
+            0,
             0,
             1
           ],
           [
             1,
             1,
+            1,
+            5,
             0,
-            6,
-            2,
             0,
             1,
             0,
             2,
+            1,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            1,
+            20,
+            0,
+            0,
+            0,
+            1,
             0,
             0
           ],
@@ -974,91 +987,78 @@
             0,
             0,
             0,
-            17,
             0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0,
-            0,
-            15,
+            18,
             1,
-            0,
-            2,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0,
-            1,
-            0,
-            6,
-            2,
-            2,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0,
-            1,
-            0,
-            0,
-            13,
-            3,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            0,
             0,
             7,
-            1,
-            3,
-            42,
             0,
-            4
+            0
           ],
           [
+            3,
             0,
-            2,
             0,
-            2,
             0,
             1,
             0,
+            6,
+            1,
+            2,
+            0,
+            0
+          ],
+          [
+            4,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            11,
+            1,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            0,
+            3,
             1,
             4,
-            3,
+            39,
+            0,
             3
           ],
           [
-            3,
+            0,
+            2,
+            0,
+            2,
+            0,
+            2,
+            0,
+            0,
+            4,
+            2,
+            1
+          ],
+          [
+            2,
             1,
             0,
-            1,
-            1,
             0,
             0,
             0,
-            5,
             0,
-            4
+            0,
+            4,
+            0,
+            6
           ]
         ],
         "labels": [
@@ -1074,7 +1074,7 @@
           "praise_or_chitchat",
           "other"
         ],
-        "ece": 0.0523,
+        "ece": 0.0751,
         "reliability_bins": [
           {
             "bin_lo": 0.0,
@@ -1088,42 +1088,42 @@
             "bin_hi": 0.2,
             "n": 1,
             "mean_confidence": 0.1786,
-            "accuracy": 0.0
+            "accuracy": 1.0
           },
           {
             "bin_lo": 0.2,
             "bin_hi": 0.3,
             "n": 13,
             "mean_confidence": 0.2667,
-            "accuracy": 0.1538
+            "accuracy": 0.2308
           },
           {
             "bin_lo": 0.3,
             "bin_hi": 0.4,
             "n": 26,
             "mean_confidence": 0.3582,
-            "accuracy": 0.4231
+            "accuracy": 0.5
           },
           {
             "bin_lo": 0.4,
             "bin_hi": 0.5,
             "n": 37,
             "mean_confidence": 0.445,
-            "accuracy": 0.4865
+            "accuracy": 0.3514
           },
           {
             "bin_lo": 0.5,
             "bin_hi": 0.6,
             "n": 28,
             "mean_confidence": 0.5458,
-            "accuracy": 0.5357
+            "accuracy": 0.5714
           },
           {
             "bin_lo": 0.6,
             "bin_hi": 0.7,
             "n": 33,
             "mean_confidence": 0.6481,
-            "accuracy": 0.697
+            "accuracy": 0.7879
           },
           {
             "bin_lo": 0.7,
@@ -1137,7 +1137,7 @@
             "bin_hi": 0.9,
             "n": 28,
             "mean_confidence": 0.8558,
-            "accuracy": 0.9286
+            "accuracy": 0.8571
           },
           {
             "bin_lo": 0.9,
@@ -1150,29 +1150,29 @@
       },
       "routing": {
         "precision": 0.7143,
-        "recall": 0.303,
-        "f1": 0.4255,
+        "recall": 0.2703,
+        "f1": 0.3922,
         "true_escalate": 10,
         "false_escalate": 4,
-        "false_auto": 23,
-        "true_auto": 183,
-        "false_auto_count": 23,
+        "false_auto": 27,
+        "true_auto": 179,
+        "false_auto_count": 27,
         "false_auto_of": 220,
-        "false_auto_rate": 0.1045,
+        "false_auto_rate": 0.1227,
         "deflection_rate": 0.9364,
-        "expected_cost_per_100": 106.364,
+        "expected_cost_per_100": 124.545,
         "expected_cost_per_100_ci": {
-          "point": 106.3636,
-          "lo": 69.0909,
-          "hi": 146.8182,
-          "half_width": 38.8636,
+          "point": 124.5455,
+          "lo": 83.1818,
+          "hi": 168.2045,
+          "half_width": 42.5114,
           "n_boot": 1000
         },
         "f1_ci": {
-          "point": 0.4255,
-          "lo": 0.2439,
-          "hi": 0.5882,
-          "half_width": 0.1722,
+          "point": 0.3922,
+          "lo": 0.2272,
+          "hi": 0.5533,
+          "half_width": 0.163,
           "n_boot": 1000
         },
         "deflection_rate_ci": {
@@ -1183,12 +1183,12 @@
           "n_boot": 1000
         },
         "cost_sensitivity": {
-          "1": 12.273,
-          "2": 22.727,
-          "5": 54.091,
-          "10": 106.364,
-          "20": 210.909,
-          "50": 524.545
+          "1": 14.091,
+          "2": 26.364,
+          "5": 63.182,
+          "10": 124.545,
+          "20": 247.273,
+          "50": 615.455
         }
       },
       "reply_checks": {
@@ -1196,19 +1196,97 @@
         "must_not_violations": 0,
         "mean_reply_chars": 122.8,
         "empty_replies": 0,
-        "grounded_rate": 1.0
+        "grounded_rate": 1.0,
+        "semantic_compliance": {
+          "n": 217,
+          "requirement_satisfaction_rate": 0.3003,
+          "ci": {
+            "point": 0.3003,
+            "lo": 0.2527,
+            "hi": 0.348,
+            "half_width": 0.0476,
+            "n_boot": 1000
+          },
+          "prohibition_violations": 53,
+          "fully_compliant_replies": 31
+        }
       },
       "slices": {
         "hard": {
           "n": 32,
-          "accuracy": 0.75,
+          "accuracy": 0.7812,
           "missed_escalations": 3
         },
         "easy": {
           "n": 188,
           "accuracy": 0.6277,
-          "missed_escalations": 20
+          "missed_escalations": 24
         }
+      },
+      "reply_quality": {
+        "aggregate": {
+          "groundedness": {
+            "mean": 3.027,
+            "n": 220,
+            "ci": {
+              "point": 3.0273,
+              "lo": 2.8227,
+              "hi": 3.2227,
+              "half_width": 0.2,
+              "n_boot": 1000
+            }
+          },
+          "actionability": {
+            "mean": 2.0,
+            "n": 220,
+            "ci": {
+              "point": 2.0,
+              "lo": 1.859,
+              "hi": 2.1591,
+              "half_width": 0.1501,
+              "n_boot": 1000
+            }
+          },
+          "brand_fit": {
+            "mean": 2.668,
+            "n": 220,
+            "ci": {
+              "point": 2.6682,
+              "lo": 2.5409,
+              "hi": 2.7864,
+              "half_width": 0.1227,
+              "n_boot": 1000
+            }
+          },
+          "safety": {
+            "mean": 4.577,
+            "n": 220,
+            "ci": {
+              "point": 4.5773,
+              "lo": 4.4545,
+              "hi": 4.6818,
+              "half_width": 0.1136,
+              "n_boot": 1000
+            }
+          },
+          "send_unedited": {
+            "rate": 0.0091,
+            "n_yes": 2,
+            "n": 220,
+            "ci": {
+              "point": 0.0091,
+              "lo": 0.0,
+              "hi": 0.0227,
+              "half_width": 0.0114,
+              "n_boot": 1000
+            }
+          },
+          "judge_model": "gpt-4.1-mini",
+          "parse_failures": 0,
+          "calls": 1100,
+          "scores_file": "judge_scores_b1_simple.jsonl"
+        },
+        "n_rows": 220
       },
       "pipeline_reliability": {
         "classify": {
@@ -1241,132 +1319,106 @@
       "n": 220,
       "intent": {
         "macro_f1": {
-          "point": 0.7894,
-          "lo": 0.7261,
-          "hi": 0.8369,
-          "half_width": 0.0554,
+          "point": 0.7736,
+          "lo": 0.7058,
+          "hi": 0.8286,
+          "half_width": 0.0614,
           "n_boot": 1000
         },
         "accuracy": {
-          "point": 0.8,
-          "lo": 0.7455,
-          "hi": 0.85,
+          "point": 0.7909,
+          "lo": 0.7364,
+          "hi": 0.8409,
           "half_width": 0.0523,
           "n_boot": 1000
         },
         "per_class": {
           "playback_streaming_issue": {
-            "precision": 0.5714,
-            "recall": 0.9412,
-            "f1": 0.7111,
-            "support": 17
+            "precision": 0.7143,
+            "recall": 0.8333,
+            "f1": 0.7692,
+            "support": 24
           },
           "account_access_login": {
             "precision": 0.9444,
-            "recall": 1.0,
-            "f1": 0.9714,
-            "support": 17
+            "recall": 0.8947,
+            "f1": 0.9189,
+            "support": 19
           },
           "billing_charge_dispute": {
-            "precision": 0.8,
+            "precision": 0.5333,
             "recall": 1.0,
-            "f1": 0.8889,
-            "support": 12
+            "f1": 0.6957,
+            "support": 8
           },
           "subscription_cancel_refund": {
-            "precision": 0.9091,
-            "recall": 0.7692,
-            "f1": 0.8333,
-            "support": 13
+            "precision": 0.8182,
+            "recall": 0.75,
+            "f1": 0.7826,
+            "support": 12
           },
           "plan_or_premium_management": {
-            "precision": 0.7619,
-            "recall": 0.9412,
-            "f1": 0.8421,
-            "support": 17
+            "precision": 0.8571,
+            "recall": 0.75,
+            "f1": 0.8,
+            "support": 24
           },
           "content_missing_or_metadata": {
-            "precision": 0.6923,
-            "recall": 0.8571,
-            "f1": 0.766,
-            "support": 21
+            "precision": 0.8077,
+            "recall": 0.8077,
+            "f1": 0.8077,
+            "support": 26
           },
           "device_integration_issue": {
-            "precision": 1.0,
+            "precision": 0.9286,
             "recall": 1.0,
-            "f1": 1.0,
-            "support": 14
+            "f1": 0.963,
+            "support": 13
           },
           "app_bug_or_crash": {
-            "precision": 0.9333,
-            "recall": 0.7,
-            "f1": 0.8,
-            "support": 20
+            "precision": 0.8667,
+            "recall": 0.7647,
+            "f1": 0.8125,
+            "support": 17
           },
           "feature_request_or_complaint": {
-            "precision": 0.9778,
-            "recall": 0.7586,
-            "f1": 0.8544,
-            "support": 58
+            "precision": 0.8889,
+            "recall": 0.7843,
+            "f1": 0.8333,
+            "support": 51
           },
           "praise_or_chitchat": {
             "precision": 1.0,
-            "recall": 0.3125,
-            "f1": 0.4762,
-            "support": 16
+            "recall": 0.3846,
+            "f1": 0.5556,
+            "support": 13
           },
           "other": {
             "precision": 0.4545,
-            "recall": 0.6667,
-            "f1": 0.5405,
-            "support": 15
+            "recall": 0.7692,
+            "f1": 0.5714,
+            "support": 13
           }
         },
         "confusion_matrix": [
           [
-            16,
+            20,
             1,
             0,
             0,
             0,
             0,
+            1,
+            1,
             0,
             0,
-            0,
-            0,
-            0
+            1
           ],
           [
             0,
             17,
             0,
             0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            12,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            1,
-            0,
-            0,
-            10,
             2,
             0,
             0,
@@ -1376,89 +1428,115 @@
             0
           ],
           [
-            0,
-            0,
-            1,
-            0,
-            16,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            3,
-            0,
-            0,
-            0,
-            0,
-            18,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            14,
-            0,
-            0,
-            0,
-            0
-          ],
-          [
-            5,
-            0,
-            1,
-            0,
-            0,
-            0,
-            0,
-            14,
-            0,
-            0,
-            0
-          ],
-          [
-            2,
-            0,
-            0,
             0,
             0,
             8,
             0,
             0,
-            44,
             0,
-            4
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            1,
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1
           ],
           [
             0,
-            0,
-            1,
-            1,
-            0,
-            0,
-            0,
-            1,
             0,
             5,
-            8
+            1,
+            18,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
           ],
           [
             1,
             0,
             0,
             0,
+            0,
+            21,
+            0,
+            0,
+            4,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
             3,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            13,
+            0,
+            0,
+            1
+          ],
+          [
+            2,
+            0,
+            0,
+            0,
+            0,
+            5,
+            0,
+            1,
+            40,
+            0,
+            3
+          ],
+          [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5,
+            6
+          ],
+          [
+            1,
+            0,
+            0,
+            0,
+            1,
             0,
             0,
             0,
@@ -1480,7 +1558,7 @@
           "praise_or_chitchat",
           "other"
         ],
-        "ece": 0.0793,
+        "ece": 0.0975,
         "reliability_bins": [
           {
             "bin_lo": 0.0,
@@ -1494,7 +1572,7 @@
             "bin_hi": 0.2,
             "n": 6,
             "mean_confidence": 0.2,
-            "accuracy": 0.3333
+            "accuracy": 0.5
           },
           {
             "bin_lo": 0.2,
@@ -1508,7 +1586,7 @@
             "bin_hi": 0.4,
             "n": 8,
             "mean_confidence": 0.4,
-            "accuracy": 0.25
+            "accuracy": 0.125
           },
           {
             "bin_lo": 0.4,
@@ -1529,21 +1607,21 @@
             "bin_hi": 0.7,
             "n": 29,
             "mean_confidence": 0.7,
-            "accuracy": 0.6207
+            "accuracy": 0.5517
           },
           {
             "bin_lo": 0.7,
             "bin_hi": 0.8,
             "n": 117,
             "mean_confidence": 0.8,
-            "accuracy": 0.8462
+            "accuracy": 0.8547
           },
           {
             "bin_lo": 0.8,
             "bin_hi": 0.9,
             "n": 51,
             "mean_confidence": 0.8578,
-            "accuracy": 0.9608
+            "accuracy": 0.9412
           },
           {
             "bin_lo": 0.9,
@@ -1555,30 +1633,30 @@
         ]
       },
       "routing": {
-        "precision": 0.5,
-        "recall": 0.8788,
-        "f1": 0.6374,
-        "true_escalate": 29,
-        "false_escalate": 29,
+        "precision": 0.569,
+        "recall": 0.8919,
+        "f1": 0.6947,
+        "true_escalate": 33,
+        "false_escalate": 25,
         "false_auto": 4,
         "true_auto": 158,
         "false_auto_count": 4,
         "false_auto_of": 220,
         "false_auto_rate": 0.0182,
         "deflection_rate": 0.7364,
-        "expected_cost_per_100": 31.364,
+        "expected_cost_per_100": 29.545,
         "expected_cost_per_100_ci": {
-          "point": 31.3636,
-          "lo": 15.4432,
-          "hi": 51.8182,
-          "half_width": 18.1875,
+          "point": 29.5455,
+          "lo": 14.0909,
+          "hi": 48.6364,
+          "half_width": 17.2727,
           "n_boot": 1000
         },
         "f1_ci": {
-          "point": 0.6374,
-          "lo": 0.5079,
-          "hi": 0.7407,
-          "half_width": 0.1164,
+          "point": 0.6947,
+          "lo": 0.5843,
+          "hi": 0.7901,
+          "half_width": 0.1029,
           "n_boot": 1000
         },
         "deflection_rate_ci": {
@@ -1589,12 +1667,12 @@
           "n_boot": 1000
         },
         "cost_sensitivity": {
-          "1": 15.0,
-          "2": 16.818,
-          "5": 22.273,
-          "10": 31.364,
-          "20": 49.545,
-          "50": 104.091
+          "1": 13.182,
+          "2": 15.0,
+          "5": 20.455,
+          "10": 29.545,
+          "20": 47.727,
+          "50": 102.273
         }
       },
       "reply_checks": {
@@ -1602,19 +1680,97 @@
         "must_not_violations": 4,
         "mean_reply_chars": 146.4,
         "empty_replies": 0,
-        "grounded_rate": 0.7864
+        "grounded_rate": 0.7864,
+        "semantic_compliance": {
+          "n": 217,
+          "requirement_satisfaction_rate": 0.5376,
+          "ci": {
+            "point": 0.5376,
+            "lo": 0.4877,
+            "hi": 0.5876,
+            "half_width": 0.05,
+            "n_boot": 1000
+          },
+          "prohibition_violations": 43,
+          "fully_compliant_replies": 70
+        }
       },
       "slices": {
         "hard": {
           "n": 32,
-          "accuracy": 0.8438,
+          "accuracy": 0.875,
           "missed_escalations": 0
         },
         "easy": {
           "n": 188,
-          "accuracy": 0.7926,
+          "accuracy": 0.7766,
           "missed_escalations": 4
         }
+      },
+      "reply_quality": {
+        "aggregate": {
+          "groundedness": {
+            "mean": 4.068,
+            "n": 220,
+            "ci": {
+              "point": 4.0682,
+              "lo": 3.9182,
+              "hi": 4.2227,
+              "half_width": 0.1523,
+              "n_boot": 1000
+            }
+          },
+          "actionability": {
+            "mean": 2.895,
+            "n": 220,
+            "ci": {
+              "point": 2.8955,
+              "lo": 2.7272,
+              "hi": 3.0637,
+              "half_width": 0.1683,
+              "n_boot": 1000
+            }
+          },
+          "brand_fit": {
+            "mean": 3.968,
+            "n": 220,
+            "ci": {
+              "point": 3.9682,
+              "lo": 3.8818,
+              "hi": 4.0545,
+              "half_width": 0.0864,
+              "n_boot": 1000
+            }
+          },
+          "safety": {
+            "mean": 4.923,
+            "n": 220,
+            "ci": {
+              "point": 4.9227,
+              "lo": 4.8818,
+              "hi": 4.9591,
+              "half_width": 0.0386,
+              "n_boot": 1000
+            }
+          },
+          "send_unedited": {
+            "rate": 0.1,
+            "n_yes": 22,
+            "n": 220,
+            "ci": {
+              "point": 0.1,
+              "lo": 0.0636,
+              "hi": 0.1455,
+              "half_width": 0.0409,
+              "n_boot": 1000
+            }
+          },
+          "judge_model": "gpt-4.1-mini",
+          "parse_failures": 0,
+          "calls": 2200,
+          "scores_file": "judge_scores.jsonl"
+        },
+        "n_rows": 220
       },
       "pipeline_reliability": {
         "classify": {
@@ -1649,8 +1805,8 @@
       "a": "b0_always_escalate",
       "b": "b0_always_auto",
       "metric": "intent_macro_f1",
-      "a_point": 0.0379,
-      "b_point": 0.0379,
+      "a_point": 0.0342,
+      "b_point": 0.0342,
       "gap": 0.0,
       "meaningful": false,
       "note": "CIs OVERLAP -- this gap is NOT a result and must not be claimed"
@@ -1659,9 +1815,9 @@
       "a": "b0_always_escalate",
       "b": "b1_simple",
       "metric": "intent_macro_f1",
-      "a_point": 0.0379,
-      "b_point": 0.6057,
-      "gap": -0.5678,
+      "a_point": 0.0342,
+      "b_point": 0.5922,
+      "gap": -0.558,
       "meaningful": true,
       "note": "CIs do not overlap"
     },
@@ -1669,9 +1825,9 @@
       "a": "b0_always_escalate",
       "b": "agent",
       "metric": "intent_macro_f1",
-      "a_point": 0.0379,
-      "b_point": 0.7894,
-      "gap": -0.7515,
+      "a_point": 0.0342,
+      "b_point": 0.7736,
+      "gap": -0.7394,
       "meaningful": true,
       "note": "CIs do not overlap"
     },
@@ -1679,9 +1835,9 @@
       "a": "b0_always_auto",
       "b": "b1_simple",
       "metric": "intent_macro_f1",
-      "a_point": 0.0379,
-      "b_point": 0.6057,
-      "gap": -0.5678,
+      "a_point": 0.0342,
+      "b_point": 0.5922,
+      "gap": -0.558,
       "meaningful": true,
       "note": "CIs do not overlap"
     },
@@ -1689,9 +1845,9 @@
       "a": "b0_always_auto",
       "b": "agent",
       "metric": "intent_macro_f1",
-      "a_point": 0.0379,
-      "b_point": 0.7894,
-      "gap": -0.7515,
+      "a_point": 0.0342,
+      "b_point": 0.7736,
+      "gap": -0.7394,
       "meaningful": true,
       "note": "CIs do not overlap"
     },
@@ -1699,12 +1855,12 @@
       "a": "b1_simple",
       "b": "agent",
       "metric": "intent_macro_f1",
-      "a_point": 0.6057,
-      "b_point": 0.7894,
-      "gap": -0.1837,
+      "a_point": 0.5922,
+      "b_point": 0.7736,
+      "gap": -0.1814,
       "meaningful": true,
       "note": "CIs do not overlap"
     }
   ],
-  "spend_usd": 2.4588
+  "spend_usd": 3.1306
 }

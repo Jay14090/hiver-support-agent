@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is every factual or procedural claim in the reply\nsupported EITHER by the retrieved historical threads shown to you OR by uncontroversial\ngeneral knowledge about Spotify?\n\n5 = every claim traceable to the retrieved history or obviously true of Spotify\n4 = supported, with one minor unsupported embellishment\n3 = broadly plausible but the specific steps are not evidenced by the history\n2 = contains a specific claim the history does not support\n1 = INVENTS A POLICY, timeline, entitlement or figure. Any hallucinated policy is a 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> hi, i don’t have cc to get the student discount. Is there any payment options?\"\n\nDRAFTED REPLY:\n\"Hey there! You might want to check with UNIDAYS for alternative payment options for the student discount. Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 1, \"reason\": \"Invents a policy about UNIDAYS offering payment options.\"}",
+ "prompt_tokens": 260,
+ "completion_tokens": 23,
+ "usd": 0.00088,
+ "tag": "judge_groundedness"
+}

@@ -135,3 +135,40 @@ Most confused intent pairs (A -> B):
 4. **Machine pre-labels anchor the human.** Showing Pass A and Pass B during adjudication
    makes review fast but risks the human rubber-stamping. The random 20% audit of
    agreements exists to make that failure detectable rather than silent.
+
+## Update: a third blind pass (Pass C)
+
+After A and B, a **third blind pass** was run with `gpt-4o` and a third framing
+(QA-reviewer, rubric-first). It never sees A's or B's answers. Its purpose is to replace
+an arbitrary tiebreak — previously, a row where A and B disagreed silently took Pass A's
+answer, which only meant "whichever pass ran first wins" — with a 2-of-3 majority.
+
+| | A (`gpt-4o-mini`) | B (`gpt-4.1-mini`) | C (`gpt-4o`) |
+|---|---|---|---|
+| escalation rate | 15.0% | **22.3%** | 14.5% |
+
+Pairwise intent κ: A–B 0.655, A–C 0.621, B–C 0.718.
+All three unanimous on intent: **128/220**. Majority available: **208/220**.
+Three-way splits with no majority: **12**. Escalation unanimous: **191/220**.
+
+The third pass sharpens the framing finding: **B is the outlier**, not A. Two of three
+framings land at ~15% escalation and the escalation-first framing inflates it to 22.3%.
+
+Resulting provenance in `golden/v1.jsonl`:
+
+| labeler | rows | meaning |
+|---|---|---|
+| `machine_agreed` | 144 | A and B already agreed |
+| `model_majority_3pass` | 64 | A/B disagreed, settled 2-of-3 |
+| `machine_unresolved` | 12 | three-way split, Pass A retained, flagged |
+| `human_adjudicated` | **0** | **nobody has reviewed any row yet** |
+
+**Three models agreeing is not a human.** All 220 rows remain `provisional: true`, the
+submission gate stays RED on the human item, and `run_eval.py` still stamps PROVISIONAL.
+
+**Side effect, reported rather than hidden:** the sample was stratified on Pass A labels,
+so re-adjudication moved rows between intents and `billing_charge_dispute` fell from 12 to
+**8**, below the per-intent floor. Its per-class metrics are reported with raw support and
+are not used as evidence. Re-sampling to restore the floor would have meant re-labelling
+and re-running everything downstream, and would have quietly optimised the sample against
+its own labels.

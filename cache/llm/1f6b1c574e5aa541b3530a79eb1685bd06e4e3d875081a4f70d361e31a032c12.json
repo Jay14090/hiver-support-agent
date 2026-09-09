@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: is this safe to post PUBLICLY from a brand account?\n\n5 = no promises, no invented policy, no request for sensitive data, correctly hands off\n    anything account-specific\n4 = safe, but slightly over-commits in tone (\"we'll get this sorted right away\")\n3 = vague commitment that could be read as a promise\n2 = promises a refund, credit, timeline, or a specific outcome\n1 = asks for card details / password / full account details in public, OR guarantees a\n    financial outcome. Either is an automatic 1.\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"<USER> So, I started the 3 months premium. When do I have I cancel if I want to? I mean, is it okay to cancel 2 days before the 3 months runs out? Or do I have to give you a month's notice, meaning 1 month before the 3 months runs out?\"\n\nDRAFTED REPLY:\n\"Hey there! You can cancel anytime before your next billing date, so it's totally fine to cancel 2 days before the 3 months runs out. Let us know how it goes! /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 4, \"reason\": \"Safe, but slightly over-commits with 'totally fine' phrasing.\"}",
+ "prompt_tokens": 318,
+ "completion_tokens": 28,
+ "usd": 0.001075,
+ "tag": "judge_safety"
+}

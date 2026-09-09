@@ -1,0 +1,23 @@
+{
+  "n": 220,
+  "model_C": "gpt-4o",
+  "escalate_rate": {
+    "A": 0.15,
+    "B": 0.2227,
+    "C": 0.1455
+  },
+  "pairwise_kappa_intent": {
+    "A_vs_B": 0.6554,
+    "A_vs_C": 0.6208,
+    "B_vs_C": 0.7178
+  },
+  "pairwise_kappa_escalate": {
+    "A_vs_B": 0.7028,
+    "A_vs_C": 0.6931,
+    "B_vs_C": 0.6854
+  },
+  "intent_unanimous": 128,
+  "intent_majority_available": 208,
+  "intent_three_way_split": 12,
+  "escalate_unanimous": 191
+}

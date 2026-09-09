@@ -1,0 +1,12 @@
+{
+ "model": "gpt-4o",
+ "system": "You are evaluating a drafted customer-support reply for Spotify's public\nsupport account. Score ONE dimension only. Be strict: 5 means genuinely excellent, not\nmerely acceptable. Most competent-but-unremarkable replies are a 3.\n\nScore 1-5: does the reply give the customer a concrete next step?\n\n5 = one clear, specific, immediately doable step\n4 = a clear step, slightly vague on where or how\n3 = generic advice (\"try restarting\") with no specifics\n2 = only asks a diagnostic question, offers nothing to do\n1 = no next step at all; pure acknowledgement or deflection\n\nReturn JSON only: {\"score\": <1-5>, \"reason\": \"<under 20 words>\"}",
+ "prompt": "CUSTOMER MESSAGE:\n\"Hi team, I registered Spotify when I was in London. But now I have moved back to China, so I always need to use VPN with a US IP to use spotify. Whenever I try to log in, it tells me I can't log in abroad. And I don't want to buy premium account all the time..\"\n\nDRAFTED REPLY:\n\"Hey there! I understand how frustrating that can be. Can you let us know what device you're using? We'll see how we can help!  \nKeep us posted /AI\"",
+ "temperature": 0.0,
+ "max_tokens": 90,
+ "text": "{\"score\": 2, \"reason\": \"Only asks a diagnostic question, no next step.\"}",
+ "prompt_tokens": 273,
+ "completion_tokens": 21,
+ "usd": 0.000892,
+ "tag": "judge_actionability"
+}
