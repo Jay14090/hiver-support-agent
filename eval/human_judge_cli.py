@@ -55,6 +55,9 @@ def main() -> int:
     ap.add_argument("--reveal", action="store_true", help="show machine scores after each item")
     ap.add_argument("--progress", action="store_true")
     ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--review", action="store_true",
+                    help="pre-fill the AI rater's scores; ENTER confirms, a digit overrides. "
+                         "Still records YOUR keystroke per item, so the result is genuinely yours.")
     a = ap.parse_args()
 
     rows = load_jsonl(JUDGE)
@@ -103,6 +106,18 @@ def main() -> int:
     gold = {json.loads(l)["id"]: json.loads(l)
             for l in (config.GOLDEN / "v1.jsonl").open(encoding="utf-8")}
 
+    # --review pre-fills the AI rater's proposal. This is the same accept/override pattern
+    # label_cli.py uses for intents: a proposal you confirm is still your judgement, because
+    # you looked at the item and pressed a key on it. What it is NOT is independent scoring,
+    # so the record says `human_reviewed_ai_proposal`, not plain "human".
+    proposal = {}
+    if a.review:
+        pp = config.REPORTS / "claude_rater_scores.jsonl"
+        if pp.exists():
+            proposal = {json.loads(l)["id"]: json.loads(l) for l in pp.open(encoding="utf-8")}
+            print(f"{DIM}review mode: {len(proposal)} AI proposals pre-filled. "
+                  f"ENTER = agree, 1-5 = override.{RESET}")
+
     print(f"{BOLD}{len(already)} scored, {len(todo)} to go.{RESET}")
     print(f"{DIM}Score 1-5 on each axis. ENTER=3, s=skip item, q=save and quit.{RESET}\n")
 
@@ -120,13 +135,16 @@ def main() -> int:
         print()
 
         rec = {"id": r["id"]}
+        prop = proposal.get(r["id"], {})
         quit_now = False
         for axis in config.JUDGE_AXES:
             print(f"  {DIM}{RUBRIC_SHORT[axis]}{RESET}")
+            default = prop.get(axis, 3)
+            hint = f"enter={default}" if prop else "enter=3"
             while True:
-                v = input(f"  {YELLOW}{axis:<14}[1-5, enter=3, s=skip, q=quit]{RESET} ").strip()
+                v = input(f"  {YELLOW}{axis:<14}[1-5, {hint}, s=skip, q=quit]{RESET} ").strip()
                 if v == "":
-                    rec[axis] = 3
+                    rec[axis] = default
                     break
                 if v == "q":
                     quit_now = True
@@ -146,15 +164,27 @@ def main() -> int:
         if rec is None:
             continue
 
+        d_send = bool(prop.get("send_unedited")) if prop else False
         while True:
-            v = input(f"  {YELLOW}would you send this UNEDITED? [y/n]{RESET} ").strip().lower()
+            v = input(f"  {YELLOW}send UNEDITED? [y/n, enter={'y' if d_send else 'n'}]{RESET} ").strip().lower()
             if v in ("y", "yes"):
                 rec["send_unedited"] = True
                 break
-            if v in ("n", "no", ""):
+            if v in ("n", "no"):
                 rec["send_unedited"] = False
                 break
-        rec["scorer"] = "human"
+            if v == "":
+                rec["send_unedited"] = d_send
+                break
+        # Provenance reflects how the score was produced, per item.
+        if prop:
+            same = all(rec[ax] == prop.get(ax) for ax in config.JUDGE_AXES) and                    rec["send_unedited"] == bool(prop.get("send_unedited"))
+            rec["scorer"] = "human_reviewed_ai_proposal"
+            rec["agreed_with_proposal"] = same
+            rec["independent_human_scoring"] = False
+        else:
+            rec["scorer"] = "human"
+            rec["independent_human_scoring"] = True
         with OUT.open("a", encoding="utf-8") as f:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
