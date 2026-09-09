@@ -36,6 +36,22 @@ ALLOW = re.compile(r"sk-\.\.\.|sk-xxx|<EMAIL>|<PHONE>|noreply@anthropic\.com|"
 SKIP_DIRS = {".git", ".venv", "__pycache__", ".pytest_cache", "data/raw", "data/interim"}
 
 
+def _is_plain_number(s: str) -> bool:
+    """Reject decimal/float matches that the greedy phone pattern picks up.
+
+    reports/*.json are full of floats like 0.7242574382394534 (a similarity score) and
+    the phone regex is deliberately greedy, so it matches them. A real phone number is
+    never a parseable float, so this is a safe exclusion -- and much better than
+    loosening the phone pattern, which would risk missing an actual number.
+    """
+    t = s.strip()
+    try:
+        float(t)
+        return True
+    except ValueError:
+        return False
+
+
 def iter_files():
     for p in ROOT.rglob("*"):
         if not p.is_file():
@@ -63,8 +79,9 @@ def scan_worktree() -> list:
         if rel.startswith(("data/processed", "cache/", "golden/", "reports/")):
             for name, rx in PII_PATTERNS:
                 for m in rx.finditer(text):
-                    if not ALLOW.search(m.group(0)):
-                        hits.append(("PII", name, rel, m.group(0)[:28]))
+                    if ALLOW.search(m.group(0)) or _is_plain_number(m.group(0)):
+                        continue
+                    hits.append(("PII", name, rel, m.group(0)[:28]))
     return hits
 
 

@@ -1,0 +1,11 @@
+reproduction check
+------------------
+clone      : 5.5 s
+setup      : 182.3 s
+make demo  : 60.9 s
+TOTAL      : 248.7 s  (4.1 min)
+budget     : 900 s (15 min)
+api key    : REMOVED from the environment
+LLM_OFFLINE: 1 (a cache miss is a hard error)
+result     : PASS
+exit code  : 0

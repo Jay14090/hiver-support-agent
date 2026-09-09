@@ -32,3 +32,36 @@ Append-only. One line per completed task.
 - [2026-09-09 16:24] P3.6 DONE - phase3
 - [2026-09-09 16:24] P3.7 DONE - phase3
 - [2026-09-09 16:24] P3.8 DONE - phase3
+- [2026-09-09 18:20] P6.1 DONE - phase
+- [2026-09-09 18:20] P6.2 DONE - phase
+- [2026-09-09 18:20] P6.3 DONE - phase
+- [2026-09-09 18:20] P6.4 DONE - phase
+- [2026-09-09 18:20] P6.5 DONE - phase
+- [2026-09-09 18:20] P6.6 DONE - phase
+- [2026-09-09 18:20] P6.7 DONE - phase
+- [2026-09-09 18:20] P6.8 DONE - phase
+- [2026-09-09 18:20] P6.9 DONE - phase
+- [2026-09-09 18:20] P6.10 DONE - phase
+- [2026-09-09 18:20] P7.1 DONE - phase
+- [2026-09-09 18:20] P7.2 DONE - phase
+- [2026-09-09 18:20] P7.3 DONE - phase
+- [2026-09-09 18:20] P8.1 DONE - phase
+- [2026-09-09 18:20] P8.2 DONE - phase
+- [2026-09-09 18:20] P8.3 DONE - phase
+- [2026-09-09 18:20] P9.1 DONE - phase
+- [2026-09-09 18:20] P9.2 DONE - phase
+- [2026-09-09 18:20] P9.3 DONE - phase
+- [2026-09-09 18:20] P9.4 DONE - phase
+- [2026-09-09 18:20] P9.5 DONE - phase
+- [2026-09-09 18:20] P9.6 DONE - phase
+- [2026-09-09 18:20] P4.1 DONE - phase
+- [2026-09-09 18:20] P4.2 DONE - phase
+- [2026-09-09 18:20] P4.3 DONE - phase
+- [2026-09-09 18:20] P5.1 DONE - phase
+- [2026-09-09 18:20] P5.2 DONE - phase
+- [2026-09-09 18:20] P5.3 DONE - phase
+- [2026-09-09 18:20] P5.4 DONE - phase
+- [2026-09-09 18:20] P5.5 DONE - phase
+- [2026-09-09 18:20] P5.6 DONE - phase
+- [2026-09-09 18:21] P10.1 DONE - gate run
+- [2026-09-09 18:21] P10.2 DONE - secret scan clean

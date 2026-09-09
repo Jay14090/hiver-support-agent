@@ -1,0 +1,156 @@
+[
+  {
+    "name": "make demo works from a clean clone, no API key, < 15 min",
+    "ok": true,
+    "detail": "6s (0.1 min), budget 15 min",
+    "fix": "python scripts/verify_repro.py",
+    "warn_only": false
+  },
+  {
+    "name": "make full documented and known-working",
+    "ok": true,
+    "detail": "Makefile target present",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "golden/v1.jsonl has 150-250 examples",
+    "ok": true,
+    "detail": "220 rows",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "golden set is schema-valid",
+    "ok": true,
+    "detail": "",
+    "fix": "python scripts/validate_golden.py",
+    "warn_only": false
+  },
+  {
+    "name": "every intent has >= 12 examples",
+    "ok": true,
+    "detail": "min per intent = 12",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "HUMAN REVIEW PASS COMPLETE",
+    "ok": false,
+    "detail": "0/105 queue items reviewed; 0/220 rows adjudicated",
+    "fix": "python golden/label_cli.py   (then: python scripts/build_golden.py)",
+    "warn_only": false
+  },
+  {
+    "name": "SAMPLING_NOTE.md honestly states the labelling process",
+    "ok": true,
+    "detail": "",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "two baselines implemented and evaluated",
+    "ok": true,
+    "detail": "systems evaluated: ['b0_always_escalate', 'b0_always_auto', 'b1_simple', 'agent']",
+    "fix": "python -m eval.run_eval --system all",
+    "warn_only": false
+  },
+  {
+    "name": "LLM judge + human agreement evidence",
+    "ok": false,
+    "detail": "not run",
+    "fix": "python eval/human_judge_cli.py  &&  python -m eval.judge_validation --report",
+    "warn_only": false
+  },
+  {
+    "name": "3 bias probes with numbers",
+    "ok": true,
+    "detail": "probes present: ['position', 'length', 'self_preference']",
+    "fix": "python -m eval.judge_validation --probes",
+    "warn_only": false
+  },
+  {
+    "name": "all headline metrics carry bootstrap CIs",
+    "ok": true,
+    "detail": "",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "REPORT.md <= 6 pages",
+    "ok": true,
+    "detail": "~2126 words (~3.5 pages)",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "misleading-numbers section has >= 8 items",
+    "ok": true,
+    "detail": "12 items",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "FAILURE_ANALYSIS.md: 5 modes with real examples",
+    "ok": true,
+    "detail": "5 modes",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "DECISION_LOG.md: 10-15 entries",
+    "ok": true,
+    "detail": "15 entries",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "NOT_BUILDING.md populated",
+    "ok": true,
+    "detail": "",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "WALKTHROUGH.md written",
+    "ok": true,
+    "detail": "",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "README has Citations & Borrowings + AI disclosure",
+    "ok": true,
+    "detail": "",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "no PII / API keys / .env in git history",
+    "ok": true,
+    "detail": "OK: no unscrubbed emails or phone numbers in committed data",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "repo < 100MB",
+    "ok": true,
+    "detail": "35.2 MB",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "clean history with sensible commit messages",
+    "ok": true,
+    "detail": "7 commits",
+    "fix": "",
+    "warn_only": false
+  },
+  {
+    "name": "cost_ledger.json total under budget",
+    "ok": true,
+    "detail": "$2.46 of $25",
+    "fix": "",
+    "warn_only": false
+  }
+]

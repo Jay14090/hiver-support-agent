@@ -34,3 +34,17 @@ a way that survived reading the members.
 **Not adding a `service_outage` intent**, despite outage chatter being visibly present:
 it is time-correlated rather than customer-specific, and a router should handle it with
 an incident banner, not a per-message intent.
+
+## Deferred, ranked (from REPORT.md §7)
+
+1. **A second human annotator** — every number is capped by label quality, and I have
+   machine–machine κ where human–human κ is needed.
+2. **Retrieval evaluation (recall@k)** — retrieval feeds both classification and drafting
+   and is the largest completely untested link in the chain.
+3. **Judge validation against human scores** — the CLI exists; 70 replies would convert
+   every reply-quality claim from provisional to evidence.
+4. **Per-intent routing thresholds** — one global τ is wrong when `billing_charge_dispute`
+   and `praise_or_chitchat` have opposite cost profiles.
+5. **Fixing failure mode 1** (profanity read as distress) — 54% of needless escalations.
+6. **Re-weighting metrics to the production intent mix** — would turn the 73.6% deflection
+   rate from a benchmark artefact into a deployable estimate.
