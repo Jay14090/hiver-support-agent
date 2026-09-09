@@ -79,7 +79,7 @@
   {
     "name": "REPORT.md <= 6 pages",
     "ok": true,
-    "detail": "~2744 words (~4.6 pages)",
+    "detail": "~2808 words (~4.7 pages)",
     "fix": "",
     "warn_only": false
   },
@@ -142,7 +142,7 @@
   {
     "name": "clean history with sensible commit messages",
     "ok": true,
-    "detail": "14 commits",
+    "detail": "15 commits",
     "fix": "",
     "warn_only": false
   },
