@@ -54,7 +54,17 @@ def report_agreement() -> dict:
         }
 
     human = [json.loads(l) for l in HUMAN_SCORES.open(encoding="utf-8")]
-    out = {"n_human_scored": len(human), "axes": {}}
+    # Provenance is carried into the result so the number cannot be quoted without it.
+    endorsed = any(h.get("scorer") == "human_endorsed_ai_scores" for h in human)
+    out = {"n_human_scored": len(human), "axes": {},
+           "independent_human_scoring": not endorsed,
+           "provenance": (
+               "AI-generated (claude-opus-5) scores REVIEWED AND ENDORSED by the project "
+               "owner. These are not independent human judgements, so rho below measures "
+               "cross-family model agreement that a human has vouched for -- NOT "
+               "human-vs-judge agreement. See reports/rater_endorsement.json."
+               if endorsed else
+               "Scored independently by a human via eval/human_judge_cli.py.")}
     for axis in config.JUDGE_AXES:
         pairs = [(h[axis], machine[h["id"]][axis]) for h in human
                  if h.get(axis) is not None and h["id"] in machine

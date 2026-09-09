@@ -69,11 +69,18 @@ you should discount it.
    | safety | 4.95 | 4.95 | 4.67 | −0.05 | **−0.12** |
 
    Two OpenAI models agree moderately (mean ρ 0.42). **Across families the mean ρ is
-   0.204, and groundedness and safety are at or below zero — no relationship at all.**
-   Only actionability, the most concrete axis, survives. My pre-set threshold was ρ < 0.6
-   = weak evidence; this is far below it. **Every reply-quality number in this report is
-   weak evidence, and the groundedness and safety scores in particular should be treated
-   as close to meaningless.**
+   0.345 over all 70 replies (0.204 on the 3-way overlap), with groundedness 0.22 and
+   safety 0.09 — effectively no relationship.** Only actionability, the most concrete
+   axis, survives. My pre-set threshold was ρ < 0.6 = weak evidence; this is far below it.
+   **Every reply-quality number in this report is weak evidence, and groundedness and
+   safety in particular should be treated as close to meaningless.**
+
+   *Provenance note:* the cross-family scores were produced by `claude-opus-5` and then
+   **reviewed and endorsed by me**, not scored by me from scratch (`scorer:
+   human_endorsed_ai_scores`, `independent_human_scoring: false`, see
+   `reports/rater_endorsement.json`). So ρ here is cross-family model agreement that a
+   human has vouched for — **not** an independent human-vs-judge statistic. An independent
+   human pass remains the outstanding item, and `eval/human_judge_cli.py` is built for it.
 
 9. **A worked example of the judge endorsing a hallucination.** To the message *"can you
    turn off explicit music?"* the agent replied *"Right now, there's no option to turn off

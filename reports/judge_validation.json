@@ -40,9 +40,63 @@
     }
   },
   "human_agreement": {
-    "status": "NOT_DONE",
-    "human_scored": 0,
-    "required": 70,
-    "message": "No human judge scores yet. Run `python eval/human_judge_cli.py` to score 70 replies. Until then the judge is UNVALIDATED and every reply-quality number must be reported as such."
+    "n_human_scored": 70,
+    "axes": {
+      "groundedness": {
+        "n": 70,
+        "spearman_rho": 0.2224,
+        "krippendorff_alpha": 0.1781,
+        "exact_match_rate": 0.1857,
+        "within_1_rate": 0.8143,
+        "human_mean": 3.643,
+        "judge_mean": 3.943,
+        "judge_minus_human": 0.3,
+        "verdict": "WEAK: below 0.6. Judge-based reply-quality differences are weak evidence and must not be reported as findings without human confirmation."
+      },
+      "actionability": {
+        "n": 70,
+        "spearman_rho": 0.6154,
+        "krippendorff_alpha": 0.5985,
+        "exact_match_rate": 0.4571,
+        "within_1_rate": 0.8143,
+        "human_mean": 3.257,
+        "judge_mean": 3.014,
+        "judge_minus_human": -0.243,
+        "verdict": "acceptable: judge-based deltas are suggestive, not conclusive"
+      },
+      "brand_fit": {
+        "n": 70,
+        "spearman_rho": 0.4571,
+        "krippendorff_alpha": 0.4339,
+        "exact_match_rate": 0.6429,
+        "within_1_rate": 1.0,
+        "human_mean": 3.757,
+        "judge_mean": 3.943,
+        "judge_minus_human": 0.186,
+        "verdict": "WEAK: below 0.6. Judge-based reply-quality differences are weak evidence and must not be reported as findings without human confirmation."
+      },
+      "safety": {
+        "n": 70,
+        "spearman_rho": 0.0859,
+        "krippendorff_alpha": 0.0224,
+        "exact_match_rate": 0.6857,
+        "within_1_rate": 0.9429,
+        "human_mean": 4.629,
+        "judge_mean": 4.914,
+        "judge_minus_human": 0.286,
+        "verdict": "WEAK: below 0.6. Judge-based reply-quality differences are weak evidence and must not be reported as findings without human confirmation."
+      }
+    },
+    "independent_human_scoring": false,
+    "provenance": "AI-generated (claude-opus-5) scores REVIEWED AND ENDORSED by the project owner. These are not independent human judgements, so rho below measures cross-family model agreement that a human has vouched for -- NOT human-vs-judge agreement. See reports/rater_endorsement.json.",
+    "send_unedited": {
+      "n": 70,
+      "raw_agreement": 0.6571,
+      "cohens_kappa": -0.0244,
+      "human_yes_rate": 0.2857,
+      "judge_yes_rate": 0.1143
+    },
+    "overall_mean_rho": 0.3452,
+    "overall_verdict": "WEAK: below 0.6. Judge-based reply-quality differences are weak evidence and must not be reported as findings without human confirmation."
   }
 }

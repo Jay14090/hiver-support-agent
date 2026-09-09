@@ -57,8 +57,8 @@
   },
   {
     "name": "LLM judge + human agreement evidence",
-    "ok": false,
-    "detail": "not run",
+    "ok": true,
+    "detail": "mean rho = 0.3452",
     "fix": "python eval/human_judge_cli.py  &&  python -m eval.judge_validation --report",
     "warn_only": false
   },
@@ -142,7 +142,7 @@
   {
     "name": "clean history with sensible commit messages",
     "ok": true,
-    "detail": "12 commits",
+    "detail": "14 commits",
     "fix": "",
     "warn_only": false
   },

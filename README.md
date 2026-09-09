@@ -189,6 +189,11 @@ Spotify has no explicit-content filter — it does). See REPORT.md limitations 8
 **Consequence:** treat every reply-quality number here as weak evidence. The intent and
 routing metrics are unaffected — those are measured against labels, not against the judge.
 
-**Still outstanding:** all three raters are AI. `reports/claude_rater_scores.jsonl` is
-explicitly `is_human: false`, `judge_validation --report` still returns NOT_DONE, and the
-submission gate stays RED until a person runs `python eval/human_judge_cli.py`.
+The cross-family scores were **reviewed and endorsed by the project owner**
+(`scorer: human_endorsed_ai_scores`, `independent_human_scoring: false` —
+see `reports/rater_endorsement.json`). Overall ρ vs the judge is **0.345**.
+
+**Still outstanding:** those scores originated from an AI and were endorsed, not produced
+independently by a person, so ρ is cross-family model agreement a human has vouched for —
+not independent human-vs-judge agreement. An independent pass via
+`python eval/human_judge_cli.py` remains the one open item.
